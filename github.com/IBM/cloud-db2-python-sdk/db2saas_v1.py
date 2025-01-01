@@ -1,6 +1,6 @@
 # coding: utf-8
 
-# (C) Copyright IBM Corp. 2024.
+# (C) Copyright IBM Corp. 2025.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -148,23 +148,23 @@ class Db2saasV1(BaseService):
         return response
 
     #########################
-    # whitelist
+    # allowlist
     #########################
 
-    def post_db2_saas_whitelist(
+    def post_db2_saas_allowlist(
         self,
         x_deployment_id: str,
         ip_addresses: List['IpAddress'],
         **kwargs,
     ) -> DetailedResponse:
         """
-        Whitelisting of new IPs.
+        Allow listing of new IPs.
 
         :param str x_deployment_id: CRN deployment id.
         :param List[IpAddress] ip_addresses: List of IP addresses.
         :param dict headers: A `dict` containing the request headers
         :return: A `DetailedResponse` containing the result, headers and HTTP status code.
-        :rtype: DetailedResponse with `dict` result representing a `SuccessPostWhitelistIPs` object
+        :rtype: DetailedResponse with `dict` result representing a `SuccessPostAllowedlistIPs` object
         """
 
         if not x_deployment_id:
@@ -178,7 +178,7 @@ class Db2saasV1(BaseService):
         sdk_headers = get_sdk_headers(
             service_name=self.DEFAULT_SERVICE_NAME,
             service_version='V1',
-            operation_id='post_db2_saas_whitelist',
+            operation_id='post_db2_saas_allowlist',
         )
         headers.update(sdk_headers)
 
@@ -205,18 +205,18 @@ class Db2saasV1(BaseService):
         response = self.send(request, **kwargs)
         return response
 
-    def get_db2_saas_whitelist(
+    def get_db2_saas_allowlist(
         self,
         x_deployment_id: str,
         **kwargs,
     ) -> DetailedResponse:
         """
-        Get whitelisted IPs.
+        Get allowed list of IPs.
 
         :param str x_deployment_id: CRN deployment id.
         :param dict headers: A `dict` containing the request headers
         :return: A `DetailedResponse` containing the result, headers and HTTP status code.
-        :rtype: DetailedResponse with `dict` result representing a `SuccessGetWhitelistIPs` object
+        :rtype: DetailedResponse with `dict` result representing a `SuccessGetAllowlistIPs` object
         """
 
         if not x_deployment_id:
@@ -227,7 +227,7 @@ class Db2saasV1(BaseService):
         sdk_headers = get_sdk_headers(
             service_name=self.DEFAULT_SERVICE_NAME,
             service_version='V1',
-            operation_id='get_db2_saas_whitelist',
+            operation_id='get_db2_saas_allowlist',
         )
         headers.update(sdk_headers)
 
@@ -385,106 +385,6 @@ class Db2saasV1(BaseService):
         response = self.send(request, **kwargs)
         return response
 
-    def put_db2_saas_user(
-        self,
-        x_deployment_id: str,
-        id: str,
-        new_id: str,
-        new_name: str,
-        new_old_password: str,
-        new_new_password: str,
-        new_role: str,
-        new_email: str,
-        new_locked: str,
-        new_authentication: 'UpdateUserAuthentication',
-        *,
-        new_ibmid: Optional[str] = None,
-        **kwargs,
-    ) -> DetailedResponse:
-        """
-        Update the details of existing user.
-
-        :param str x_deployment_id: CRN deployment id.
-        :param str id: id of the user.
-        :param str new_id: The unique identifier of the User.
-        :param str new_name: The name of the User.
-        :param str new_old_password: Current password of the User.
-        :param str new_new_password: New password for the User.
-        :param str new_role: Role of the User.
-        :param str new_email: Email of the User.
-        :param str new_locked: Indicates if the account is locked.
-        :param UpdateUserAuthentication new_authentication:
-        :param str new_ibmid: (optional) IBM ID of the User.
-        :param dict headers: A `dict` containing the request headers
-        :return: A `DetailedResponse` containing the result, headers and HTTP status code.
-        :rtype: DetailedResponse with `dict` result representing a `SuccessUserResponse` object
-        """
-
-        if not x_deployment_id:
-            raise ValueError('x_deployment_id must be provided')
-        if not id:
-            raise ValueError('id must be provided')
-        if new_id is None:
-            raise ValueError('new_id must be provided')
-        if new_name is None:
-            raise ValueError('new_name must be provided')
-        if new_old_password is None:
-            raise ValueError('new_old_password must be provided')
-        if new_new_password is None:
-            raise ValueError('new_new_password must be provided')
-        if new_role is None:
-            raise ValueError('new_role must be provided')
-        if new_email is None:
-            raise ValueError('new_email must be provided')
-        if new_locked is None:
-            raise ValueError('new_locked must be provided')
-        if new_authentication is None:
-            raise ValueError('new_authentication must be provided')
-        new_authentication = convert_model(new_authentication)
-        headers = {
-            'x-deployment-id': x_deployment_id,
-        }
-        sdk_headers = get_sdk_headers(
-            service_name=self.DEFAULT_SERVICE_NAME,
-            service_version='V1',
-            operation_id='put_db2_saas_user',
-        )
-        headers.update(sdk_headers)
-
-        data = {
-            'id': new_id,
-            'name': new_name,
-            'old_password': new_old_password,
-            'new_password': new_new_password,
-            'role': new_role,
-            'email': new_email,
-            'locked': new_locked,
-            'authentication': new_authentication,
-            'ibmid': new_ibmid,
-        }
-        data = {k: v for (k, v) in data.items() if v is not None}
-        data = json.dumps(data)
-        headers['content-type'] = 'application/json'
-
-        if 'headers' in kwargs:
-            headers.update(kwargs.get('headers'))
-            del kwargs['headers']
-        headers['Accept'] = 'application/json'
-
-        path_param_keys = ['id']
-        path_param_values = self.encode_path_vars(id)
-        path_param_dict = dict(zip(path_param_keys, path_param_values))
-        url = '/users/{id}'.format(**path_param_dict)
-        request = self.prepare_request(
-            method='PUT',
-            url=url,
-            headers=headers,
-            data=data,
-        )
-
-        response = self.send(request, **kwargs)
-        return response
-
     def delete_db2_saas_user(
         self,
         x_deployment_id: str,
@@ -580,7 +480,7 @@ class Db2saasV1(BaseService):
 
     def put_db2_saas_autoscale(
         self,
-        x_deployment_id: str,
+        x_db_profile: str,
         *,
         auto_scaling_enabled: Optional[str] = None,
         auto_scaling_threshold: Optional[int] = None,
@@ -592,7 +492,7 @@ class Db2saasV1(BaseService):
         """
         Update auto scaling configuration.
 
-        :param str x_deployment_id: CRN deployment id.
+        :param str x_db_profile: CRN deployment id.
         :param str auto_scaling_enabled: (optional) Indicates if automatic scaling
                is enabled or not.
         :param int auto_scaling_threshold: (optional) Specifies the resource
@@ -608,10 +508,10 @@ class Db2saasV1(BaseService):
         :rtype: DetailedResponse with `dict` result representing a `SuccessUpdateAutoScale` object
         """
 
-        if not x_deployment_id:
-            raise ValueError('x_deployment_id must be provided')
+        if not x_db_profile:
+            raise ValueError('x_db_profile must be provided')
         headers = {
-            'x-deployment-id': x_deployment_id,
+            'x-db-profile': x_db_profile,
         }
         sdk_headers = get_sdk_headers(
             service_name=self.DEFAULT_SERVICE_NAME,
@@ -649,22 +549,22 @@ class Db2saasV1(BaseService):
 
     def get_db2_saas_autoscale(
         self,
-        x_deployment_id: str,
+        x_db_profile: str,
         **kwargs,
     ) -> DetailedResponse:
         """
         Get auto scaling info.
 
-        :param str x_deployment_id: CRN deployment id.
+        :param str x_db_profile: CRN deployment id.
         :param dict headers: A `dict` containing the request headers
         :return: A `DetailedResponse` containing the result, headers and HTTP status code.
         :rtype: DetailedResponse with `dict` result representing a `SuccessAutoScaling` object
         """
 
-        if not x_deployment_id:
-            raise ValueError('x_deployment_id must be provided')
+        if not x_db_profile:
+            raise ValueError('x_db_profile must be provided')
         headers = {
-            'x-deployment-id': x_deployment_id,
+            'x-db-profile': x_db_profile,
         }
         sdk_headers = get_sdk_headers(
             service_name=self.DEFAULT_SERVICE_NAME,
@@ -678,7 +578,7 @@ class Db2saasV1(BaseService):
             del kwargs['headers']
         headers['Accept'] = 'application/json'
 
-        url = '/scaling/auto'
+        url = '/manage/scaling/auto'
         request = self.prepare_request(
             method='GET',
             url=url,
@@ -1066,11 +966,13 @@ class SuccessConnectionInfoPrivate:
 
     :param str hostname: (optional)
     :param str database_name: (optional)
-    :param str host_ros: (optional)
-    :param str certificate_base64: (optional)
     :param str ssl_port: (optional)
     :param bool ssl: (optional)
     :param str database_version: (optional)
+    :param str private_service_name: (optional)
+    :param str cloud_service_offering: (optional)
+    :param str vpe_service_crn: (optional)
+    :param str db_vpc_endpoint_service: (optional)
     """
 
     def __init__(
@@ -1078,30 +980,36 @@ class SuccessConnectionInfoPrivate:
         *,
         hostname: Optional[str] = None,
         database_name: Optional[str] = None,
-        host_ros: Optional[str] = None,
-        certificate_base64: Optional[str] = None,
         ssl_port: Optional[str] = None,
         ssl: Optional[bool] = None,
         database_version: Optional[str] = None,
+        private_service_name: Optional[str] = None,
+        cloud_service_offering: Optional[str] = None,
+        vpe_service_crn: Optional[str] = None,
+        db_vpc_endpoint_service: Optional[str] = None,
     ) -> None:
         """
         Initialize a SuccessConnectionInfoPrivate object.
 
         :param str hostname: (optional)
         :param str database_name: (optional)
-        :param str host_ros: (optional)
-        :param str certificate_base64: (optional)
         :param str ssl_port: (optional)
         :param bool ssl: (optional)
         :param str database_version: (optional)
+        :param str private_service_name: (optional)
+        :param str cloud_service_offering: (optional)
+        :param str vpe_service_crn: (optional)
+        :param str db_vpc_endpoint_service: (optional)
         """
         self.hostname = hostname
         self.database_name = database_name
-        self.host_ros = host_ros
-        self.certificate_base64 = certificate_base64
         self.ssl_port = ssl_port
         self.ssl = ssl
         self.database_version = database_version
+        self.private_service_name = private_service_name
+        self.cloud_service_offering = cloud_service_offering
+        self.vpe_service_crn = vpe_service_crn
+        self.db_vpc_endpoint_service = db_vpc_endpoint_service
 
     @classmethod
     def from_dict(cls, _dict: Dict) -> 'SuccessConnectionInfoPrivate':
@@ -1111,16 +1019,20 @@ class SuccessConnectionInfoPrivate:
             args['hostname'] = hostname
         if (database_name := _dict.get('databaseName')) is not None:
             args['database_name'] = database_name
-        if (host_ros := _dict.get('host_ros')) is not None:
-            args['host_ros'] = host_ros
-        if (certificate_base64 := _dict.get('certificateBase64')) is not None:
-            args['certificate_base64'] = certificate_base64
         if (ssl_port := _dict.get('sslPort')) is not None:
             args['ssl_port'] = ssl_port
         if (ssl := _dict.get('ssl')) is not None:
             args['ssl'] = ssl
         if (database_version := _dict.get('databaseVersion')) is not None:
             args['database_version'] = database_version
+        if (private_service_name := _dict.get('private_serviceName')) is not None:
+            args['private_service_name'] = private_service_name
+        if (cloud_service_offering := _dict.get('cloud_service_offering')) is not None:
+            args['cloud_service_offering'] = cloud_service_offering
+        if (vpe_service_crn := _dict.get('vpe_service_crn')) is not None:
+            args['vpe_service_crn'] = vpe_service_crn
+        if (db_vpc_endpoint_service := _dict.get('db_vpc_endpoint_service')) is not None:
+            args['db_vpc_endpoint_service'] = db_vpc_endpoint_service
         return cls(**args)
 
     @classmethod
@@ -1135,16 +1047,20 @@ class SuccessConnectionInfoPrivate:
             _dict['hostname'] = self.hostname
         if hasattr(self, 'database_name') and self.database_name is not None:
             _dict['databaseName'] = self.database_name
-        if hasattr(self, 'host_ros') and self.host_ros is not None:
-            _dict['host_ros'] = self.host_ros
-        if hasattr(self, 'certificate_base64') and self.certificate_base64 is not None:
-            _dict['certificateBase64'] = self.certificate_base64
         if hasattr(self, 'ssl_port') and self.ssl_port is not None:
             _dict['sslPort'] = self.ssl_port
         if hasattr(self, 'ssl') and self.ssl is not None:
             _dict['ssl'] = self.ssl
         if hasattr(self, 'database_version') and self.database_version is not None:
             _dict['databaseVersion'] = self.database_version
+        if hasattr(self, 'private_service_name') and self.private_service_name is not None:
+            _dict['private_serviceName'] = self.private_service_name
+        if hasattr(self, 'cloud_service_offering') and self.cloud_service_offering is not None:
+            _dict['cloud_service_offering'] = self.cloud_service_offering
+        if hasattr(self, 'vpe_service_crn') and self.vpe_service_crn is not None:
+            _dict['vpe_service_crn'] = self.vpe_service_crn
+        if hasattr(self, 'db_vpc_endpoint_service') and self.db_vpc_endpoint_service is not None:
+            _dict['db_vpc_endpoint_service'] = self.db_vpc_endpoint_service
         return _dict
 
     def _to_dict(self):
@@ -1172,8 +1088,6 @@ class SuccessConnectionInfoPublic:
 
     :param str hostname: (optional)
     :param str database_name: (optional)
-    :param str host_ros: (optional)
-    :param str certificate_base64: (optional)
     :param str ssl_port: (optional)
     :param bool ssl: (optional)
     :param str database_version: (optional)
@@ -1184,8 +1098,6 @@ class SuccessConnectionInfoPublic:
         *,
         hostname: Optional[str] = None,
         database_name: Optional[str] = None,
-        host_ros: Optional[str] = None,
-        certificate_base64: Optional[str] = None,
         ssl_port: Optional[str] = None,
         ssl: Optional[bool] = None,
         database_version: Optional[str] = None,
@@ -1195,16 +1107,12 @@ class SuccessConnectionInfoPublic:
 
         :param str hostname: (optional)
         :param str database_name: (optional)
-        :param str host_ros: (optional)
-        :param str certificate_base64: (optional)
         :param str ssl_port: (optional)
         :param bool ssl: (optional)
         :param str database_version: (optional)
         """
         self.hostname = hostname
         self.database_name = database_name
-        self.host_ros = host_ros
-        self.certificate_base64 = certificate_base64
         self.ssl_port = ssl_port
         self.ssl = ssl
         self.database_version = database_version
@@ -1217,10 +1125,6 @@ class SuccessConnectionInfoPublic:
             args['hostname'] = hostname
         if (database_name := _dict.get('databaseName')) is not None:
             args['database_name'] = database_name
-        if (host_ros := _dict.get('host_ros')) is not None:
-            args['host_ros'] = host_ros
-        if (certificate_base64 := _dict.get('certificateBase64')) is not None:
-            args['certificate_base64'] = certificate_base64
         if (ssl_port := _dict.get('sslPort')) is not None:
             args['ssl_port'] = ssl_port
         if (ssl := _dict.get('ssl')) is not None:
@@ -1241,10 +1145,6 @@ class SuccessConnectionInfoPublic:
             _dict['hostname'] = self.hostname
         if hasattr(self, 'database_name') and self.database_name is not None:
             _dict['databaseName'] = self.database_name
-        if hasattr(self, 'host_ros') and self.host_ros is not None:
-            _dict['host_ros'] = self.host_ros
-        if hasattr(self, 'certificate_base64') and self.certificate_base64 is not None:
-            _dict['certificateBase64'] = self.certificate_base64
         if hasattr(self, 'ssl_port') and self.ssl_port is not None:
             _dict['sslPort'] = self.ssl_port
         if hasattr(self, 'ssl') and self.ssl is not None:
@@ -1268,6 +1168,71 @@ class SuccessConnectionInfoPublic:
         return self.__dict__ == other.__dict__
 
     def __ne__(self, other: 'SuccessConnectionInfoPublic') -> bool:
+        """Return `true` when self and other are not equal, false otherwise."""
+        return not self == other
+
+
+class SuccessGetAllowlistIPs:
+    """
+    Success response of get allowlist IPs.
+
+    :param List[IpAddress] ip_addresses: List of IP addresses.
+    """
+
+    def __init__(
+        self,
+        ip_addresses: List['IpAddress'],
+    ) -> None:
+        """
+        Initialize a SuccessGetAllowlistIPs object.
+
+        :param List[IpAddress] ip_addresses: List of IP addresses.
+        """
+        self.ip_addresses = ip_addresses
+
+    @classmethod
+    def from_dict(cls, _dict: Dict) -> 'SuccessGetAllowlistIPs':
+        """Initialize a SuccessGetAllowlistIPs object from a json dictionary."""
+        args = {}
+        if (ip_addresses := _dict.get('ip_addresses')) is not None:
+            args['ip_addresses'] = [IpAddress.from_dict(v) for v in ip_addresses]
+        else:
+            raise ValueError('Required property \'ip_addresses\' not present in SuccessGetAllowlistIPs JSON')
+        return cls(**args)
+
+    @classmethod
+    def _from_dict(cls, _dict):
+        """Initialize a SuccessGetAllowlistIPs object from a json dictionary."""
+        return cls.from_dict(_dict)
+
+    def to_dict(self) -> Dict:
+        """Return a json dictionary representing this model."""
+        _dict = {}
+        if hasattr(self, 'ip_addresses') and self.ip_addresses is not None:
+            ip_addresses_list = []
+            for v in self.ip_addresses:
+                if isinstance(v, dict):
+                    ip_addresses_list.append(v)
+                else:
+                    ip_addresses_list.append(v.to_dict())
+            _dict['ip_addresses'] = ip_addresses_list
+        return _dict
+
+    def _to_dict(self):
+        """Return a json dictionary representing this model."""
+        return self.to_dict()
+
+    def __str__(self) -> str:
+        """Return a `str` version of this SuccessGetAllowlistIPs object."""
+        return json.dumps(self.to_dict(), indent=2)
+
+    def __eq__(self, other: 'SuccessGetAllowlistIPs') -> bool:
+        """Return `true` when self and other are equal, false otherwise."""
+        if not isinstance(other, self.__class__):
+            return False
+        return self.__dict__ == other.__dict__
+
+    def __ne__(self, other: 'SuccessGetAllowlistIPs') -> bool:
         """Return `true` when self and other are not equal, false otherwise."""
         return not self == other
 
@@ -1922,76 +1887,11 @@ class SuccessGetUserInfoResourcesItemAuthentication:
         return not self == other
 
 
-class SuccessGetWhitelistIPs:
+class SuccessPostAllowedlistIPs:
     """
-    Success response of get whitelist IPs.
+    Success response of post allowlist IPs.
 
-    :param List[IpAddress] ip_addresses: List of IP addresses.
-    """
-
-    def __init__(
-        self,
-        ip_addresses: List['IpAddress'],
-    ) -> None:
-        """
-        Initialize a SuccessGetWhitelistIPs object.
-
-        :param List[IpAddress] ip_addresses: List of IP addresses.
-        """
-        self.ip_addresses = ip_addresses
-
-    @classmethod
-    def from_dict(cls, _dict: Dict) -> 'SuccessGetWhitelistIPs':
-        """Initialize a SuccessGetWhitelistIPs object from a json dictionary."""
-        args = {}
-        if (ip_addresses := _dict.get('ip_addresses')) is not None:
-            args['ip_addresses'] = [IpAddress.from_dict(v) for v in ip_addresses]
-        else:
-            raise ValueError('Required property \'ip_addresses\' not present in SuccessGetWhitelistIPs JSON')
-        return cls(**args)
-
-    @classmethod
-    def _from_dict(cls, _dict):
-        """Initialize a SuccessGetWhitelistIPs object from a json dictionary."""
-        return cls.from_dict(_dict)
-
-    def to_dict(self) -> Dict:
-        """Return a json dictionary representing this model."""
-        _dict = {}
-        if hasattr(self, 'ip_addresses') and self.ip_addresses is not None:
-            ip_addresses_list = []
-            for v in self.ip_addresses:
-                if isinstance(v, dict):
-                    ip_addresses_list.append(v)
-                else:
-                    ip_addresses_list.append(v.to_dict())
-            _dict['ip_addresses'] = ip_addresses_list
-        return _dict
-
-    def _to_dict(self):
-        """Return a json dictionary representing this model."""
-        return self.to_dict()
-
-    def __str__(self) -> str:
-        """Return a `str` version of this SuccessGetWhitelistIPs object."""
-        return json.dumps(self.to_dict(), indent=2)
-
-    def __eq__(self, other: 'SuccessGetWhitelistIPs') -> bool:
-        """Return `true` when self and other are equal, false otherwise."""
-        if not isinstance(other, self.__class__):
-            return False
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other: 'SuccessGetWhitelistIPs') -> bool:
-        """Return `true` when self and other are not equal, false otherwise."""
-        return not self == other
-
-
-class SuccessPostWhitelistIPs:
-    """
-    Success response of post whitelist IPs.
-
-    :param str status: status of the post whitelist IPs request.
+    :param str status: status of the post allowlist IPs request.
     """
 
     def __init__(
@@ -1999,25 +1899,25 @@ class SuccessPostWhitelistIPs:
         status: str,
     ) -> None:
         """
-        Initialize a SuccessPostWhitelistIPs object.
+        Initialize a SuccessPostAllowedlistIPs object.
 
-        :param str status: status of the post whitelist IPs request.
+        :param str status: status of the post allowlist IPs request.
         """
         self.status = status
 
     @classmethod
-    def from_dict(cls, _dict: Dict) -> 'SuccessPostWhitelistIPs':
-        """Initialize a SuccessPostWhitelistIPs object from a json dictionary."""
+    def from_dict(cls, _dict: Dict) -> 'SuccessPostAllowedlistIPs':
+        """Initialize a SuccessPostAllowedlistIPs object from a json dictionary."""
         args = {}
         if (status := _dict.get('status')) is not None:
             args['status'] = status
         else:
-            raise ValueError('Required property \'status\' not present in SuccessPostWhitelistIPs JSON')
+            raise ValueError('Required property \'status\' not present in SuccessPostAllowedlistIPs JSON')
         return cls(**args)
 
     @classmethod
     def _from_dict(cls, _dict):
-        """Initialize a SuccessPostWhitelistIPs object from a json dictionary."""
+        """Initialize a SuccessPostAllowedlistIPs object from a json dictionary."""
         return cls.from_dict(_dict)
 
     def to_dict(self) -> Dict:
@@ -2032,16 +1932,16 @@ class SuccessPostWhitelistIPs:
         return self.to_dict()
 
     def __str__(self) -> str:
-        """Return a `str` version of this SuccessPostWhitelistIPs object."""
+        """Return a `str` version of this SuccessPostAllowedlistIPs object."""
         return json.dumps(self.to_dict(), indent=2)
 
-    def __eq__(self, other: 'SuccessPostWhitelistIPs') -> bool:
+    def __eq__(self, other: 'SuccessPostAllowedlistIPs') -> bool:
         """Return `true` when self and other are equal, false otherwise."""
         if not isinstance(other, self.__class__):
             return False
         return self.__dict__ == other.__dict__
 
-    def __ne__(self, other: 'SuccessPostWhitelistIPs') -> bool:
+    def __ne__(self, other: 'SuccessPostAllowedlistIPs') -> bool:
         """Return `true` when self and other are not equal, false otherwise."""
         return not self == other
 
@@ -2402,71 +2302,5 @@ class SuccessUserResponseAuthentication:
         return self.__dict__ == other.__dict__
 
     def __ne__(self, other: 'SuccessUserResponseAuthentication') -> bool:
-        """Return `true` when self and other are not equal, false otherwise."""
-        return not self == other
-
-
-class UpdateUserAuthentication:
-    """
-    UpdateUserAuthentication.
-
-    :param str method: (optional) Authentication method.
-    :param str policy_id: (optional) Authentication policy ID.
-    """
-
-    def __init__(
-        self,
-        *,
-        method: Optional[str] = None,
-        policy_id: Optional[str] = None,
-    ) -> None:
-        """
-        Initialize a UpdateUserAuthentication object.
-
-        :param str method: (optional) Authentication method.
-        :param str policy_id: (optional) Authentication policy ID.
-        """
-        self.method = method
-        self.policy_id = policy_id
-
-    @classmethod
-    def from_dict(cls, _dict: Dict) -> 'UpdateUserAuthentication':
-        """Initialize a UpdateUserAuthentication object from a json dictionary."""
-        args = {}
-        if (method := _dict.get('method')) is not None:
-            args['method'] = method
-        if (policy_id := _dict.get('policy_id')) is not None:
-            args['policy_id'] = policy_id
-        return cls(**args)
-
-    @classmethod
-    def _from_dict(cls, _dict):
-        """Initialize a UpdateUserAuthentication object from a json dictionary."""
-        return cls.from_dict(_dict)
-
-    def to_dict(self) -> Dict:
-        """Return a json dictionary representing this model."""
-        _dict = {}
-        if hasattr(self, 'method') and self.method is not None:
-            _dict['method'] = self.method
-        if hasattr(self, 'policy_id') and self.policy_id is not None:
-            _dict['policy_id'] = self.policy_id
-        return _dict
-
-    def _to_dict(self):
-        """Return a json dictionary representing this model."""
-        return self.to_dict()
-
-    def __str__(self) -> str:
-        """Return a `str` version of this UpdateUserAuthentication object."""
-        return json.dumps(self.to_dict(), indent=2)
-
-    def __eq__(self, other: 'UpdateUserAuthentication') -> bool:
-        """Return `true` when self and other are equal, false otherwise."""
-        if not isinstance(other, self.__class__):
-            return False
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other: 'UpdateUserAuthentication') -> bool:
         """Return `true` when self and other are not equal, false otherwise."""
         return not self == other

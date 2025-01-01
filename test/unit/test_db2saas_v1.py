@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# (C) Copyright IBM Corp. 2024.
+# (C) Copyright IBM Corp. 2025.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -107,8 +107,8 @@ class TestGetDb2SaasConnectionInfo:
         get_db2_saas_connection_info()
         """
         # Set up mock
-        url = preprocess_url('/connectioninfo/testString')
-        mock_response = '{"public": {"hostname": "84792aeb-2a9c-4dee-bfad-2e529f16945d-useast-private.bt1ibm.dev.db2.ibmappdomain.cloud", "databaseName": "bluedb", "host_ros": "84792aeb-2a9c-4dee-bfad-2e529f16945d-useast-private.bt1ibm.dev.db2.ibmappdomain.cloud:30515", "certificateBase64": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURIVENDQWdXZ0F3SUJBZ0lVTGRpR1U2QzdZajMwcS9VUVB3ek5ka2YyakJjd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0hqRWNNQm9HQTFVRUF3d1RTVUpOSUVOc2IzVmtJRVJoZEdGaVlYTmxjekFlRncweU1EQTRNRFl3T1RReQpNVEZhRncwek1EQTRNRFF3T1RReU1URmFNQjR4SERBYUJnTlZCQU1NRTBsQ1RTQkRiRzkxWkNCRVlYUmhZbUZ6ClpYTXdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCQVFDb1NIdS9TWkd5NHc0bHB0elQKbFVRQTV6Q0krTldhblQ0czAvTXFkQmJwRW9FWjYxLy9VQVFPaHVTUG85M05obG1NQWZUWENpUi9jVkxuQmxBMQpuZnEzcC9pWm1VMnJwSUxnUmdLeTdsNEZSMVVPaGlRa3RnN3d6Q0J1M2k0bTRJQkZ0NVVvRng5djl6eFkrK0tSCnNnYXhmK28yMEoxLzZBSHFwem5GaWJuTDdLcGlZMUs1c25BdHFwTUVsNHMyR3dlZXQ0dEFjZ3hRSlRVR3hvamsKUDMvUmtxSUI1RFBNSXJ0ZFMrWWpBdlM0alBpREVRT0FvZDg5aDBOays3bkpldllJT0lRVTN0OC81YlNYRDFFVwp3bmRqdHlkeC95Qlo5YlZ4bms4eWI1S1NCVUNpaHJsL1AxVmdNdStLb2w2M0ZZMmdSbndwb3FEOVRNWkJkeTRYCk5PRUZBZ01CQUFHalV6QlJNQjBHQTFVZERnUVdCQlNldmNpblMvR0VwdmlmZkQ0ZUtPU0FNSGljUmpBZkJnTlYKSFNNRUdEQVdnQlNldmNpblMvR0VwdmlmZkQ0ZUtPU0FNSGljUmpBUEJnTlZIUk1CQWY4RUJUQURBUUgvTUEwRwpDU3FHU0liM0RRRUJDd1VBQTRJQkFRQk1XRHV2Z0JKVk5JYUp2NkFzL3FybWZKbVJObU80clhVcXhiTXdJdEZ1Ciswb1RIOTZMWU1OSjgyS1hXOFc1K0ZUOXJ2TjdzQzhRQzBYVzFIWkM4dlgvdE96dmluL1lqVW5nUlducUFBQXEKL0U4TnRtMFpuMEs4cnRzanJtaklLKzlwNjRObE1ENWJjcUpDMGZFSkpBQVpBSUozejRNSHhsTDhnc0plS0JyOApvcWhhejJOaXJtSEZ3Z3RDc0htVlI4UCt5TUtrN24xVlhlcmpHYWhORkQ2MzhGRnRoSHNvNmV0NGQ5NEpLTXFPCmt1cWhFOCtMcTZlalRWUTRYdldaUG4wVWlZQkVpTjFsT1JaZ0h5d3JvNjJ5Z2dFekhCaXF5dEI2SEN6TllyYXoKVElQUTNGanhGQXNYU3NhVzZPL2VteERNSDN4ZUZ5WmRZWWw5bGMxSnFVWW4KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=", "sslPort": "30450", "ssl": true, "databaseVersion": "11.5.0"}, "private": {"hostname": "84792aeb-2a9c-4dee-bfad-2e529f16945d-useast.bt1ibm.dev.db2.ibmappdomain.cloud", "databaseName": "bluedb", "host_ros": "84792aeb-2a9c-4dee-bfad-2e529f16945d-useast.bt1ibm.dev.db2.ibmappdomain.cloud:30515", "certificateBase64": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURIVENDQWdXZ0F3SUJBZ0lVTGRpR1U2QzdZajMwcS9VUVB3ek5ka2YyakJjd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0hqRWNNQm9HQTFVRUF3d1RTVUpOSUVOc2IzVmtJRVJoZEdGaVlYTmxjekFlRncweU1EQTRNRFl3T1RReQpNVEZhRncwek1EQTRNRFF3T1RReU1URmFNQjR4SERBYUJnTlZCQU1NRTBsQ1RTQkRiRzkxWkNCRVlYUmhZbUZ6ClpYTXdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCQVFDb1NIdS9TWkd5NHc0bHB0elQKbFVRQTV6Q0krTldhblQ0czAvTXFkQmJwRW9FWjYxLy9VQVFPaHVTUG85M05obG1NQWZUWENpUi9jVkxuQmxBMQpuZnEzcC9pWm1VMnJwSUxnUmdLeTdsNEZSMVVPaGlRa3RnN3d6Q0J1M2k0bTRJQkZ0NVVvRng5djl6eFkrK0tSCnNnYXhmK28yMEoxLzZBSHFwem5GaWJuTDdLcGlZMUs1c25BdHFwTUVsNHMyR3dlZXQ0dEFjZ3hRSlRVR3hvamsKUDMvUmtxSUI1RFBNSXJ0ZFMrWWpBdlM0alBpREVRT0FvZDg5aDBOays3bkpldllJT0lRVTN0OC81YlNYRDFFVwp3bmRqdHlkeC95Qlo5YlZ4bms4eWI1S1NCVUNpaHJsL1AxVmdNdStLb2w2M0ZZMmdSbndwb3FEOVRNWkJkeTRYCk5PRUZBZ01CQUFHalV6QlJNQjBHQTFVZERnUVdCQlNldmNpblMvR0VwdmlmZkQ0ZUtPU0FNSGljUmpBZkJnTlYKSFNNRUdEQVdnQlNldmNpblMvR0VwdmlmZkQ0ZUtPU0FNSGljUmpBUEJnTlZIUk1CQWY4RUJUQURBUUgvTUEwRwpDU3FHU0liM0RRRUJDd1VBQTRJQkFRQk1XRHV2Z0JKVk5JYUp2NkFzL3FybWZKbVJObU80clhVcXhiTXdJdEZ1Ciswb1RIOTZMWU1OSjgyS1hXOFc1K0ZUOXJ2TjdzQzhRQzBYVzFIWkM4dlgvdE96dmluL1lqVW5nUlducUFBQXEKL0U4TnRtMFpuMEs4cnRzanJtaklLKzlwNjRObE1ENWJjcUpDMGZFSkpBQVpBSUozejRNSHhsTDhnc0plS0JyOApvcWhhejJOaXJtSEZ3Z3RDc0htVlI4UCt5TUtrN24xVlhlcmpHYWhORkQ2MzhGRnRoSHNvNmV0NGQ5NEpLTXFPCmt1cWhFOCtMcTZlalRWUTRYdldaUG4wVWlZQkVpTjFsT1JaZ0h5d3JvNjJ5Z2dFekhCaXF5dEI2SEN6TllyYXoKVElQUTNGanhGQXNYU3NhVzZPL2VteERNSDN4ZUZ5WmRZWWw5bGMxSnFVWW4KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=", "sslPort": "30450", "ssl": true, "databaseVersion": "11.5.0"}}'
+        url = preprocess_url('/connectioninfo/crn%253Av1%253Astaging%253Apublic%253Adashdb-for-transactions%253Aus-south%253Aa%252Fe7e3e87b512f474381c0684a5ecbba03%253A69db420f-33d5-4953-8bd8-1950abd356f6%253A%253A')
+        mock_response = '{"public": {"hostname": "84792aeb-2a9c-4dee-bfad-2e529f16945d-useast-private.bt1ibm.dev.db2.ibmappdomain.cloud", "databaseName": "bluedb", "sslPort": "30450", "ssl": true, "databaseVersion": "11.5.0"}, "private": {"hostname": "84792aeb-2a9c-4dee-bfad-2e529f16945d-useast.bt1ibm.dev.db2.ibmappdomain.cloud", "databaseName": "bluedb", "sslPort": "30450", "ssl": true, "databaseVersion": "11.5.0", "private_serviceName": "us-south-private.db2oc.test.saas.ibm.com:32764", "cloud_service_offering": "dashdb-for-transactions", "vpe_service_crn": "crn:v1:staging:public:dashdb-for-transactions:us-south:::endpoint:feea41a1-ff88-4541-8865-0698ccb7c5dc-us-south-private.bt1ibm.dev.db2.ibmappdomain.cloud", "db_vpc_endpoint_service": "feea41a1-ff88-4541-8865-0698ccb7c5dc-ussouth-private.bt1ibm.dev.db2.ibmappdomain.cloud:32679"}}'
         responses.add(
             responses.GET,
             url,
@@ -118,8 +118,8 @@ class TestGetDb2SaasConnectionInfo:
         )
 
         # Set up parameter values
-        deployment_id = 'testString'
-        x_deployment_id = 'testString'
+        deployment_id = 'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A69db420f-33d5-4953-8bd8-1950abd356f6%3A%3A'
+        x_deployment_id = 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::'
 
         # Invoke method
         response = _service.get_db2_saas_connection_info(
@@ -147,8 +147,8 @@ class TestGetDb2SaasConnectionInfo:
         test_get_db2_saas_connection_info_value_error()
         """
         # Set up mock
-        url = preprocess_url('/connectioninfo/testString')
-        mock_response = '{"public": {"hostname": "84792aeb-2a9c-4dee-bfad-2e529f16945d-useast-private.bt1ibm.dev.db2.ibmappdomain.cloud", "databaseName": "bluedb", "host_ros": "84792aeb-2a9c-4dee-bfad-2e529f16945d-useast-private.bt1ibm.dev.db2.ibmappdomain.cloud:30515", "certificateBase64": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURIVENDQWdXZ0F3SUJBZ0lVTGRpR1U2QzdZajMwcS9VUVB3ek5ka2YyakJjd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0hqRWNNQm9HQTFVRUF3d1RTVUpOSUVOc2IzVmtJRVJoZEdGaVlYTmxjekFlRncweU1EQTRNRFl3T1RReQpNVEZhRncwek1EQTRNRFF3T1RReU1URmFNQjR4SERBYUJnTlZCQU1NRTBsQ1RTQkRiRzkxWkNCRVlYUmhZbUZ6ClpYTXdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCQVFDb1NIdS9TWkd5NHc0bHB0elQKbFVRQTV6Q0krTldhblQ0czAvTXFkQmJwRW9FWjYxLy9VQVFPaHVTUG85M05obG1NQWZUWENpUi9jVkxuQmxBMQpuZnEzcC9pWm1VMnJwSUxnUmdLeTdsNEZSMVVPaGlRa3RnN3d6Q0J1M2k0bTRJQkZ0NVVvRng5djl6eFkrK0tSCnNnYXhmK28yMEoxLzZBSHFwem5GaWJuTDdLcGlZMUs1c25BdHFwTUVsNHMyR3dlZXQ0dEFjZ3hRSlRVR3hvamsKUDMvUmtxSUI1RFBNSXJ0ZFMrWWpBdlM0alBpREVRT0FvZDg5aDBOays3bkpldllJT0lRVTN0OC81YlNYRDFFVwp3bmRqdHlkeC95Qlo5YlZ4bms4eWI1S1NCVUNpaHJsL1AxVmdNdStLb2w2M0ZZMmdSbndwb3FEOVRNWkJkeTRYCk5PRUZBZ01CQUFHalV6QlJNQjBHQTFVZERnUVdCQlNldmNpblMvR0VwdmlmZkQ0ZUtPU0FNSGljUmpBZkJnTlYKSFNNRUdEQVdnQlNldmNpblMvR0VwdmlmZkQ0ZUtPU0FNSGljUmpBUEJnTlZIUk1CQWY4RUJUQURBUUgvTUEwRwpDU3FHU0liM0RRRUJDd1VBQTRJQkFRQk1XRHV2Z0JKVk5JYUp2NkFzL3FybWZKbVJObU80clhVcXhiTXdJdEZ1Ciswb1RIOTZMWU1OSjgyS1hXOFc1K0ZUOXJ2TjdzQzhRQzBYVzFIWkM4dlgvdE96dmluL1lqVW5nUlducUFBQXEKL0U4TnRtMFpuMEs4cnRzanJtaklLKzlwNjRObE1ENWJjcUpDMGZFSkpBQVpBSUozejRNSHhsTDhnc0plS0JyOApvcWhhejJOaXJtSEZ3Z3RDc0htVlI4UCt5TUtrN24xVlhlcmpHYWhORkQ2MzhGRnRoSHNvNmV0NGQ5NEpLTXFPCmt1cWhFOCtMcTZlalRWUTRYdldaUG4wVWlZQkVpTjFsT1JaZ0h5d3JvNjJ5Z2dFekhCaXF5dEI2SEN6TllyYXoKVElQUTNGanhGQXNYU3NhVzZPL2VteERNSDN4ZUZ5WmRZWWw5bGMxSnFVWW4KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=", "sslPort": "30450", "ssl": true, "databaseVersion": "11.5.0"}, "private": {"hostname": "84792aeb-2a9c-4dee-bfad-2e529f16945d-useast.bt1ibm.dev.db2.ibmappdomain.cloud", "databaseName": "bluedb", "host_ros": "84792aeb-2a9c-4dee-bfad-2e529f16945d-useast.bt1ibm.dev.db2.ibmappdomain.cloud:30515", "certificateBase64": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURIVENDQWdXZ0F3SUJBZ0lVTGRpR1U2QzdZajMwcS9VUVB3ek5ka2YyakJjd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0hqRWNNQm9HQTFVRUF3d1RTVUpOSUVOc2IzVmtJRVJoZEdGaVlYTmxjekFlRncweU1EQTRNRFl3T1RReQpNVEZhRncwek1EQTRNRFF3T1RReU1URmFNQjR4SERBYUJnTlZCQU1NRTBsQ1RTQkRiRzkxWkNCRVlYUmhZbUZ6ClpYTXdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCQVFDb1NIdS9TWkd5NHc0bHB0elQKbFVRQTV6Q0krTldhblQ0czAvTXFkQmJwRW9FWjYxLy9VQVFPaHVTUG85M05obG1NQWZUWENpUi9jVkxuQmxBMQpuZnEzcC9pWm1VMnJwSUxnUmdLeTdsNEZSMVVPaGlRa3RnN3d6Q0J1M2k0bTRJQkZ0NVVvRng5djl6eFkrK0tSCnNnYXhmK28yMEoxLzZBSHFwem5GaWJuTDdLcGlZMUs1c25BdHFwTUVsNHMyR3dlZXQ0dEFjZ3hRSlRVR3hvamsKUDMvUmtxSUI1RFBNSXJ0ZFMrWWpBdlM0alBpREVRT0FvZDg5aDBOays3bkpldllJT0lRVTN0OC81YlNYRDFFVwp3bmRqdHlkeC95Qlo5YlZ4bms4eWI1S1NCVUNpaHJsL1AxVmdNdStLb2w2M0ZZMmdSbndwb3FEOVRNWkJkeTRYCk5PRUZBZ01CQUFHalV6QlJNQjBHQTFVZERnUVdCQlNldmNpblMvR0VwdmlmZkQ0ZUtPU0FNSGljUmpBZkJnTlYKSFNNRUdEQVdnQlNldmNpblMvR0VwdmlmZkQ0ZUtPU0FNSGljUmpBUEJnTlZIUk1CQWY4RUJUQURBUUgvTUEwRwpDU3FHU0liM0RRRUJDd1VBQTRJQkFRQk1XRHV2Z0JKVk5JYUp2NkFzL3FybWZKbVJObU80clhVcXhiTXdJdEZ1Ciswb1RIOTZMWU1OSjgyS1hXOFc1K0ZUOXJ2TjdzQzhRQzBYVzFIWkM4dlgvdE96dmluL1lqVW5nUlducUFBQXEKL0U4TnRtMFpuMEs4cnRzanJtaklLKzlwNjRObE1ENWJjcUpDMGZFSkpBQVpBSUozejRNSHhsTDhnc0plS0JyOApvcWhhejJOaXJtSEZ3Z3RDc0htVlI4UCt5TUtrN24xVlhlcmpHYWhORkQ2MzhGRnRoSHNvNmV0NGQ5NEpLTXFPCmt1cWhFOCtMcTZlalRWUTRYdldaUG4wVWlZQkVpTjFsT1JaZ0h5d3JvNjJ5Z2dFekhCaXF5dEI2SEN6TllyYXoKVElQUTNGanhGQXNYU3NhVzZPL2VteERNSDN4ZUZ5WmRZWWw5bGMxSnFVWW4KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=", "sslPort": "30450", "ssl": true, "databaseVersion": "11.5.0"}}'
+        url = preprocess_url('/connectioninfo/crn%253Av1%253Astaging%253Apublic%253Adashdb-for-transactions%253Aus-south%253Aa%252Fe7e3e87b512f474381c0684a5ecbba03%253A69db420f-33d5-4953-8bd8-1950abd356f6%253A%253A')
+        mock_response = '{"public": {"hostname": "84792aeb-2a9c-4dee-bfad-2e529f16945d-useast-private.bt1ibm.dev.db2.ibmappdomain.cloud", "databaseName": "bluedb", "sslPort": "30450", "ssl": true, "databaseVersion": "11.5.0"}, "private": {"hostname": "84792aeb-2a9c-4dee-bfad-2e529f16945d-useast.bt1ibm.dev.db2.ibmappdomain.cloud", "databaseName": "bluedb", "sslPort": "30450", "ssl": true, "databaseVersion": "11.5.0", "private_serviceName": "us-south-private.db2oc.test.saas.ibm.com:32764", "cloud_service_offering": "dashdb-for-transactions", "vpe_service_crn": "crn:v1:staging:public:dashdb-for-transactions:us-south:::endpoint:feea41a1-ff88-4541-8865-0698ccb7c5dc-us-south-private.bt1ibm.dev.db2.ibmappdomain.cloud", "db_vpc_endpoint_service": "feea41a1-ff88-4541-8865-0698ccb7c5dc-ussouth-private.bt1ibm.dev.db2.ibmappdomain.cloud:32679"}}'
         responses.add(
             responses.GET,
             url,
@@ -158,8 +158,8 @@ class TestGetDb2SaasConnectionInfo:
         )
 
         # Set up parameter values
-        deployment_id = 'testString'
-        x_deployment_id = 'testString'
+        deployment_id = 'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A69db420f-33d5-4953-8bd8-1950abd356f6%3A%3A'
+        x_deployment_id = 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::'
 
         # Pass in all but one required param and check for a ValueError
         req_param_dict = {
@@ -187,7 +187,7 @@ class TestGetDb2SaasConnectionInfo:
 ##############################################################################
 
 ##############################################################################
-# Start of Service: Whitelist
+# Start of Service: Allowlist
 ##############################################################################
 # region
 
@@ -220,15 +220,15 @@ class TestNewInstance:
             )
 
 
-class TestPostDb2SaasWhitelist:
+class TestPostDb2SaasAllowlist:
     """
-    Test Class for post_db2_saas_whitelist
+    Test Class for post_db2_saas_allowlist
     """
 
     @responses.activate
-    def test_post_db2_saas_whitelist_all_params(self):
+    def test_post_db2_saas_allowlist_all_params(self):
         """
-        post_db2_saas_whitelist()
+        post_db2_saas_allowlist()
         """
         # Set up mock
         url = preprocess_url('/dbsettings/whitelistips')
@@ -247,11 +247,11 @@ class TestPostDb2SaasWhitelist:
         ip_address_model['description'] = 'A sample IP address'
 
         # Set up parameter values
-        x_deployment_id = 'testString'
+        x_deployment_id = 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::'
         ip_addresses = [ip_address_model]
 
         # Invoke method
-        response = _service.post_db2_saas_whitelist(
+        response = _service.post_db2_saas_allowlist(
             x_deployment_id,
             ip_addresses,
             headers={},
@@ -264,19 +264,19 @@ class TestPostDb2SaasWhitelist:
         req_body = json.loads(str(responses.calls[0].request.body, 'utf-8'))
         assert req_body['ip_addresses'] == [ip_address_model]
 
-    def test_post_db2_saas_whitelist_all_params_with_retries(self):
-        # Enable retries and run test_post_db2_saas_whitelist_all_params.
+    def test_post_db2_saas_allowlist_all_params_with_retries(self):
+        # Enable retries and run test_post_db2_saas_allowlist_all_params.
         _service.enable_retries()
-        self.test_post_db2_saas_whitelist_all_params()
+        self.test_post_db2_saas_allowlist_all_params()
 
-        # Disable retries and run test_post_db2_saas_whitelist_all_params.
+        # Disable retries and run test_post_db2_saas_allowlist_all_params.
         _service.disable_retries()
-        self.test_post_db2_saas_whitelist_all_params()
+        self.test_post_db2_saas_allowlist_all_params()
 
     @responses.activate
-    def test_post_db2_saas_whitelist_value_error(self):
+    def test_post_db2_saas_allowlist_value_error(self):
         """
-        test_post_db2_saas_whitelist_value_error()
+        test_post_db2_saas_allowlist_value_error()
         """
         # Set up mock
         url = preprocess_url('/dbsettings/whitelistips')
@@ -295,7 +295,7 @@ class TestPostDb2SaasWhitelist:
         ip_address_model['description'] = 'A sample IP address'
 
         # Set up parameter values
-        x_deployment_id = 'testString'
+        x_deployment_id = 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::'
         ip_addresses = [ip_address_model]
 
         # Pass in all but one required param and check for a ValueError
@@ -306,27 +306,27 @@ class TestPostDb2SaasWhitelist:
         for param in req_param_dict.keys():
             req_copy = {key: val if key is not param else None for (key, val) in req_param_dict.items()}
             with pytest.raises(ValueError):
-                _service.post_db2_saas_whitelist(**req_copy)
+                _service.post_db2_saas_allowlist(**req_copy)
 
-    def test_post_db2_saas_whitelist_value_error_with_retries(self):
-        # Enable retries and run test_post_db2_saas_whitelist_value_error.
+    def test_post_db2_saas_allowlist_value_error_with_retries(self):
+        # Enable retries and run test_post_db2_saas_allowlist_value_error.
         _service.enable_retries()
-        self.test_post_db2_saas_whitelist_value_error()
+        self.test_post_db2_saas_allowlist_value_error()
 
-        # Disable retries and run test_post_db2_saas_whitelist_value_error.
+        # Disable retries and run test_post_db2_saas_allowlist_value_error.
         _service.disable_retries()
-        self.test_post_db2_saas_whitelist_value_error()
+        self.test_post_db2_saas_allowlist_value_error()
 
 
-class TestGetDb2SaasWhitelist:
+class TestGetDb2SaasAllowlist:
     """
-    Test Class for get_db2_saas_whitelist
+    Test Class for get_db2_saas_allowlist
     """
 
     @responses.activate
-    def test_get_db2_saas_whitelist_all_params(self):
+    def test_get_db2_saas_allowlist_all_params(self):
         """
-        get_db2_saas_whitelist()
+        get_db2_saas_allowlist()
         """
         # Set up mock
         url = preprocess_url('/dbsettings/whitelistips')
@@ -340,10 +340,10 @@ class TestGetDb2SaasWhitelist:
         )
 
         # Set up parameter values
-        x_deployment_id = 'testString'
+        x_deployment_id = 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::'
 
         # Invoke method
-        response = _service.get_db2_saas_whitelist(
+        response = _service.get_db2_saas_allowlist(
             x_deployment_id,
             headers={},
         )
@@ -352,19 +352,19 @@ class TestGetDb2SaasWhitelist:
         assert len(responses.calls) == 1
         assert response.status_code == 200
 
-    def test_get_db2_saas_whitelist_all_params_with_retries(self):
-        # Enable retries and run test_get_db2_saas_whitelist_all_params.
+    def test_get_db2_saas_allowlist_all_params_with_retries(self):
+        # Enable retries and run test_get_db2_saas_allowlist_all_params.
         _service.enable_retries()
-        self.test_get_db2_saas_whitelist_all_params()
+        self.test_get_db2_saas_allowlist_all_params()
 
-        # Disable retries and run test_get_db2_saas_whitelist_all_params.
+        # Disable retries and run test_get_db2_saas_allowlist_all_params.
         _service.disable_retries()
-        self.test_get_db2_saas_whitelist_all_params()
+        self.test_get_db2_saas_allowlist_all_params()
 
     @responses.activate
-    def test_get_db2_saas_whitelist_value_error(self):
+    def test_get_db2_saas_allowlist_value_error(self):
         """
-        test_get_db2_saas_whitelist_value_error()
+        test_get_db2_saas_allowlist_value_error()
         """
         # Set up mock
         url = preprocess_url('/dbsettings/whitelistips')
@@ -378,7 +378,7 @@ class TestGetDb2SaasWhitelist:
         )
 
         # Set up parameter values
-        x_deployment_id = 'testString'
+        x_deployment_id = 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::'
 
         # Pass in all but one required param and check for a ValueError
         req_param_dict = {
@@ -387,21 +387,21 @@ class TestGetDb2SaasWhitelist:
         for param in req_param_dict.keys():
             req_copy = {key: val if key is not param else None for (key, val) in req_param_dict.items()}
             with pytest.raises(ValueError):
-                _service.get_db2_saas_whitelist(**req_copy)
+                _service.get_db2_saas_allowlist(**req_copy)
 
-    def test_get_db2_saas_whitelist_value_error_with_retries(self):
-        # Enable retries and run test_get_db2_saas_whitelist_value_error.
+    def test_get_db2_saas_allowlist_value_error_with_retries(self):
+        # Enable retries and run test_get_db2_saas_allowlist_value_error.
         _service.enable_retries()
-        self.test_get_db2_saas_whitelist_value_error()
+        self.test_get_db2_saas_allowlist_value_error()
 
-        # Disable retries and run test_get_db2_saas_whitelist_value_error.
+        # Disable retries and run test_get_db2_saas_allowlist_value_error.
         _service.disable_retries()
-        self.test_get_db2_saas_whitelist_value_error()
+        self.test_get_db2_saas_allowlist_value_error()
 
 
 # endregion
 ##############################################################################
-# End of Service: Whitelist
+# End of Service: Allowlist
 ##############################################################################
 
 ##############################################################################
@@ -465,7 +465,7 @@ class TestPostDb2SaasUser:
         create_user_authentication_model['policy_id'] = 'Default'
 
         # Set up parameter values
-        x_deployment_id = 'testString'
+        x_deployment_id = 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::'
         id = 'test-user'
         iam = False
         ibmid = 'test-ibm-id'
@@ -537,7 +537,7 @@ class TestPostDb2SaasUser:
         create_user_authentication_model['policy_id'] = 'Default'
 
         # Set up parameter values
-        x_deployment_id = 'testString'
+        x_deployment_id = 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::'
         id = 'test-user'
         iam = False
         ibmid = 'test-ibm-id'
@@ -598,7 +598,7 @@ class TestGetDb2SaasUser:
         )
 
         # Set up parameter values
-        x_deployment_id = 'testString'
+        x_deployment_id = 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::'
 
         # Invoke method
         response = _service.get_db2_saas_user(
@@ -636,7 +636,7 @@ class TestGetDb2SaasUser:
         )
 
         # Set up parameter values
-        x_deployment_id = 'testString'
+        x_deployment_id = 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::'
 
         # Pass in all but one required param and check for a ValueError
         req_param_dict = {
@@ -655,147 +655,6 @@ class TestGetDb2SaasUser:
         # Disable retries and run test_get_db2_saas_user_value_error.
         _service.disable_retries()
         self.test_get_db2_saas_user_value_error()
-
-
-class TestPutDb2SaasUser:
-    """
-    Test Class for put_db2_saas_user
-    """
-
-    @responses.activate
-    def test_put_db2_saas_user_all_params(self):
-        """
-        put_db2_saas_user()
-        """
-        # Set up mock
-        url = preprocess_url('/users/test-user')
-        mock_response = '{"dvRole": "dv_role", "metadata": {"anyKey": "anyValue"}, "formatedIbmid": "formated_ibmid", "role": "bluadmin", "iamid": "iamid", "permittedActions": ["permitted_actions"], "allClean": false, "password": "password", "iam": false, "name": "name", "ibmid": "ibmid", "id": "id", "locked": "no", "initErrorMsg": "init_error_msg", "email": "user@host.org", "authentication": {"method": "method", "policy_id": "policy_id"}}'
-        responses.add(
-            responses.PUT,
-            url,
-            body=mock_response,
-            content_type='application/json',
-            status=200,
-        )
-
-        # Construct a dict representation of a UpdateUserAuthentication model
-        update_user_authentication_model = {}
-        update_user_authentication_model['method'] = 'internal'
-        update_user_authentication_model['policy_id'] = 'Default'
-
-        # Set up parameter values
-        x_deployment_id = 'testString'
-        id = 'test-user'
-        new_id = 'test-user'
-        new_name = 'test_user'
-        new_old_password = 'dEkMc43@gfAPl!867^dSbu'
-        new_new_password = 'ihbgc26@gfAPl!1297^dFGy'
-        new_role = 'bluuser'
-        new_email = 'test_user@mycompany.com'
-        new_locked = 'no'
-        new_authentication = update_user_authentication_model
-        new_ibmid = 'test-ibm-id'
-
-        # Invoke method
-        response = _service.put_db2_saas_user(
-            x_deployment_id,
-            id,
-            new_id,
-            new_name,
-            new_old_password,
-            new_new_password,
-            new_role,
-            new_email,
-            new_locked,
-            new_authentication,
-            new_ibmid=new_ibmid,
-            headers={},
-        )
-
-        # Check for correct operation
-        assert len(responses.calls) == 1
-        assert response.status_code == 200
-        # Validate body params
-        req_body = json.loads(str(responses.calls[0].request.body, 'utf-8'))
-        assert req_body['id'] == 'test-user'
-        assert req_body['name'] == 'test_user'
-        assert req_body['old_password'] == 'dEkMc43@gfAPl!867^dSbu'
-        assert req_body['new_password'] == 'ihbgc26@gfAPl!1297^dFGy'
-        assert req_body['role'] == 'bluuser'
-        assert req_body['email'] == 'test_user@mycompany.com'
-        assert req_body['locked'] == 'no'
-        assert req_body['authentication'] == update_user_authentication_model
-        assert req_body['ibmid'] == 'test-ibm-id'
-
-    def test_put_db2_saas_user_all_params_with_retries(self):
-        # Enable retries and run test_put_db2_saas_user_all_params.
-        _service.enable_retries()
-        self.test_put_db2_saas_user_all_params()
-
-        # Disable retries and run test_put_db2_saas_user_all_params.
-        _service.disable_retries()
-        self.test_put_db2_saas_user_all_params()
-
-    @responses.activate
-    def test_put_db2_saas_user_value_error(self):
-        """
-        test_put_db2_saas_user_value_error()
-        """
-        # Set up mock
-        url = preprocess_url('/users/test-user')
-        mock_response = '{"dvRole": "dv_role", "metadata": {"anyKey": "anyValue"}, "formatedIbmid": "formated_ibmid", "role": "bluadmin", "iamid": "iamid", "permittedActions": ["permitted_actions"], "allClean": false, "password": "password", "iam": false, "name": "name", "ibmid": "ibmid", "id": "id", "locked": "no", "initErrorMsg": "init_error_msg", "email": "user@host.org", "authentication": {"method": "method", "policy_id": "policy_id"}}'
-        responses.add(
-            responses.PUT,
-            url,
-            body=mock_response,
-            content_type='application/json',
-            status=200,
-        )
-
-        # Construct a dict representation of a UpdateUserAuthentication model
-        update_user_authentication_model = {}
-        update_user_authentication_model['method'] = 'internal'
-        update_user_authentication_model['policy_id'] = 'Default'
-
-        # Set up parameter values
-        x_deployment_id = 'testString'
-        id = 'test-user'
-        new_id = 'test-user'
-        new_name = 'test_user'
-        new_old_password = 'dEkMc43@gfAPl!867^dSbu'
-        new_new_password = 'ihbgc26@gfAPl!1297^dFGy'
-        new_role = 'bluuser'
-        new_email = 'test_user@mycompany.com'
-        new_locked = 'no'
-        new_authentication = update_user_authentication_model
-        new_ibmid = 'test-ibm-id'
-
-        # Pass in all but one required param and check for a ValueError
-        req_param_dict = {
-            "x_deployment_id": x_deployment_id,
-            "id": id,
-            "new_id": new_id,
-            "new_name": new_name,
-            "new_old_password": new_old_password,
-            "new_new_password": new_new_password,
-            "new_role": new_role,
-            "new_email": new_email,
-            "new_locked": new_locked,
-            "new_authentication": new_authentication,
-        }
-        for param in req_param_dict.keys():
-            req_copy = {key: val if key is not param else None for (key, val) in req_param_dict.items()}
-            with pytest.raises(ValueError):
-                _service.put_db2_saas_user(**req_copy)
-
-    def test_put_db2_saas_user_value_error_with_retries(self):
-        # Enable retries and run test_put_db2_saas_user_value_error.
-        _service.enable_retries()
-        self.test_put_db2_saas_user_value_error()
-
-        # Disable retries and run test_put_db2_saas_user_value_error.
-        _service.disable_retries()
-        self.test_put_db2_saas_user_value_error()
 
 
 class TestDeleteDb2SaasUser:
@@ -820,7 +679,7 @@ class TestDeleteDb2SaasUser:
         )
 
         # Set up parameter values
-        x_deployment_id = 'testString'
+        x_deployment_id = 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::'
         id = 'test-user'
 
         # Invoke method
@@ -860,7 +719,7 @@ class TestDeleteDb2SaasUser:
         )
 
         # Set up parameter values
-        x_deployment_id = 'testString'
+        x_deployment_id = 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::'
         id = 'test-user'
 
         # Pass in all but one required param and check for a ValueError
@@ -905,7 +764,7 @@ class TestGetbyidDb2SaasUser:
         )
 
         # Set up parameter values
-        x_deployment_id = 'testString'
+        x_deployment_id = 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::'
 
         # Invoke method
         response = _service.getbyid_db2_saas_user(
@@ -943,7 +802,7 @@ class TestGetbyidDb2SaasUser:
         )
 
         # Set up parameter values
-        x_deployment_id = 'testString'
+        x_deployment_id = 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::'
 
         # Pass in all but one required param and check for a ValueError
         req_param_dict = {
@@ -1025,7 +884,7 @@ class TestPutDb2SaasAutoscale:
         )
 
         # Set up parameter values
-        x_deployment_id = 'testString'
+        x_db_profile = 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::'
         auto_scaling_enabled = 'true'
         auto_scaling_threshold = 90
         auto_scaling_over_time_period = 5
@@ -1034,7 +893,7 @@ class TestPutDb2SaasAutoscale:
 
         # Invoke method
         response = _service.put_db2_saas_autoscale(
-            x_deployment_id,
+            x_db_profile,
             auto_scaling_enabled=auto_scaling_enabled,
             auto_scaling_threshold=auto_scaling_threshold,
             auto_scaling_over_time_period=auto_scaling_over_time_period,
@@ -1080,7 +939,7 @@ class TestPutDb2SaasAutoscale:
         )
 
         # Set up parameter values
-        x_deployment_id = 'testString'
+        x_db_profile = 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::'
         auto_scaling_enabled = 'true'
         auto_scaling_threshold = 90
         auto_scaling_over_time_period = 5
@@ -1089,7 +948,7 @@ class TestPutDb2SaasAutoscale:
 
         # Pass in all but one required param and check for a ValueError
         req_param_dict = {
-            "x_deployment_id": x_deployment_id,
+            "x_db_profile": x_db_profile,
         }
         for param in req_param_dict.keys():
             req_copy = {key: val if key is not param else None for (key, val) in req_param_dict.items()}
@@ -1117,7 +976,7 @@ class TestGetDb2SaasAutoscale:
         get_db2_saas_autoscale()
         """
         # Set up mock
-        url = preprocess_url('/scaling/auto')
+        url = preprocess_url('/manage/scaling/auto')
         mock_response = '{"auto_scaling_allow_plan_limit": false, "auto_scaling_enabled": true, "auto_scaling_max_storage": 24, "auto_scaling_over_time_period": 29, "auto_scaling_pause_limit": 24, "auto_scaling_threshold": 22, "storage_unit": "storage_unit", "storage_utilization_percentage": 30, "support_auto_scaling": true}'
         responses.add(
             responses.GET,
@@ -1128,11 +987,11 @@ class TestGetDb2SaasAutoscale:
         )
 
         # Set up parameter values
-        x_deployment_id = 'testString'
+        x_db_profile = 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::'
 
         # Invoke method
         response = _service.get_db2_saas_autoscale(
-            x_deployment_id,
+            x_db_profile,
             headers={},
         )
 
@@ -1155,7 +1014,7 @@ class TestGetDb2SaasAutoscale:
         test_get_db2_saas_autoscale_value_error()
         """
         # Set up mock
-        url = preprocess_url('/scaling/auto')
+        url = preprocess_url('/manage/scaling/auto')
         mock_response = '{"auto_scaling_allow_plan_limit": false, "auto_scaling_enabled": true, "auto_scaling_max_storage": 24, "auto_scaling_over_time_period": 29, "auto_scaling_pause_limit": 24, "auto_scaling_threshold": 22, "storage_unit": "storage_unit", "storage_utilization_percentage": 30, "support_auto_scaling": true}'
         responses.add(
             responses.GET,
@@ -1166,11 +1025,11 @@ class TestGetDb2SaasAutoscale:
         )
 
         # Set up parameter values
-        x_deployment_id = 'testString'
+        x_db_profile = 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::'
 
         # Pass in all but one required param and check for a ValueError
         req_param_dict = {
-            "x_deployment_id": x_deployment_id,
+            "x_db_profile": x_db_profile,
         }
         for param in req_param_dict.keys():
             req_copy = {key: val if key is not param else None for (key, val) in req_param_dict.items()}
@@ -1314,8 +1173,6 @@ class TestModel_SuccessConnectionInfo:
         success_connection_info_public_model = {}  # SuccessConnectionInfoPublic
         success_connection_info_public_model['hostname'] = '84792aeb-2a9c-4dee-bfad-2e529f16945d-useast-private.bt1ibm.dev.db2.ibmappdomain.cloud'
         success_connection_info_public_model['databaseName'] = 'bluedb'
-        success_connection_info_public_model['host_ros'] = '84792aeb-2a9c-4dee-bfad-2e529f16945d-useast-private.bt1ibm.dev.db2.ibmappdomain.cloud:30515'
-        success_connection_info_public_model['certificateBase64'] = 'LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURIVENDQWdXZ0F3SUJBZ0lVTGRpR1U2QzdZajMwcS9VUVB3ek5ka2YyakJjd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0hqRWNNQm9HQTFVRUF3d1RTVUpOSUVOc2IzVmtJRVJoZEdGaVlYTmxjekFlRncweU1EQTRNRFl3T1RReQpNVEZhRncwek1EQTRNRFF3T1RReU1URmFNQjR4SERBYUJnTlZCQU1NRTBsQ1RTQkRiRzkxWkNCRVlYUmhZbUZ6ClpYTXdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCQVFDb1NIdS9TWkd5NHc0bHB0elQKbFVRQTV6Q0krTldhblQ0czAvTXFkQmJwRW9FWjYxLy9VQVFPaHVTUG85M05obG1NQWZUWENpUi9jVkxuQmxBMQpuZnEzcC9pWm1VMnJwSUxnUmdLeTdsNEZSMVVPaGlRa3RnN3d6Q0J1M2k0bTRJQkZ0NVVvRng5djl6eFkrK0tSCnNnYXhmK28yMEoxLzZBSHFwem5GaWJuTDdLcGlZMUs1c25BdHFwTUVsNHMyR3dlZXQ0dEFjZ3hRSlRVR3hvamsKUDMvUmtxSUI1RFBNSXJ0ZFMrWWpBdlM0alBpREVRT0FvZDg5aDBOays3bkpldllJT0lRVTN0OC81YlNYRDFFVwp3bmRqdHlkeC95Qlo5YlZ4bms4eWI1S1NCVUNpaHJsL1AxVmdNdStLb2w2M0ZZMmdSbndwb3FEOVRNWkJkeTRYCk5PRUZBZ01CQUFHalV6QlJNQjBHQTFVZERnUVdCQlNldmNpblMvR0VwdmlmZkQ0ZUtPU0FNSGljUmpBZkJnTlYKSFNNRUdEQVdnQlNldmNpblMvR0VwdmlmZkQ0ZUtPU0FNSGljUmpBUEJnTlZIUk1CQWY4RUJUQURBUUgvTUEwRwpDU3FHU0liM0RRRUJDd1VBQTRJQkFRQk1XRHV2Z0JKVk5JYUp2NkFzL3FybWZKbVJObU80clhVcXhiTXdJdEZ1Ciswb1RIOTZMWU1OSjgyS1hXOFc1K0ZUOXJ2TjdzQzhRQzBYVzFIWkM4dlgvdE96dmluL1lqVW5nUlducUFBQXEKL0U4TnRtMFpuMEs4cnRzanJtaklLKzlwNjRObE1ENWJjcUpDMGZFSkpBQVpBSUozejRNSHhsTDhnc0plS0JyOApvcWhhejJOaXJtSEZ3Z3RDc0htVlI4UCt5TUtrN24xVlhlcmpHYWhORkQ2MzhGRnRoSHNvNmV0NGQ5NEpLTXFPCmt1cWhFOCtMcTZlalRWUTRYdldaUG4wVWlZQkVpTjFsT1JaZ0h5d3JvNjJ5Z2dFekhCaXF5dEI2SEN6TllyYXoKVElQUTNGanhGQXNYU3NhVzZPL2VteERNSDN4ZUZ5WmRZWWw5bGMxSnFVWW4KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo='
         success_connection_info_public_model['sslPort'] = '30450'
         success_connection_info_public_model['ssl'] = True
         success_connection_info_public_model['databaseVersion'] = '11.5.0'
@@ -1323,11 +1180,13 @@ class TestModel_SuccessConnectionInfo:
         success_connection_info_private_model = {}  # SuccessConnectionInfoPrivate
         success_connection_info_private_model['hostname'] = '84792aeb-2a9c-4dee-bfad-2e529f16945d-useast.bt1ibm.dev.db2.ibmappdomain.cloud'
         success_connection_info_private_model['databaseName'] = 'bluedb'
-        success_connection_info_private_model['host_ros'] = '84792aeb-2a9c-4dee-bfad-2e529f16945d-useast.bt1ibm.dev.db2.ibmappdomain.cloud:30515'
-        success_connection_info_private_model['certificateBase64'] = 'LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURIVENDQWdXZ0F3SUJBZ0lVTGRpR1U2QzdZajMwcS9VUVB3ek5ka2YyakJjd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0hqRWNNQm9HQTFVRUF3d1RTVUpOSUVOc2IzVmtJRVJoZEdGaVlYTmxjekFlRncweU1EQTRNRFl3T1RReQpNVEZhRncwek1EQTRNRFF3T1RReU1URmFNQjR4SERBYUJnTlZCQU1NRTBsQ1RTQkRiRzkxWkNCRVlYUmhZbUZ6ClpYTXdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCQVFDb1NIdS9TWkd5NHc0bHB0elQKbFVRQTV6Q0krTldhblQ0czAvTXFkQmJwRW9FWjYxLy9VQVFPaHVTUG85M05obG1NQWZUWENpUi9jVkxuQmxBMQpuZnEzcC9pWm1VMnJwSUxnUmdLeTdsNEZSMVVPaGlRa3RnN3d6Q0J1M2k0bTRJQkZ0NVVvRng5djl6eFkrK0tSCnNnYXhmK28yMEoxLzZBSHFwem5GaWJuTDdLcGlZMUs1c25BdHFwTUVsNHMyR3dlZXQ0dEFjZ3hRSlRVR3hvamsKUDMvUmtxSUI1RFBNSXJ0ZFMrWWpBdlM0alBpREVRT0FvZDg5aDBOays3bkpldllJT0lRVTN0OC81YlNYRDFFVwp3bmRqdHlkeC95Qlo5YlZ4bms4eWI1S1NCVUNpaHJsL1AxVmdNdStLb2w2M0ZZMmdSbndwb3FEOVRNWkJkeTRYCk5PRUZBZ01CQUFHalV6QlJNQjBHQTFVZERnUVdCQlNldmNpblMvR0VwdmlmZkQ0ZUtPU0FNSGljUmpBZkJnTlYKSFNNRUdEQVdnQlNldmNpblMvR0VwdmlmZkQ0ZUtPU0FNSGljUmpBUEJnTlZIUk1CQWY4RUJUQURBUUgvTUEwRwpDU3FHU0liM0RRRUJDd1VBQTRJQkFRQk1XRHV2Z0JKVk5JYUp2NkFzL3FybWZKbVJObU80clhVcXhiTXdJdEZ1Ciswb1RIOTZMWU1OSjgyS1hXOFc1K0ZUOXJ2TjdzQzhRQzBYVzFIWkM4dlgvdE96dmluL1lqVW5nUlducUFBQXEKL0U4TnRtMFpuMEs4cnRzanJtaklLKzlwNjRObE1ENWJjcUpDMGZFSkpBQVpBSUozejRNSHhsTDhnc0plS0JyOApvcWhhejJOaXJtSEZ3Z3RDc0htVlI4UCt5TUtrN24xVlhlcmpHYWhORkQ2MzhGRnRoSHNvNmV0NGQ5NEpLTXFPCmt1cWhFOCtMcTZlalRWUTRYdldaUG4wVWlZQkVpTjFsT1JaZ0h5d3JvNjJ5Z2dFekhCaXF5dEI2SEN6TllyYXoKVElQUTNGanhGQXNYU3NhVzZPL2VteERNSDN4ZUZ5WmRZWWw5bGMxSnFVWW4KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo='
         success_connection_info_private_model['sslPort'] = '30450'
         success_connection_info_private_model['ssl'] = True
         success_connection_info_private_model['databaseVersion'] = '11.5.0'
+        success_connection_info_private_model['private_serviceName'] = 'us-south-private.db2oc.test.saas.ibm.com:32764'
+        success_connection_info_private_model['cloud_service_offering'] = 'dashdb-for-transactions'
+        success_connection_info_private_model['vpe_service_crn'] = 'crn:v1:staging:public:dashdb-for-transactions:us-south:::endpoint:feea41a1-ff88-4541-8865-0698ccb7c5dc-us-south-private.bt1ibm.dev.db2.ibmappdomain.cloud'
+        success_connection_info_private_model['db_vpc_endpoint_service'] = 'feea41a1-ff88-4541-8865-0698ccb7c5dc-ussouth-private.bt1ibm.dev.db2.ibmappdomain.cloud:32679'
 
         # Construct a json representation of a SuccessConnectionInfo model
         success_connection_info_model_json = {}
@@ -1364,11 +1223,13 @@ class TestModel_SuccessConnectionInfoPrivate:
         success_connection_info_private_model_json = {}
         success_connection_info_private_model_json['hostname'] = '84792aeb-2a9c-4dee-bfad-2e529f16945d-useast.bt1ibm.dev.db2.ibmappdomain.cloud'
         success_connection_info_private_model_json['databaseName'] = 'bluedb'
-        success_connection_info_private_model_json['host_ros'] = '84792aeb-2a9c-4dee-bfad-2e529f16945d-useast.bt1ibm.dev.db2.ibmappdomain.cloud:30515'
-        success_connection_info_private_model_json['certificateBase64'] = 'LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURIVENDQWdXZ0F3SUJBZ0lVTGRpR1U2QzdZajMwcS9VUVB3ek5ka2YyakJjd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0hqRWNNQm9HQTFVRUF3d1RTVUpOSUVOc2IzVmtJRVJoZEdGaVlYTmxjekFlRncweU1EQTRNRFl3T1RReQpNVEZhRncwek1EQTRNRFF3T1RReU1URmFNQjR4SERBYUJnTlZCQU1NRTBsQ1RTQkRiRzkxWkNCRVlYUmhZbUZ6ClpYTXdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCQVFDb1NIdS9TWkd5NHc0bHB0elQKbFVRQTV6Q0krTldhblQ0czAvTXFkQmJwRW9FWjYxLy9VQVFPaHVTUG85M05obG1NQWZUWENpUi9jVkxuQmxBMQpuZnEzcC9pWm1VMnJwSUxnUmdLeTdsNEZSMVVPaGlRa3RnN3d6Q0J1M2k0bTRJQkZ0NVVvRng5djl6eFkrK0tSCnNnYXhmK28yMEoxLzZBSHFwem5GaWJuTDdLcGlZMUs1c25BdHFwTUVsNHMyR3dlZXQ0dEFjZ3hRSlRVR3hvamsKUDMvUmtxSUI1RFBNSXJ0ZFMrWWpBdlM0alBpREVRT0FvZDg5aDBOays3bkpldllJT0lRVTN0OC81YlNYRDFFVwp3bmRqdHlkeC95Qlo5YlZ4bms4eWI1S1NCVUNpaHJsL1AxVmdNdStLb2w2M0ZZMmdSbndwb3FEOVRNWkJkeTRYCk5PRUZBZ01CQUFHalV6QlJNQjBHQTFVZERnUVdCQlNldmNpblMvR0VwdmlmZkQ0ZUtPU0FNSGljUmpBZkJnTlYKSFNNRUdEQVdnQlNldmNpblMvR0VwdmlmZkQ0ZUtPU0FNSGljUmpBUEJnTlZIUk1CQWY4RUJUQURBUUgvTUEwRwpDU3FHU0liM0RRRUJDd1VBQTRJQkFRQk1XRHV2Z0JKVk5JYUp2NkFzL3FybWZKbVJObU80clhVcXhiTXdJdEZ1Ciswb1RIOTZMWU1OSjgyS1hXOFc1K0ZUOXJ2TjdzQzhRQzBYVzFIWkM4dlgvdE96dmluL1lqVW5nUlducUFBQXEKL0U4TnRtMFpuMEs4cnRzanJtaklLKzlwNjRObE1ENWJjcUpDMGZFSkpBQVpBSUozejRNSHhsTDhnc0plS0JyOApvcWhhejJOaXJtSEZ3Z3RDc0htVlI4UCt5TUtrN24xVlhlcmpHYWhORkQ2MzhGRnRoSHNvNmV0NGQ5NEpLTXFPCmt1cWhFOCtMcTZlalRWUTRYdldaUG4wVWlZQkVpTjFsT1JaZ0h5d3JvNjJ5Z2dFekhCaXF5dEI2SEN6TllyYXoKVElQUTNGanhGQXNYU3NhVzZPL2VteERNSDN4ZUZ5WmRZWWw5bGMxSnFVWW4KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo='
         success_connection_info_private_model_json['sslPort'] = '30450'
         success_connection_info_private_model_json['ssl'] = True
         success_connection_info_private_model_json['databaseVersion'] = '11.5.0'
+        success_connection_info_private_model_json['private_serviceName'] = 'us-south-private.db2oc.test.saas.ibm.com:32764'
+        success_connection_info_private_model_json['cloud_service_offering'] = 'dashdb-for-transactions'
+        success_connection_info_private_model_json['vpe_service_crn'] = 'crn:v1:staging:public:dashdb-for-transactions:us-south:::endpoint:feea41a1-ff88-4541-8865-0698ccb7c5dc-us-south-private.bt1ibm.dev.db2.ibmappdomain.cloud'
+        success_connection_info_private_model_json['db_vpc_endpoint_service'] = 'feea41a1-ff88-4541-8865-0698ccb7c5dc-ussouth-private.bt1ibm.dev.db2.ibmappdomain.cloud:32679'
 
         # Construct a model instance of SuccessConnectionInfoPrivate by calling from_dict on the json representation
         success_connection_info_private_model = SuccessConnectionInfoPrivate.from_dict(success_connection_info_private_model_json)
@@ -1400,8 +1261,6 @@ class TestModel_SuccessConnectionInfoPublic:
         success_connection_info_public_model_json = {}
         success_connection_info_public_model_json['hostname'] = '84792aeb-2a9c-4dee-bfad-2e529f16945d-useast-private.bt1ibm.dev.db2.ibmappdomain.cloud'
         success_connection_info_public_model_json['databaseName'] = 'bluedb'
-        success_connection_info_public_model_json['host_ros'] = '84792aeb-2a9c-4dee-bfad-2e529f16945d-useast-private.bt1ibm.dev.db2.ibmappdomain.cloud:30515'
-        success_connection_info_public_model_json['certificateBase64'] = 'LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURIVENDQWdXZ0F3SUJBZ0lVTGRpR1U2QzdZajMwcS9VUVB3ek5ka2YyakJjd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0hqRWNNQm9HQTFVRUF3d1RTVUpOSUVOc2IzVmtJRVJoZEdGaVlYTmxjekFlRncweU1EQTRNRFl3T1RReQpNVEZhRncwek1EQTRNRFF3T1RReU1URmFNQjR4SERBYUJnTlZCQU1NRTBsQ1RTQkRiRzkxWkNCRVlYUmhZbUZ6ClpYTXdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCQVFDb1NIdS9TWkd5NHc0bHB0elQKbFVRQTV6Q0krTldhblQ0czAvTXFkQmJwRW9FWjYxLy9VQVFPaHVTUG85M05obG1NQWZUWENpUi9jVkxuQmxBMQpuZnEzcC9pWm1VMnJwSUxnUmdLeTdsNEZSMVVPaGlRa3RnN3d6Q0J1M2k0bTRJQkZ0NVVvRng5djl6eFkrK0tSCnNnYXhmK28yMEoxLzZBSHFwem5GaWJuTDdLcGlZMUs1c25BdHFwTUVsNHMyR3dlZXQ0dEFjZ3hRSlRVR3hvamsKUDMvUmtxSUI1RFBNSXJ0ZFMrWWpBdlM0alBpREVRT0FvZDg5aDBOays3bkpldllJT0lRVTN0OC81YlNYRDFFVwp3bmRqdHlkeC95Qlo5YlZ4bms4eWI1S1NCVUNpaHJsL1AxVmdNdStLb2w2M0ZZMmdSbndwb3FEOVRNWkJkeTRYCk5PRUZBZ01CQUFHalV6QlJNQjBHQTFVZERnUVdCQlNldmNpblMvR0VwdmlmZkQ0ZUtPU0FNSGljUmpBZkJnTlYKSFNNRUdEQVdnQlNldmNpblMvR0VwdmlmZkQ0ZUtPU0FNSGljUmpBUEJnTlZIUk1CQWY4RUJUQURBUUgvTUEwRwpDU3FHU0liM0RRRUJDd1VBQTRJQkFRQk1XRHV2Z0JKVk5JYUp2NkFzL3FybWZKbVJObU80clhVcXhiTXdJdEZ1Ciswb1RIOTZMWU1OSjgyS1hXOFc1K0ZUOXJ2TjdzQzhRQzBYVzFIWkM4dlgvdE96dmluL1lqVW5nUlducUFBQXEKL0U4TnRtMFpuMEs4cnRzanJtaklLKzlwNjRObE1ENWJjcUpDMGZFSkpBQVpBSUozejRNSHhsTDhnc0plS0JyOApvcWhhejJOaXJtSEZ3Z3RDc0htVlI4UCt5TUtrN24xVlhlcmpHYWhORkQ2MzhGRnRoSHNvNmV0NGQ5NEpLTXFPCmt1cWhFOCtMcTZlalRWUTRYdldaUG4wVWlZQkVpTjFsT1JaZ0h5d3JvNjJ5Z2dFekhCaXF5dEI2SEN6TllyYXoKVElQUTNGanhGQXNYU3NhVzZPL2VteERNSDN4ZUZ5WmRZWWw5bGMxSnFVWW4KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo='
         success_connection_info_public_model_json['sslPort'] = '30450'
         success_connection_info_public_model_json['ssl'] = True
         success_connection_info_public_model_json['databaseVersion'] = '11.5.0'
@@ -1420,6 +1279,42 @@ class TestModel_SuccessConnectionInfoPublic:
         # Convert model instance back to dict and verify no loss of data
         success_connection_info_public_model_json2 = success_connection_info_public_model.to_dict()
         assert success_connection_info_public_model_json2 == success_connection_info_public_model_json
+
+
+class TestModel_SuccessGetAllowlistIPs:
+    """
+    Test Class for SuccessGetAllowlistIPs
+    """
+
+    def test_success_get_allowlist_i_ps_serialization(self):
+        """
+        Test serialization/deserialization for SuccessGetAllowlistIPs
+        """
+
+        # Construct dict forms of any model objects needed in order to build this model.
+
+        ip_address_model = {}  # IpAddress
+        ip_address_model['address'] = '202.18.161.1/32'
+        ip_address_model['description'] = '大学様グローバルIP（ODBC接続はこのIPに集約）'
+
+        # Construct a json representation of a SuccessGetAllowlistIPs model
+        success_get_allowlist_i_ps_model_json = {}
+        success_get_allowlist_i_ps_model_json['ip_addresses'] = [ip_address_model]
+
+        # Construct a model instance of SuccessGetAllowlistIPs by calling from_dict on the json representation
+        success_get_allowlist_i_ps_model = SuccessGetAllowlistIPs.from_dict(success_get_allowlist_i_ps_model_json)
+        assert success_get_allowlist_i_ps_model != False
+
+        # Construct a model instance of SuccessGetAllowlistIPs by calling from_dict on the json representation
+        success_get_allowlist_i_ps_model_dict = SuccessGetAllowlistIPs.from_dict(success_get_allowlist_i_ps_model_json).__dict__
+        success_get_allowlist_i_ps_model2 = SuccessGetAllowlistIPs(**success_get_allowlist_i_ps_model_dict)
+
+        # Verify the model instances are equivalent
+        assert success_get_allowlist_i_ps_model == success_get_allowlist_i_ps_model2
+
+        # Convert model instance back to dict and verify no loss of data
+        success_get_allowlist_i_ps_model_json2 = success_get_allowlist_i_ps_model.to_dict()
+        assert success_get_allowlist_i_ps_model_json2 == success_get_allowlist_i_ps_model_json
 
 
 class TestModel_SuccessGetUserByID:
@@ -1641,70 +1536,34 @@ class TestModel_SuccessGetUserInfoResourcesItemAuthentication:
         assert success_get_user_info_resources_item_authentication_model_json2 == success_get_user_info_resources_item_authentication_model_json
 
 
-class TestModel_SuccessGetWhitelistIPs:
+class TestModel_SuccessPostAllowedlistIPs:
     """
-    Test Class for SuccessGetWhitelistIPs
+    Test Class for SuccessPostAllowedlistIPs
     """
 
-    def test_success_get_whitelist_i_ps_serialization(self):
+    def test_success_post_allowedlist_i_ps_serialization(self):
         """
-        Test serialization/deserialization for SuccessGetWhitelistIPs
+        Test serialization/deserialization for SuccessPostAllowedlistIPs
         """
 
-        # Construct dict forms of any model objects needed in order to build this model.
+        # Construct a json representation of a SuccessPostAllowedlistIPs model
+        success_post_allowedlist_i_ps_model_json = {}
+        success_post_allowedlist_i_ps_model_json['status'] = 'testString'
 
-        ip_address_model = {}  # IpAddress
-        ip_address_model['address'] = '202.18.161.1/32'
-        ip_address_model['description'] = '大学様グローバルIP（ODBC接続はこのIPに集約）'
+        # Construct a model instance of SuccessPostAllowedlistIPs by calling from_dict on the json representation
+        success_post_allowedlist_i_ps_model = SuccessPostAllowedlistIPs.from_dict(success_post_allowedlist_i_ps_model_json)
+        assert success_post_allowedlist_i_ps_model != False
 
-        # Construct a json representation of a SuccessGetWhitelistIPs model
-        success_get_whitelist_i_ps_model_json = {}
-        success_get_whitelist_i_ps_model_json['ip_addresses'] = [ip_address_model]
-
-        # Construct a model instance of SuccessGetWhitelistIPs by calling from_dict on the json representation
-        success_get_whitelist_i_ps_model = SuccessGetWhitelistIPs.from_dict(success_get_whitelist_i_ps_model_json)
-        assert success_get_whitelist_i_ps_model != False
-
-        # Construct a model instance of SuccessGetWhitelistIPs by calling from_dict on the json representation
-        success_get_whitelist_i_ps_model_dict = SuccessGetWhitelistIPs.from_dict(success_get_whitelist_i_ps_model_json).__dict__
-        success_get_whitelist_i_ps_model2 = SuccessGetWhitelistIPs(**success_get_whitelist_i_ps_model_dict)
+        # Construct a model instance of SuccessPostAllowedlistIPs by calling from_dict on the json representation
+        success_post_allowedlist_i_ps_model_dict = SuccessPostAllowedlistIPs.from_dict(success_post_allowedlist_i_ps_model_json).__dict__
+        success_post_allowedlist_i_ps_model2 = SuccessPostAllowedlistIPs(**success_post_allowedlist_i_ps_model_dict)
 
         # Verify the model instances are equivalent
-        assert success_get_whitelist_i_ps_model == success_get_whitelist_i_ps_model2
+        assert success_post_allowedlist_i_ps_model == success_post_allowedlist_i_ps_model2
 
         # Convert model instance back to dict and verify no loss of data
-        success_get_whitelist_i_ps_model_json2 = success_get_whitelist_i_ps_model.to_dict()
-        assert success_get_whitelist_i_ps_model_json2 == success_get_whitelist_i_ps_model_json
-
-
-class TestModel_SuccessPostWhitelistIPs:
-    """
-    Test Class for SuccessPostWhitelistIPs
-    """
-
-    def test_success_post_whitelist_i_ps_serialization(self):
-        """
-        Test serialization/deserialization for SuccessPostWhitelistIPs
-        """
-
-        # Construct a json representation of a SuccessPostWhitelistIPs model
-        success_post_whitelist_i_ps_model_json = {}
-        success_post_whitelist_i_ps_model_json['status'] = 'testString'
-
-        # Construct a model instance of SuccessPostWhitelistIPs by calling from_dict on the json representation
-        success_post_whitelist_i_ps_model = SuccessPostWhitelistIPs.from_dict(success_post_whitelist_i_ps_model_json)
-        assert success_post_whitelist_i_ps_model != False
-
-        # Construct a model instance of SuccessPostWhitelistIPs by calling from_dict on the json representation
-        success_post_whitelist_i_ps_model_dict = SuccessPostWhitelistIPs.from_dict(success_post_whitelist_i_ps_model_json).__dict__
-        success_post_whitelist_i_ps_model2 = SuccessPostWhitelistIPs(**success_post_whitelist_i_ps_model_dict)
-
-        # Verify the model instances are equivalent
-        assert success_post_whitelist_i_ps_model == success_post_whitelist_i_ps_model2
-
-        # Convert model instance back to dict and verify no loss of data
-        success_post_whitelist_i_ps_model_json2 = success_post_whitelist_i_ps_model.to_dict()
-        assert success_post_whitelist_i_ps_model_json2 == success_post_whitelist_i_ps_model_json
+        success_post_allowedlist_i_ps_model_json2 = success_post_allowedlist_i_ps_model.to_dict()
+        assert success_post_allowedlist_i_ps_model_json2 == success_post_allowedlist_i_ps_model_json
 
 
 class TestModel_SuccessUpdateAutoScale:
@@ -1817,37 +1676,6 @@ class TestModel_SuccessUserResponseAuthentication:
         # Convert model instance back to dict and verify no loss of data
         success_user_response_authentication_model_json2 = success_user_response_authentication_model.to_dict()
         assert success_user_response_authentication_model_json2 == success_user_response_authentication_model_json
-
-
-class TestModel_UpdateUserAuthentication:
-    """
-    Test Class for UpdateUserAuthentication
-    """
-
-    def test_update_user_authentication_serialization(self):
-        """
-        Test serialization/deserialization for UpdateUserAuthentication
-        """
-
-        # Construct a json representation of a UpdateUserAuthentication model
-        update_user_authentication_model_json = {}
-        update_user_authentication_model_json['method'] = 'internal'
-        update_user_authentication_model_json['policy_id'] = 'Default'
-
-        # Construct a model instance of UpdateUserAuthentication by calling from_dict on the json representation
-        update_user_authentication_model = UpdateUserAuthentication.from_dict(update_user_authentication_model_json)
-        assert update_user_authentication_model != False
-
-        # Construct a model instance of UpdateUserAuthentication by calling from_dict on the json representation
-        update_user_authentication_model_dict = UpdateUserAuthentication.from_dict(update_user_authentication_model_json).__dict__
-        update_user_authentication_model2 = UpdateUserAuthentication(**update_user_authentication_model_dict)
-
-        # Verify the model instances are equivalent
-        assert update_user_authentication_model == update_user_authentication_model2
-
-        # Convert model instance back to dict and verify no loss of data
-        update_user_authentication_model_json2 = update_user_authentication_model.to_dict()
-        assert update_user_authentication_model_json2 == update_user_authentication_model_json
 
 
 # endregion

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# (C) Copyright IBM Corp. 2024.
+# (C) Copyright IBM Corp. 2025.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -54,8 +54,8 @@ class TestDb2saasV1:
     @needscredentials
     def test_get_db2_saas_connection_info(self):
         response = self.db2saas_service.get_db2_saas_connection_info(
-            deployment_id='testString',
-            x_deployment_id='testString',
+            deployment_id='crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A69db420f-33d5-4953-8bd8-1950abd356f6%3A%3A',
+            x_deployment_id='crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
         )
 
         assert response.get_status_code() == 200
@@ -63,31 +63,31 @@ class TestDb2saasV1:
         assert success_connection_info is not None
 
     @needscredentials
-    def test_post_db2_saas_whitelist(self):
+    def test_post_db2_saas_allowlist(self):
         # Construct a dict representation of a IpAddress model
         ip_address_model = {
             'address': '127.0.0.1',
             'description': 'A sample IP address',
         }
 
-        response = self.db2saas_service.post_db2_saas_whitelist(
-            x_deployment_id='testString',
+        response = self.db2saas_service.post_db2_saas_allowlist(
+            x_deployment_id='crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
             ip_addresses=[ip_address_model],
         )
 
         assert response.get_status_code() == 200
-        success_post_whitelist_i_ps = response.get_result()
-        assert success_post_whitelist_i_ps is not None
+        success_post_allowedlist_i_ps = response.get_result()
+        assert success_post_allowedlist_i_ps is not None
 
     @needscredentials
-    def test_get_db2_saas_whitelist(self):
-        response = self.db2saas_service.get_db2_saas_whitelist(
-            x_deployment_id='testString',
+    def test_get_db2_saas_allowlist(self):
+        response = self.db2saas_service.get_db2_saas_allowlist(
+            x_deployment_id='crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
         )
 
         assert response.get_status_code() == 200
-        success_get_whitelist_i_ps = response.get_result()
-        assert success_get_whitelist_i_ps is not None
+        success_get_allowlist_i_ps = response.get_result()
+        assert success_get_allowlist_i_ps is not None
 
     @needscredentials
     def test_post_db2_saas_user(self):
@@ -98,7 +98,7 @@ class TestDb2saasV1:
         }
 
         response = self.db2saas_service.post_db2_saas_user(
-            x_deployment_id='testString',
+            x_deployment_id='crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
             id='test-user',
             iam=False,
             ibmid='test-ibm-id',
@@ -117,7 +117,7 @@ class TestDb2saasV1:
     @needscredentials
     def test_get_db2_saas_user(self):
         response = self.db2saas_service.get_db2_saas_user(
-            x_deployment_id='testString',
+            x_deployment_id='crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
         )
 
         assert response.get_status_code() == 200
@@ -125,35 +125,9 @@ class TestDb2saasV1:
         assert success_get_user_info is not None
 
     @needscredentials
-    def test_put_db2_saas_user(self):
-        # Construct a dict representation of a UpdateUserAuthentication model
-        update_user_authentication_model = {
-            'method': 'internal',
-            'policy_id': 'Default',
-        }
-
-        response = self.db2saas_service.put_db2_saas_user(
-            x_deployment_id='testString',
-            id='test-user',
-            new_id='test-user',
-            new_name='test_user',
-            new_old_password='dEkMc43@gfAPl!867^dSbu',
-            new_new_password='ihbgc26@gfAPl!1297^dFGy',
-            new_role='bluuser',
-            new_email='test_user@mycompany.com',
-            new_locked='no',
-            new_authentication=update_user_authentication_model,
-            new_ibmid='test-ibm-id',
-        )
-
-        assert response.get_status_code() == 200
-        success_user_response = response.get_result()
-        assert success_user_response is not None
-
-    @needscredentials
     def test_getbyid_db2_saas_user(self):
         response = self.db2saas_service.getbyid_db2_saas_user(
-            x_deployment_id='testString',
+            x_deployment_id='crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
         )
 
         assert response.get_status_code() == 200
@@ -163,7 +137,7 @@ class TestDb2saasV1:
     @needscredentials
     def test_put_db2_saas_autoscale(self):
         response = self.db2saas_service.put_db2_saas_autoscale(
-            x_deployment_id='testString',
+            x_db_profile='crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
             auto_scaling_threshold=90,
             auto_scaling_pause_limit=70,
         )
@@ -175,7 +149,7 @@ class TestDb2saasV1:
     @needscredentials
     def test_get_db2_saas_autoscale(self):
         response = self.db2saas_service.get_db2_saas_autoscale(
-            x_deployment_id='testString',
+            x_db_profile='crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
         )
 
         assert response.get_status_code() == 200
@@ -185,7 +159,7 @@ class TestDb2saasV1:
     @needscredentials
     def test_delete_db2_saas_user(self):
         response = self.db2saas_service.delete_db2_saas_user(
-            x_deployment_id='testString',
+            x_deployment_id='crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
             id='test-user',
         )
 
