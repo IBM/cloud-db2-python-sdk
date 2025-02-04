@@ -1,0 +1,63 @@
+[project]
+name = "ibm_cloud_db2"
+version = "1.0.0"
+authors = [
+    { name="IBM", email="prkotha1@in.ibm.com" }
+]
+description = "IBM Cloud Db2 SaaS Python SDK"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+]
+keywords=["ibm", "cloud", "ibm cloud services" ]
+dependencies = [
+    "ibm_cloud_sdk_core>=3.22.0,<4.0.0",
+]
+
+[project.urls]
+Repository = "https://github.com/IBM/cloud-db2-python-sdk"
+Documentation = "https://github.com/IBM/cloud-db2-python-sdk/blob/main/README.md"
+Issues = "https://github.com/IBM/cloud-db2-python-sdk/issues"
+Changelog = "https://github.com/IBM/cloud-db2-python-sdk/blob/main/CHANGELOG.md"
+Contributing = "https://github.com/IBM/cloud-db2-python-sdk/blob/main/CONTRIBUTING.md"
+License = "https://github.com/IBM/cloud-db2-python-sdk/blob/main/LICENSE"
+
+[project.optional-dependencies]
+dev = [
+    "coverage>=7.3.2,<8.0.0",
+    "pylint>=3.0.0,<4.0.0",
+    "pytest>=7.4.2,<8.0.0",
+    "pytest-cov>=4.1.0,<5.0.0",
+    "responses>=0.23.3,<1.0.0",
+    "black>=24.0.0,<25.0.0",
+]
+publish = [
+    "build",
+    "twine"
+]
+
+[build-system]
+requires = ["setuptools>=67.7.2"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["ibm_cloud_db2"]
+
+[tool.black]
+line-length = 120
+skip-string-normalization = true
