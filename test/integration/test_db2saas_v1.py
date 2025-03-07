@@ -36,8 +36,7 @@ class TestDb2saasV1:
         if os.path.exists(config_file):
             os.environ['IBM_CREDENTIALS_FILE'] = config_file
 
-            cls.db2saas_service = Db2saasV1.new_instance(
-            )
+            cls.db2saas_service = Db2saasV1.new_instance()
             assert cls.db2saas_service is not None
 
             cls.config = read_external_sources(Db2saasV1.DEFAULT_SERVICE_NAME)

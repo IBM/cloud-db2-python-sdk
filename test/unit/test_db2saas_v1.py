@@ -28,9 +28,7 @@ import urllib
 from ibm_cloud_db2.db2saas_v1 import *
 
 
-_service = Db2saasV1(
-    authenticator=NoAuthAuthenticator()
-)
+_service = Db2saasV1(authenticator=NoAuthAuthenticator())
 
 _base_url = 'https://us-south.db2.saas.ibm.com/dbapi/v4'
 _service.set_service_url(_base_url)
@@ -107,7 +105,9 @@ class TestGetDb2SaasConnectionInfo:
         get_db2_saas_connection_info()
         """
         # Set up mock
-        url = preprocess_url('/connectioninfo/crn%253Av1%253Astaging%253Apublic%253Adashdb-for-transactions%253Aus-south%253Aa%252Fe7e3e87b512f474381c0684a5ecbba03%253A69db420f-33d5-4953-8bd8-1950abd356f6%253A%253A')
+        url = preprocess_url(
+            '/connectioninfo/crn%253Av1%253Astaging%253Apublic%253Adashdb-for-transactions%253Aus-south%253Aa%252Fe7e3e87b512f474381c0684a5ecbba03%253A69db420f-33d5-4953-8bd8-1950abd356f6%253A%253A'
+        )
         mock_response = '{"public": {"hostname": "84792aeb-2a9c-4dee-bfad-2e529f16945d-useast-private.bt1ibm.dev.db2.ibmappdomain.cloud", "databaseName": "bluedb", "sslPort": "30450", "ssl": true, "databaseVersion": "11.5.0"}, "private": {"hostname": "84792aeb-2a9c-4dee-bfad-2e529f16945d-useast.bt1ibm.dev.db2.ibmappdomain.cloud", "databaseName": "bluedb", "sslPort": "30450", "ssl": true, "databaseVersion": "11.5.0", "private_serviceName": "us-south-private.db2oc.test.saas.ibm.com:32764", "cloud_service_offering": "dashdb-for-transactions", "vpe_service_crn": "crn:v1:staging:public:dashdb-for-transactions:us-south:::endpoint:feea41a1-ff88-4541-8865-0698ccb7c5dc-us-south-private.bt1ibm.dev.db2.ibmappdomain.cloud", "db_vpc_endpoint_service": "feea41a1-ff88-4541-8865-0698ccb7c5dc-ussouth-private.bt1ibm.dev.db2.ibmappdomain.cloud:32679"}}'
         responses.add(
             responses.GET,
@@ -147,7 +147,9 @@ class TestGetDb2SaasConnectionInfo:
         test_get_db2_saas_connection_info_value_error()
         """
         # Set up mock
-        url = preprocess_url('/connectioninfo/crn%253Av1%253Astaging%253Apublic%253Adashdb-for-transactions%253Aus-south%253Aa%252Fe7e3e87b512f474381c0684a5ecbba03%253A69db420f-33d5-4953-8bd8-1950abd356f6%253A%253A')
+        url = preprocess_url(
+            '/connectioninfo/crn%253Av1%253Astaging%253Apublic%253Adashdb-for-transactions%253Aus-south%253Aa%252Fe7e3e87b512f474381c0684a5ecbba03%253A69db420f-33d5-4953-8bd8-1950abd356f6%253A%253A'
+        )
         mock_response = '{"public": {"hostname": "84792aeb-2a9c-4dee-bfad-2e529f16945d-useast-private.bt1ibm.dev.db2.ibmappdomain.cloud", "databaseName": "bluedb", "sslPort": "30450", "ssl": true, "databaseVersion": "11.5.0"}, "private": {"hostname": "84792aeb-2a9c-4dee-bfad-2e529f16945d-useast.bt1ibm.dev.db2.ibmappdomain.cloud", "databaseName": "bluedb", "sslPort": "30450", "ssl": true, "databaseVersion": "11.5.0", "private_serviceName": "us-south-private.db2oc.test.saas.ibm.com:32764", "cloud_service_offering": "dashdb-for-transactions", "vpe_service_crn": "crn:v1:staging:public:dashdb-for-transactions:us-south:::endpoint:feea41a1-ff88-4541-8865-0698ccb7c5dc-us-south-private.bt1ibm.dev.db2.ibmappdomain.cloud", "db_vpc_endpoint_service": "feea41a1-ff88-4541-8865-0698ccb7c5dc-ussouth-private.bt1ibm.dev.db2.ibmappdomain.cloud:32679"}}'
         responses.add(
             responses.GET,
@@ -1930,7 +1932,9 @@ class TestModel_CreateCustomSettingsDb:
         assert create_custom_settings_db_model != False
 
         # Construct a model instance of CreateCustomSettingsDb by calling from_dict on the json representation
-        create_custom_settings_db_model_dict = CreateCustomSettingsDb.from_dict(create_custom_settings_db_model_json).__dict__
+        create_custom_settings_db_model_dict = CreateCustomSettingsDb.from_dict(
+            create_custom_settings_db_model_json
+        ).__dict__
         create_custom_settings_db_model2 = CreateCustomSettingsDb(**create_custom_settings_db_model_dict)
 
         # Verify the model instances are equivalent
@@ -1989,7 +1993,9 @@ class TestModel_CreateCustomSettingsDbm:
         assert create_custom_settings_dbm_model != False
 
         # Construct a model instance of CreateCustomSettingsDbm by calling from_dict on the json representation
-        create_custom_settings_dbm_model_dict = CreateCustomSettingsDbm.from_dict(create_custom_settings_dbm_model_json).__dict__
+        create_custom_settings_dbm_model_dict = CreateCustomSettingsDbm.from_dict(
+            create_custom_settings_dbm_model_json
+        ).__dict__
         create_custom_settings_dbm_model2 = CreateCustomSettingsDbm(**create_custom_settings_dbm_model_dict)
 
         # Verify the model instances are equivalent
@@ -2042,12 +2048,18 @@ class TestModel_CreateCustomSettingsRegistry:
         create_custom_settings_registry_model_json['DB2_WORKLOAD'] = 'SAP'
 
         # Construct a model instance of CreateCustomSettingsRegistry by calling from_dict on the json representation
-        create_custom_settings_registry_model = CreateCustomSettingsRegistry.from_dict(create_custom_settings_registry_model_json)
+        create_custom_settings_registry_model = CreateCustomSettingsRegistry.from_dict(
+            create_custom_settings_registry_model_json
+        )
         assert create_custom_settings_registry_model != False
 
         # Construct a model instance of CreateCustomSettingsRegistry by calling from_dict on the json representation
-        create_custom_settings_registry_model_dict = CreateCustomSettingsRegistry.from_dict(create_custom_settings_registry_model_json).__dict__
-        create_custom_settings_registry_model2 = CreateCustomSettingsRegistry(**create_custom_settings_registry_model_dict)
+        create_custom_settings_registry_model_dict = CreateCustomSettingsRegistry.from_dict(
+            create_custom_settings_registry_model_json
+        ).__dict__
+        create_custom_settings_registry_model2 = CreateCustomSettingsRegistry(
+            **create_custom_settings_registry_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert create_custom_settings_registry_model == create_custom_settings_registry_model2
@@ -2077,7 +2089,9 @@ class TestModel_CreateUserAuthentication:
         assert create_user_authentication_model != False
 
         # Construct a model instance of CreateUserAuthentication by calling from_dict on the json representation
-        create_user_authentication_model_dict = CreateUserAuthentication.from_dict(create_user_authentication_model_json).__dict__
+        create_user_authentication_model_dict = CreateUserAuthentication.from_dict(
+            create_user_authentication_model_json
+        ).__dict__
         create_user_authentication_model2 = CreateUserAuthentication(**create_user_authentication_model_dict)
 
         # Verify the model instances are equivalent
@@ -2170,22 +2184,30 @@ class TestModel_SuccessConnectionInfo:
         # Construct dict forms of any model objects needed in order to build this model.
 
         success_connection_info_public_model = {}  # SuccessConnectionInfoPublic
-        success_connection_info_public_model['hostname'] = '84792aeb-2a9c-4dee-bfad-2e529f16945d-useast-private.bt1ibm.dev.db2.ibmappdomain.cloud'
+        success_connection_info_public_model['hostname'] = (
+            '84792aeb-2a9c-4dee-bfad-2e529f16945d-useast-private.bt1ibm.dev.db2.ibmappdomain.cloud'
+        )
         success_connection_info_public_model['databaseName'] = 'bluedb'
         success_connection_info_public_model['sslPort'] = '30450'
         success_connection_info_public_model['ssl'] = True
         success_connection_info_public_model['databaseVersion'] = '11.5.0'
 
         success_connection_info_private_model = {}  # SuccessConnectionInfoPrivate
-        success_connection_info_private_model['hostname'] = '84792aeb-2a9c-4dee-bfad-2e529f16945d-useast.bt1ibm.dev.db2.ibmappdomain.cloud'
+        success_connection_info_private_model['hostname'] = (
+            '84792aeb-2a9c-4dee-bfad-2e529f16945d-useast.bt1ibm.dev.db2.ibmappdomain.cloud'
+        )
         success_connection_info_private_model['databaseName'] = 'bluedb'
         success_connection_info_private_model['sslPort'] = '30450'
         success_connection_info_private_model['ssl'] = True
         success_connection_info_private_model['databaseVersion'] = '11.5.0'
         success_connection_info_private_model['private_serviceName'] = 'us-south-private.db2oc.test.saas.ibm.com:32764'
         success_connection_info_private_model['cloud_service_offering'] = 'dashdb-for-transactions'
-        success_connection_info_private_model['vpe_service_crn'] = 'crn:v1:staging:public:dashdb-for-transactions:us-south:::endpoint:feea41a1-ff88-4541-8865-0698ccb7c5dc-us-south-private.bt1ibm.dev.db2.ibmappdomain.cloud'
-        success_connection_info_private_model['db_vpc_endpoint_service'] = 'feea41a1-ff88-4541-8865-0698ccb7c5dc-ussouth-private.bt1ibm.dev.db2.ibmappdomain.cloud:32679'
+        success_connection_info_private_model['vpe_service_crn'] = (
+            'crn:v1:staging:public:dashdb-for-transactions:us-south:::endpoint:feea41a1-ff88-4541-8865-0698ccb7c5dc-us-south-private.bt1ibm.dev.db2.ibmappdomain.cloud'
+        )
+        success_connection_info_private_model['db_vpc_endpoint_service'] = (
+            'feea41a1-ff88-4541-8865-0698ccb7c5dc-ussouth-private.bt1ibm.dev.db2.ibmappdomain.cloud:32679'
+        )
 
         # Construct a json representation of a SuccessConnectionInfo model
         success_connection_info_model_json = {}
@@ -2197,7 +2219,9 @@ class TestModel_SuccessConnectionInfo:
         assert success_connection_info_model != False
 
         # Construct a model instance of SuccessConnectionInfo by calling from_dict on the json representation
-        success_connection_info_model_dict = SuccessConnectionInfo.from_dict(success_connection_info_model_json).__dict__
+        success_connection_info_model_dict = SuccessConnectionInfo.from_dict(
+            success_connection_info_model_json
+        ).__dict__
         success_connection_info_model2 = SuccessConnectionInfo(**success_connection_info_model_dict)
 
         # Verify the model instances are equivalent
@@ -2220,23 +2244,37 @@ class TestModel_SuccessConnectionInfoPrivate:
 
         # Construct a json representation of a SuccessConnectionInfoPrivate model
         success_connection_info_private_model_json = {}
-        success_connection_info_private_model_json['hostname'] = '84792aeb-2a9c-4dee-bfad-2e529f16945d-useast.bt1ibm.dev.db2.ibmappdomain.cloud'
+        success_connection_info_private_model_json['hostname'] = (
+            '84792aeb-2a9c-4dee-bfad-2e529f16945d-useast.bt1ibm.dev.db2.ibmappdomain.cloud'
+        )
         success_connection_info_private_model_json['databaseName'] = 'bluedb'
         success_connection_info_private_model_json['sslPort'] = '30450'
         success_connection_info_private_model_json['ssl'] = True
         success_connection_info_private_model_json['databaseVersion'] = '11.5.0'
-        success_connection_info_private_model_json['private_serviceName'] = 'us-south-private.db2oc.test.saas.ibm.com:32764'
+        success_connection_info_private_model_json['private_serviceName'] = (
+            'us-south-private.db2oc.test.saas.ibm.com:32764'
+        )
         success_connection_info_private_model_json['cloud_service_offering'] = 'dashdb-for-transactions'
-        success_connection_info_private_model_json['vpe_service_crn'] = 'crn:v1:staging:public:dashdb-for-transactions:us-south:::endpoint:feea41a1-ff88-4541-8865-0698ccb7c5dc-us-south-private.bt1ibm.dev.db2.ibmappdomain.cloud'
-        success_connection_info_private_model_json['db_vpc_endpoint_service'] = 'feea41a1-ff88-4541-8865-0698ccb7c5dc-ussouth-private.bt1ibm.dev.db2.ibmappdomain.cloud:32679'
+        success_connection_info_private_model_json['vpe_service_crn'] = (
+            'crn:v1:staging:public:dashdb-for-transactions:us-south:::endpoint:feea41a1-ff88-4541-8865-0698ccb7c5dc-us-south-private.bt1ibm.dev.db2.ibmappdomain.cloud'
+        )
+        success_connection_info_private_model_json['db_vpc_endpoint_service'] = (
+            'feea41a1-ff88-4541-8865-0698ccb7c5dc-ussouth-private.bt1ibm.dev.db2.ibmappdomain.cloud:32679'
+        )
 
         # Construct a model instance of SuccessConnectionInfoPrivate by calling from_dict on the json representation
-        success_connection_info_private_model = SuccessConnectionInfoPrivate.from_dict(success_connection_info_private_model_json)
+        success_connection_info_private_model = SuccessConnectionInfoPrivate.from_dict(
+            success_connection_info_private_model_json
+        )
         assert success_connection_info_private_model != False
 
         # Construct a model instance of SuccessConnectionInfoPrivate by calling from_dict on the json representation
-        success_connection_info_private_model_dict = SuccessConnectionInfoPrivate.from_dict(success_connection_info_private_model_json).__dict__
-        success_connection_info_private_model2 = SuccessConnectionInfoPrivate(**success_connection_info_private_model_dict)
+        success_connection_info_private_model_dict = SuccessConnectionInfoPrivate.from_dict(
+            success_connection_info_private_model_json
+        ).__dict__
+        success_connection_info_private_model2 = SuccessConnectionInfoPrivate(
+            **success_connection_info_private_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert success_connection_info_private_model == success_connection_info_private_model2
@@ -2258,18 +2296,24 @@ class TestModel_SuccessConnectionInfoPublic:
 
         # Construct a json representation of a SuccessConnectionInfoPublic model
         success_connection_info_public_model_json = {}
-        success_connection_info_public_model_json['hostname'] = '84792aeb-2a9c-4dee-bfad-2e529f16945d-useast-private.bt1ibm.dev.db2.ibmappdomain.cloud'
+        success_connection_info_public_model_json['hostname'] = (
+            '84792aeb-2a9c-4dee-bfad-2e529f16945d-useast-private.bt1ibm.dev.db2.ibmappdomain.cloud'
+        )
         success_connection_info_public_model_json['databaseName'] = 'bluedb'
         success_connection_info_public_model_json['sslPort'] = '30450'
         success_connection_info_public_model_json['ssl'] = True
         success_connection_info_public_model_json['databaseVersion'] = '11.5.0'
 
         # Construct a model instance of SuccessConnectionInfoPublic by calling from_dict on the json representation
-        success_connection_info_public_model = SuccessConnectionInfoPublic.from_dict(success_connection_info_public_model_json)
+        success_connection_info_public_model = SuccessConnectionInfoPublic.from_dict(
+            success_connection_info_public_model_json
+        )
         assert success_connection_info_public_model != False
 
         # Construct a model instance of SuccessConnectionInfoPublic by calling from_dict on the json representation
-        success_connection_info_public_model_dict = SuccessConnectionInfoPublic.from_dict(success_connection_info_public_model_json).__dict__
+        success_connection_info_public_model_dict = SuccessConnectionInfoPublic.from_dict(
+            success_connection_info_public_model_json
+        ).__dict__
         success_connection_info_public_model2 = SuccessConnectionInfoPublic(**success_connection_info_public_model_dict)
 
         # Verify the model instances are equivalent
@@ -2293,7 +2337,9 @@ class TestModel_SuccessCreateBackup:
         # Construct dict forms of any model objects needed in order to build this model.
 
         success_create_backup_task_model = {}  # SuccessCreateBackupTask
-        success_create_backup_task_model['id'] = 'crn:v1:staging:public:dashdb-for-transactions:us-east:a/e7e3e87b512f474381c0684a5ecbba03:0c9c7889-54de-4ecc-8399-09a4d4ff228e:task:51ff2dc7-6cb9-41c0-9345-09e54550fb7b'
+        success_create_backup_task_model['id'] = (
+            'crn:v1:staging:public:dashdb-for-transactions:us-east:a/e7e3e87b512f474381c0684a5ecbba03:0c9c7889-54de-4ecc-8399-09a4d4ff228e:task:51ff2dc7-6cb9-41c0-9345-09e54550fb7b'
+        )
 
         # Construct a json representation of a SuccessCreateBackup model
         success_create_backup_model_json = {}
@@ -2327,14 +2373,18 @@ class TestModel_SuccessCreateBackupTask:
 
         # Construct a json representation of a SuccessCreateBackupTask model
         success_create_backup_task_model_json = {}
-        success_create_backup_task_model_json['id'] = 'crn:v1:staging:public:dashdb-for-transactions:us-east:a/e7e3e87b512f474381c0684a5ecbba03:0c9c7889-54de-4ecc-8399-09a4d4ff228e:task:51ff2dc7-6cb9-41c0-9345-09e54550fb7b'
+        success_create_backup_task_model_json['id'] = (
+            'crn:v1:staging:public:dashdb-for-transactions:us-east:a/e7e3e87b512f474381c0684a5ecbba03:0c9c7889-54de-4ecc-8399-09a4d4ff228e:task:51ff2dc7-6cb9-41c0-9345-09e54550fb7b'
+        )
 
         # Construct a model instance of SuccessCreateBackupTask by calling from_dict on the json representation
         success_create_backup_task_model = SuccessCreateBackupTask.from_dict(success_create_backup_task_model_json)
         assert success_create_backup_task_model != False
 
         # Construct a model instance of SuccessCreateBackupTask by calling from_dict on the json representation
-        success_create_backup_task_model_dict = SuccessCreateBackupTask.from_dict(success_create_backup_task_model_json).__dict__
+        success_create_backup_task_model_dict = SuccessCreateBackupTask.from_dict(
+            success_create_backup_task_model_json
+        ).__dict__
         success_create_backup_task_model2 = SuccessCreateBackupTask(**success_create_backup_task_model_dict)
 
         # Verify the model instances are equivalent
@@ -2370,7 +2420,9 @@ class TestModel_SuccessGetAllowlistIPs:
         assert success_get_allowlist_i_ps_model != False
 
         # Construct a model instance of SuccessGetAllowlistIPs by calling from_dict on the json representation
-        success_get_allowlist_i_ps_model_dict = SuccessGetAllowlistIPs.from_dict(success_get_allowlist_i_ps_model_json).__dict__
+        success_get_allowlist_i_ps_model_dict = SuccessGetAllowlistIPs.from_dict(
+            success_get_allowlist_i_ps_model_json
+        ).__dict__
         success_get_allowlist_i_ps_model2 = SuccessGetAllowlistIPs(**success_get_allowlist_i_ps_model_dict)
 
         # Verify the model instances are equivalent
@@ -2394,7 +2446,9 @@ class TestModel_SuccessGetBackups:
         # Construct dict forms of any model objects needed in order to build this model.
 
         backup_model = {}  # Backup
-        backup_model['id'] = 'crn:v1:staging:public:dashdb-for-transactions:us-east:a/e7e3e87b512f474381c0684a5ecbba03:14afd73e-7bdf-4dde-ad07-cc1e548777fb:backup:8aa416ea-f920-4303-934f-671fca223992'
+        backup_model['id'] = (
+            'crn:v1:staging:public:dashdb-for-transactions:us-east:a/e7e3e87b512f474381c0684a5ecbba03:14afd73e-7bdf-4dde-ad07-cc1e548777fb:backup:8aa416ea-f920-4303-934f-671fca223992'
+        )
         backup_model['type'] = 'scheduled'
         backup_model['status'] = 'completed'
         backup_model['created_at'] = '2025-01-16T06:20:24.000Z'
@@ -2488,12 +2542,18 @@ class TestModel_SuccessGetUserByIDAuthentication:
         success_get_user_by_id_authentication_model_json['policy_id'] = 'testString'
 
         # Construct a model instance of SuccessGetUserByIDAuthentication by calling from_dict on the json representation
-        success_get_user_by_id_authentication_model = SuccessGetUserByIDAuthentication.from_dict(success_get_user_by_id_authentication_model_json)
+        success_get_user_by_id_authentication_model = SuccessGetUserByIDAuthentication.from_dict(
+            success_get_user_by_id_authentication_model_json
+        )
         assert success_get_user_by_id_authentication_model != False
 
         # Construct a model instance of SuccessGetUserByIDAuthentication by calling from_dict on the json representation
-        success_get_user_by_id_authentication_model_dict = SuccessGetUserByIDAuthentication.from_dict(success_get_user_by_id_authentication_model_json).__dict__
-        success_get_user_by_id_authentication_model2 = SuccessGetUserByIDAuthentication(**success_get_user_by_id_authentication_model_dict)
+        success_get_user_by_id_authentication_model_dict = SuccessGetUserByIDAuthentication.from_dict(
+            success_get_user_by_id_authentication_model_json
+        ).__dict__
+        success_get_user_by_id_authentication_model2 = SuccessGetUserByIDAuthentication(
+            **success_get_user_by_id_authentication_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert success_get_user_by_id_authentication_model == success_get_user_by_id_authentication_model2
@@ -2535,7 +2595,9 @@ class TestModel_SuccessGetUserInfo:
         success_get_user_info_resources_item_model['locked'] = 'no'
         success_get_user_info_resources_item_model['initErrorMsg'] = 'testString'
         success_get_user_info_resources_item_model['email'] = 'user@host.org'
-        success_get_user_info_resources_item_model['authentication'] = success_get_user_info_resources_item_authentication_model
+        success_get_user_info_resources_item_model['authentication'] = (
+            success_get_user_info_resources_item_authentication_model
+        )
 
         # Construct a json representation of a SuccessGetUserInfo model
         success_get_user_info_model_json = {}
@@ -2591,15 +2653,23 @@ class TestModel_SuccessGetUserInfoResourcesItem:
         success_get_user_info_resources_item_model_json['locked'] = 'no'
         success_get_user_info_resources_item_model_json['initErrorMsg'] = 'testString'
         success_get_user_info_resources_item_model_json['email'] = 'user@host.org'
-        success_get_user_info_resources_item_model_json['authentication'] = success_get_user_info_resources_item_authentication_model
+        success_get_user_info_resources_item_model_json['authentication'] = (
+            success_get_user_info_resources_item_authentication_model
+        )
 
         # Construct a model instance of SuccessGetUserInfoResourcesItem by calling from_dict on the json representation
-        success_get_user_info_resources_item_model = SuccessGetUserInfoResourcesItem.from_dict(success_get_user_info_resources_item_model_json)
+        success_get_user_info_resources_item_model = SuccessGetUserInfoResourcesItem.from_dict(
+            success_get_user_info_resources_item_model_json
+        )
         assert success_get_user_info_resources_item_model != False
 
         # Construct a model instance of SuccessGetUserInfoResourcesItem by calling from_dict on the json representation
-        success_get_user_info_resources_item_model_dict = SuccessGetUserInfoResourcesItem.from_dict(success_get_user_info_resources_item_model_json).__dict__
-        success_get_user_info_resources_item_model2 = SuccessGetUserInfoResourcesItem(**success_get_user_info_resources_item_model_dict)
+        success_get_user_info_resources_item_model_dict = SuccessGetUserInfoResourcesItem.from_dict(
+            success_get_user_info_resources_item_model_json
+        ).__dict__
+        success_get_user_info_resources_item_model2 = SuccessGetUserInfoResourcesItem(
+            **success_get_user_info_resources_item_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert success_get_user_info_resources_item_model == success_get_user_info_resources_item_model2
@@ -2625,19 +2695,37 @@ class TestModel_SuccessGetUserInfoResourcesItemAuthentication:
         success_get_user_info_resources_item_authentication_model_json['policy_id'] = 'Default'
 
         # Construct a model instance of SuccessGetUserInfoResourcesItemAuthentication by calling from_dict on the json representation
-        success_get_user_info_resources_item_authentication_model = SuccessGetUserInfoResourcesItemAuthentication.from_dict(success_get_user_info_resources_item_authentication_model_json)
+        success_get_user_info_resources_item_authentication_model = (
+            SuccessGetUserInfoResourcesItemAuthentication.from_dict(
+                success_get_user_info_resources_item_authentication_model_json
+            )
+        )
         assert success_get_user_info_resources_item_authentication_model != False
 
         # Construct a model instance of SuccessGetUserInfoResourcesItemAuthentication by calling from_dict on the json representation
-        success_get_user_info_resources_item_authentication_model_dict = SuccessGetUserInfoResourcesItemAuthentication.from_dict(success_get_user_info_resources_item_authentication_model_json).__dict__
-        success_get_user_info_resources_item_authentication_model2 = SuccessGetUserInfoResourcesItemAuthentication(**success_get_user_info_resources_item_authentication_model_dict)
+        success_get_user_info_resources_item_authentication_model_dict = (
+            SuccessGetUserInfoResourcesItemAuthentication.from_dict(
+                success_get_user_info_resources_item_authentication_model_json
+            ).__dict__
+        )
+        success_get_user_info_resources_item_authentication_model2 = SuccessGetUserInfoResourcesItemAuthentication(
+            **success_get_user_info_resources_item_authentication_model_dict
+        )
 
         # Verify the model instances are equivalent
-        assert success_get_user_info_resources_item_authentication_model == success_get_user_info_resources_item_authentication_model2
+        assert (
+            success_get_user_info_resources_item_authentication_model
+            == success_get_user_info_resources_item_authentication_model2
+        )
 
         # Convert model instance back to dict and verify no loss of data
-        success_get_user_info_resources_item_authentication_model_json2 = success_get_user_info_resources_item_authentication_model.to_dict()
-        assert success_get_user_info_resources_item_authentication_model_json2 == success_get_user_info_resources_item_authentication_model_json
+        success_get_user_info_resources_item_authentication_model_json2 = (
+            success_get_user_info_resources_item_authentication_model.to_dict()
+        )
+        assert (
+            success_get_user_info_resources_item_authentication_model_json2
+            == success_get_user_info_resources_item_authentication_model_json
+        )
 
 
 class TestModel_SuccessPostAllowedlistIPs:
@@ -2655,11 +2743,15 @@ class TestModel_SuccessPostAllowedlistIPs:
         success_post_allowedlist_i_ps_model_json['status'] = 'testString'
 
         # Construct a model instance of SuccessPostAllowedlistIPs by calling from_dict on the json representation
-        success_post_allowedlist_i_ps_model = SuccessPostAllowedlistIPs.from_dict(success_post_allowedlist_i_ps_model_json)
+        success_post_allowedlist_i_ps_model = SuccessPostAllowedlistIPs.from_dict(
+            success_post_allowedlist_i_ps_model_json
+        )
         assert success_post_allowedlist_i_ps_model != False
 
         # Construct a model instance of SuccessPostAllowedlistIPs by calling from_dict on the json representation
-        success_post_allowedlist_i_ps_model_dict = SuccessPostAllowedlistIPs.from_dict(success_post_allowedlist_i_ps_model_json).__dict__
+        success_post_allowedlist_i_ps_model_dict = SuccessPostAllowedlistIPs.from_dict(
+            success_post_allowedlist_i_ps_model_json
+        ).__dict__
         success_post_allowedlist_i_ps_model2 = SuccessPostAllowedlistIPs(**success_post_allowedlist_i_ps_model_dict)
 
         # Verify the model instances are equivalent
@@ -2687,11 +2779,15 @@ class TestModel_SuccessPostCustomSettings:
         success_post_custom_settings_model_json['status'] = 'testString'
 
         # Construct a model instance of SuccessPostCustomSettings by calling from_dict on the json representation
-        success_post_custom_settings_model = SuccessPostCustomSettings.from_dict(success_post_custom_settings_model_json)
+        success_post_custom_settings_model = SuccessPostCustomSettings.from_dict(
+            success_post_custom_settings_model_json
+        )
         assert success_post_custom_settings_model != False
 
         # Construct a model instance of SuccessPostCustomSettings by calling from_dict on the json representation
-        success_post_custom_settings_model_dict = SuccessPostCustomSettings.from_dict(success_post_custom_settings_model_json).__dict__
+        success_post_custom_settings_model_dict = SuccessPostCustomSettings.from_dict(
+            success_post_custom_settings_model_json
+        ).__dict__
         success_post_custom_settings_model2 = SuccessPostCustomSettings(**success_post_custom_settings_model_dict)
 
         # Verify the model instances are equivalent
@@ -2727,7 +2823,9 @@ class TestModel_SuccessTuneableParams:
         success_tuneable_params_tuneable_param_db_model['AUTO_CG_STATS'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_db_model['AUTO_MAINT'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_db_model['AUTO_REORG'] = '\'ON\', \'OFF\''
-        success_tuneable_params_tuneable_param_db_model['AUTO_REVAL'] = '\'IMMEDIATE\', \'DISABLED\', \'DEFERRED\', \'DEFERRED_FORCE\''
+        success_tuneable_params_tuneable_param_db_model['AUTO_REVAL'] = (
+            '\'IMMEDIATE\', \'DISABLED\', \'DEFERRED\', \'DEFERRED_FORCE\''
+        )
         success_tuneable_params_tuneable_param_db_model['AUTO_RUNSTATS'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_db_model['AUTO_SAMPLING'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_db_model['AUTO_STATS_VIEWS'] = '\'ON\', \'OFF\''
@@ -2737,13 +2835,17 @@ class TestModel_SuccessTuneableParams:
         success_tuneable_params_tuneable_param_db_model['CATALOGCACHE_SZ'] = '\'-\''
         success_tuneable_params_tuneable_param_db_model['CHNGPGS_THRESH'] = '\'range(5,99)\''
         success_tuneable_params_tuneable_param_db_model['CUR_COMMIT'] = '\'ON, AVAILABLE, DISABLED\''
-        success_tuneable_params_tuneable_param_db_model['DATABASE_MEMORY'] = '\'AUTOMATIC\', \'COMPUTED\', \'range(0, 4294967295)\''
+        success_tuneable_params_tuneable_param_db_model['DATABASE_MEMORY'] = (
+            '\'AUTOMATIC\', \'COMPUTED\', \'range(0, 4294967295)\''
+        )
         success_tuneable_params_tuneable_param_db_model['DBHEAP'] = '\'AUTOMATIC\', \'range(32, 2147483647)\''
         success_tuneable_params_tuneable_param_db_model['DB_COLLNAME'] = '\'-\''
         success_tuneable_params_tuneable_param_db_model['DB_MEM_THRESH'] = '\'range(0, 100)\''
         success_tuneable_params_tuneable_param_db_model['DDL_COMPRESSION_DEF'] = '\'YES\', \'NO\''
         success_tuneable_params_tuneable_param_db_model['DDL_CONSTRAINT_DEF'] = '\'YES\', \'NO\''
-        success_tuneable_params_tuneable_param_db_model['DECFLT_ROUNDING'] = '\'ROUND_HALF_EVEN\', \'ROUND_CEILING\', \'ROUND_FLOOR\', \'ROUND_HALF_UP\', \'ROUND_DOWN\''
+        success_tuneable_params_tuneable_param_db_model['DECFLT_ROUNDING'] = (
+            '\'ROUND_HALF_EVEN\', \'ROUND_CEILING\', \'ROUND_FLOOR\', \'ROUND_HALF_UP\', \'ROUND_DOWN\''
+        )
         success_tuneable_params_tuneable_param_db_model['DEC_ARITHMETIC'] = '\'-\''
         success_tuneable_params_tuneable_param_db_model['DEC_TO_CHAR_FMT'] = '\'NEW\', \'V95\''
         success_tuneable_params_tuneable_param_db_model['DFT_DEGREE'] = '\'-1\', \'ANY\', \'range(1, 32767)\''
@@ -2760,7 +2862,9 @@ class TestModel_SuccessTuneableParams:
         success_tuneable_params_tuneable_param_db_model['ENABLE_XMLCHAR'] = '\'YES\', \'NO\''
         success_tuneable_params_tuneable_param_db_model['EXTENDED_ROW_SZ'] = '\'ENABLE\', \'DISABLE\''
         success_tuneable_params_tuneable_param_db_model['GROUPHEAP_RATIO'] = '\'range(1, 99)\''
-        success_tuneable_params_tuneable_param_db_model['INDEXREC'] = '\'SYSTEM\', \'ACCESS\', \'ACCESS_NO_REDO\', \'RESTART\', \'RESTART_NO_REDO\''
+        success_tuneable_params_tuneable_param_db_model['INDEXREC'] = (
+            '\'SYSTEM\', \'ACCESS\', \'ACCESS_NO_REDO\', \'RESTART\', \'RESTART_NO_REDO\''
+        )
         success_tuneable_params_tuneable_param_db_model['LARGE_AGGREGATION'] = '\'YES\', \'NO\''
         success_tuneable_params_tuneable_param_db_model['LOCKLIST'] = '\'AUTOMATIC\', \'range(4, 134217728)\''
         success_tuneable_params_tuneable_param_db_model['LOCKTIMEOUT'] = '\'-1\', \'range(0, 32767)\''
@@ -2773,10 +2877,16 @@ class TestModel_SuccessTuneableParams:
         success_tuneable_params_tuneable_param_db_model['MAXLOCKS'] = '\'AUTOMATIC\', \'range(1, 100)\''
         success_tuneable_params_tuneable_param_db_model['MIN_DEC_DIV_3'] = '\'YES\', \'NO\''
         success_tuneable_params_tuneable_param_db_model['MON_ACT_METRICS'] = '\'NONE\', \'BASE\', \'EXTENDED\''
-        success_tuneable_params_tuneable_param_db_model['MON_DEADLOCK'] = '\'NONE\', \'WITHOUT_HIST\', \'HISTORY\', \'HIST_AND_VALUES\''
+        success_tuneable_params_tuneable_param_db_model['MON_DEADLOCK'] = (
+            '\'NONE\', \'WITHOUT_HIST\', \'HISTORY\', \'HIST_AND_VALUES\''
+        )
         success_tuneable_params_tuneable_param_db_model['MON_LCK_MSG_LVL'] = '\'range(0, 3)\''
-        success_tuneable_params_tuneable_param_db_model['MON_LOCKTIMEOUT'] = '\'NONE\', \'WITHOUT_HIST\', \'HISTORY\', \'HIST_AND_VALUES\''
-        success_tuneable_params_tuneable_param_db_model['MON_LOCKWAIT'] = '\'NONE\', \'WITHOUT_HIST\', \'HISTORY\', \'HIST_AND_VALUES\''
+        success_tuneable_params_tuneable_param_db_model['MON_LOCKTIMEOUT'] = (
+            '\'NONE\', \'WITHOUT_HIST\', \'HISTORY\', \'HIST_AND_VALUES\''
+        )
+        success_tuneable_params_tuneable_param_db_model['MON_LOCKWAIT'] = (
+            '\'NONE\', \'WITHOUT_HIST\', \'HISTORY\', \'HIST_AND_VALUES\''
+        )
         success_tuneable_params_tuneable_param_db_model['MON_LW_THRESH'] = '\'range(1000, 4294967295)\''
         success_tuneable_params_tuneable_param_db_model['MON_OBJ_METRICS'] = '\'NONE\', \'BASE\', \'EXTENDED\''
         success_tuneable_params_tuneable_param_db_model['MON_PKGLIST_SZ'] = '\'range(0, 1024)\''
@@ -2786,20 +2896,26 @@ class TestModel_SuccessTuneableParams:
         success_tuneable_params_tuneable_param_db_model['MON_UOW_DATA'] = '\'NONE\', \'BASE\''
         success_tuneable_params_tuneable_param_db_model['MON_UOW_EXECLIST'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_db_model['MON_UOW_PKGLIST'] = '\'OFF\', \'ON\''
-        success_tuneable_params_tuneable_param_db_model['NCHAR_MAPPING'] = '\'CHAR_CU32\', \'GRAPHIC_CU32\', \'GRAPHIC_CU16\', \'NOT APPLICABLE\''
+        success_tuneable_params_tuneable_param_db_model['NCHAR_MAPPING'] = (
+            '\'CHAR_CU32\', \'GRAPHIC_CU32\', \'GRAPHIC_CU16\', \'NOT APPLICABLE\''
+        )
         success_tuneable_params_tuneable_param_db_model['NUM_FREQVALUES'] = '\'range(0, 32767)\''
         success_tuneable_params_tuneable_param_db_model['NUM_IOCLEANERS'] = '\'AUTOMATIC\', \'range(0, 255)\''
         success_tuneable_params_tuneable_param_db_model['NUM_IOSERVERS'] = '\'AUTOMATIC\', \'range(1, 255)\''
         success_tuneable_params_tuneable_param_db_model['NUM_LOG_SPAN'] = '\'range(0, 65535)\''
         success_tuneable_params_tuneable_param_db_model['NUM_QUANTILES'] = '\'range(0, 32767)\''
         success_tuneable_params_tuneable_param_db_model['OPT_BUFFPAGE'] = '\'-\''
-        success_tuneable_params_tuneable_param_db_model['OPT_DIRECT_WRKLD'] = '\'ON\', \'OFF\', \'YES\', \'NO\', \'AUTOMATIC\''
+        success_tuneable_params_tuneable_param_db_model['OPT_DIRECT_WRKLD'] = (
+            '\'ON\', \'OFF\', \'YES\', \'NO\', \'AUTOMATIC\''
+        )
         success_tuneable_params_tuneable_param_db_model['OPT_LOCKLIST'] = '\'-\''
         success_tuneable_params_tuneable_param_db_model['OPT_MAXLOCKS'] = '\'-\''
         success_tuneable_params_tuneable_param_db_model['OPT_SORTHEAP'] = '\'-\''
         success_tuneable_params_tuneable_param_db_model['PAGE_AGE_TRGT_GCR'] = '\'range(1, 65535)\''
         success_tuneable_params_tuneable_param_db_model['PAGE_AGE_TRGT_MCR'] = '\'range(1, 65535)\''
-        success_tuneable_params_tuneable_param_db_model['PCKCACHESZ'] = '\'AUTOMATIC\', \'-1\', \'range(32, 2147483646)\''
+        success_tuneable_params_tuneable_param_db_model['PCKCACHESZ'] = (
+            '\'AUTOMATIC\', \'-1\', \'range(32, 2147483646)\''
+        )
         success_tuneable_params_tuneable_param_db_model['PL_STACK_TRACE'] = '\'NONE\', \'ALL\', \'UNHANDLED\''
         success_tuneable_params_tuneable_param_db_model['SELF_TUNING_MEM'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_db_model['SEQDETECT'] = '\'YES\', \'NO\''
@@ -2809,7 +2925,9 @@ class TestModel_SuccessTuneableParams:
         success_tuneable_params_tuneable_param_db_model['SQL_CCFLAGS'] = '\'-\''
         success_tuneable_params_tuneable_param_db_model['STAT_HEAP_SZ'] = '\'AUTOMATIC\', \'range(1096, 2147483647)\''
         success_tuneable_params_tuneable_param_db_model['STMTHEAP'] = '\'AUTOMATIC\', \'range(128, 2147483647)\''
-        success_tuneable_params_tuneable_param_db_model['STMT_CONC'] = '\'OFF\', \'LITERALS\', \'COMMENTS\', \'COMM_LIT\''
+        success_tuneable_params_tuneable_param_db_model['STMT_CONC'] = (
+            '\'OFF\', \'LITERALS\', \'COMMENTS\', \'COMM_LIT\''
+        )
         success_tuneable_params_tuneable_param_db_model['STRING_UNITS'] = '\'SYSTEM\', \'CODEUNITS32\''
         success_tuneable_params_tuneable_param_db_model['SYSTIME_PERIOD_ADJ'] = '\'NO\', \'YES\''
         success_tuneable_params_tuneable_param_db_model['TRACKMOD'] = '\'YES\', \'NO\''
@@ -2832,7 +2950,9 @@ class TestModel_SuccessTuneableParams:
         success_tuneable_params_tuneable_param_dbm_model['DFT_MON_UOW'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_dbm_model['DIAGLEVEL'] = '\'range(0, 4)\''
         success_tuneable_params_tuneable_param_dbm_model['FEDERATED_ASYNC'] = '\'range(0, 32767)\', \'-1\', \'ANY\''
-        success_tuneable_params_tuneable_param_dbm_model['INDEXREC'] = '\'RESTART\', \'RESTART_NO_REDO\', \'ACCESS\', \'ACCESS_NO_REDO\''
+        success_tuneable_params_tuneable_param_dbm_model['INDEXREC'] = (
+            '\'RESTART\', \'RESTART_NO_REDO\', \'ACCESS\', \'ACCESS_NO_REDO\''
+        )
         success_tuneable_params_tuneable_param_dbm_model['INTRA_PARALLEL'] = '\'SYSTEM\', \'NO\', \'YES\''
         success_tuneable_params_tuneable_param_dbm_model['KEEPFENCED'] = '\'YES\', \'NO\''
         success_tuneable_params_tuneable_param_dbm_model['MAX_CONNRETRIES'] = '\'range(0, 100)\''
@@ -2857,7 +2977,9 @@ class TestModel_SuccessTuneableParams:
         success_tuneable_params_tuneable_param_registry_model['DB2COMPOPT'] = '\'-\''
         success_tuneable_params_tuneable_param_registry_model['DB2LOCK_TO_RB'] = '\'STATEMENT\''
         success_tuneable_params_tuneable_param_registry_model['DB2STMM'] = '\'NO\', \'YES\''
-        success_tuneable_params_tuneable_param_registry_model['DB2_ALTERNATE_AUTHZ_BEHAVIOUR'] = '\'EXTERNAL_ROUTINE_DBADM\', \'EXTERNAL_ROUTINE_DBAUTH\''
+        success_tuneable_params_tuneable_param_registry_model['DB2_ALTERNATE_AUTHZ_BEHAVIOUR'] = (
+            '\'EXTERNAL_ROUTINE_DBADM\', \'EXTERNAL_ROUTINE_DBAUTH\''
+        )
         success_tuneable_params_tuneable_param_registry_model['DB2_ANTIJOIN'] = '\'YES\', \'NO\', \'EXTEND\''
         success_tuneable_params_tuneable_param_registry_model['DB2_ATS_ENABLE'] = '\'YES\', \'NO\''
         success_tuneable_params_tuneable_param_registry_model['DB2_DEFERRED_PREPARE_SEMANTICS'] = '\'NO\', \'YES\''
@@ -2876,11 +2998,15 @@ class TestModel_SuccessTuneableParams:
         success_tuneable_params_tuneable_param_registry_model['DB2_SKIPDELETED'] = '\'NO\', \'YES\''
         success_tuneable_params_tuneable_param_registry_model['DB2_SKIPINSERTED'] = '\'NO\', \'YES\''
         success_tuneable_params_tuneable_param_registry_model['DB2_SYNC_RELEASE_LOCK_ATTRIBUTES'] = '\'NO\', \'YES\''
-        success_tuneable_params_tuneable_param_registry_model['DB2_TRUNCATE_REUSESTORAGE'] = '\'IMPORT\', \'LOAD\', \'TRUNCATE\''
+        success_tuneable_params_tuneable_param_registry_model['DB2_TRUNCATE_REUSESTORAGE'] = (
+            '\'IMPORT\', \'LOAD\', \'TRUNCATE\''
+        )
         success_tuneable_params_tuneable_param_registry_model['DB2_USE_ALTERNATE_PAGE_CLEANING'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_registry_model['DB2_VIEW_REOPT_VALUES'] = '\'NO\', \'YES\''
         success_tuneable_params_tuneable_param_registry_model['DB2_WLM_SETTINGS'] = '\'-\''
-        success_tuneable_params_tuneable_param_registry_model['DB2_WORKLOAD'] = '\'1C\', \'ANALYTICS\', \'CM\', \'COGNOS_CS\', \'FILENET_CM\', \'INFOR_ERP_LN\', \'MAXIMO\', \'MDM\', \'SAP\', \'TPM\', \'WAS\', \'WC\', \'WP\''
+        success_tuneable_params_tuneable_param_registry_model['DB2_WORKLOAD'] = (
+            '\'1C\', \'ANALYTICS\', \'CM\', \'COGNOS_CS\', \'FILENET_CM\', \'INFOR_ERP_LN\', \'MAXIMO\', \'MDM\', \'SAP\', \'TPM\', \'WAS\', \'WC\', \'WP\''
+        )
 
         success_tuneable_params_tuneable_param_model = {}  # SuccessTuneableParamsTuneableParam
         success_tuneable_params_tuneable_param_model['db'] = success_tuneable_params_tuneable_param_db_model
@@ -2896,7 +3022,9 @@ class TestModel_SuccessTuneableParams:
         assert success_tuneable_params_model != False
 
         # Construct a model instance of SuccessTuneableParams by calling from_dict on the json representation
-        success_tuneable_params_model_dict = SuccessTuneableParams.from_dict(success_tuneable_params_model_json).__dict__
+        success_tuneable_params_model_dict = SuccessTuneableParams.from_dict(
+            success_tuneable_params_model_json
+        ).__dict__
         success_tuneable_params_model2 = SuccessTuneableParams(**success_tuneable_params_model_dict)
 
         # Verify the model instances are equivalent
@@ -2932,7 +3060,9 @@ class TestModel_SuccessTuneableParamsTuneableParam:
         success_tuneable_params_tuneable_param_db_model['AUTO_CG_STATS'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_db_model['AUTO_MAINT'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_db_model['AUTO_REORG'] = '\'ON\', \'OFF\''
-        success_tuneable_params_tuneable_param_db_model['AUTO_REVAL'] = '\'IMMEDIATE\', \'DISABLED\', \'DEFERRED\', \'DEFERRED_FORCE\''
+        success_tuneable_params_tuneable_param_db_model['AUTO_REVAL'] = (
+            '\'IMMEDIATE\', \'DISABLED\', \'DEFERRED\', \'DEFERRED_FORCE\''
+        )
         success_tuneable_params_tuneable_param_db_model['AUTO_RUNSTATS'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_db_model['AUTO_SAMPLING'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_db_model['AUTO_STATS_VIEWS'] = '\'ON\', \'OFF\''
@@ -2942,13 +3072,17 @@ class TestModel_SuccessTuneableParamsTuneableParam:
         success_tuneable_params_tuneable_param_db_model['CATALOGCACHE_SZ'] = '\'-\''
         success_tuneable_params_tuneable_param_db_model['CHNGPGS_THRESH'] = '\'range(5,99)\''
         success_tuneable_params_tuneable_param_db_model['CUR_COMMIT'] = '\'ON, AVAILABLE, DISABLED\''
-        success_tuneable_params_tuneable_param_db_model['DATABASE_MEMORY'] = '\'AUTOMATIC\', \'COMPUTED\', \'range(0, 4294967295)\''
+        success_tuneable_params_tuneable_param_db_model['DATABASE_MEMORY'] = (
+            '\'AUTOMATIC\', \'COMPUTED\', \'range(0, 4294967295)\''
+        )
         success_tuneable_params_tuneable_param_db_model['DBHEAP'] = '\'AUTOMATIC\', \'range(32, 2147483647)\''
         success_tuneable_params_tuneable_param_db_model['DB_COLLNAME'] = '\'-\''
         success_tuneable_params_tuneable_param_db_model['DB_MEM_THRESH'] = '\'range(0, 100)\''
         success_tuneable_params_tuneable_param_db_model['DDL_COMPRESSION_DEF'] = '\'YES\', \'NO\''
         success_tuneable_params_tuneable_param_db_model['DDL_CONSTRAINT_DEF'] = '\'YES\', \'NO\''
-        success_tuneable_params_tuneable_param_db_model['DECFLT_ROUNDING'] = '\'ROUND_HALF_EVEN\', \'ROUND_CEILING\', \'ROUND_FLOOR\', \'ROUND_HALF_UP\', \'ROUND_DOWN\''
+        success_tuneable_params_tuneable_param_db_model['DECFLT_ROUNDING'] = (
+            '\'ROUND_HALF_EVEN\', \'ROUND_CEILING\', \'ROUND_FLOOR\', \'ROUND_HALF_UP\', \'ROUND_DOWN\''
+        )
         success_tuneable_params_tuneable_param_db_model['DEC_ARITHMETIC'] = '\'-\''
         success_tuneable_params_tuneable_param_db_model['DEC_TO_CHAR_FMT'] = '\'NEW\', \'V95\''
         success_tuneable_params_tuneable_param_db_model['DFT_DEGREE'] = '\'-1\', \'ANY\', \'range(1, 32767)\''
@@ -2965,7 +3099,9 @@ class TestModel_SuccessTuneableParamsTuneableParam:
         success_tuneable_params_tuneable_param_db_model['ENABLE_XMLCHAR'] = '\'YES\', \'NO\''
         success_tuneable_params_tuneable_param_db_model['EXTENDED_ROW_SZ'] = '\'ENABLE\', \'DISABLE\''
         success_tuneable_params_tuneable_param_db_model['GROUPHEAP_RATIO'] = '\'range(1, 99)\''
-        success_tuneable_params_tuneable_param_db_model['INDEXREC'] = '\'SYSTEM\', \'ACCESS\', \'ACCESS_NO_REDO\', \'RESTART\', \'RESTART_NO_REDO\''
+        success_tuneable_params_tuneable_param_db_model['INDEXREC'] = (
+            '\'SYSTEM\', \'ACCESS\', \'ACCESS_NO_REDO\', \'RESTART\', \'RESTART_NO_REDO\''
+        )
         success_tuneable_params_tuneable_param_db_model['LARGE_AGGREGATION'] = '\'YES\', \'NO\''
         success_tuneable_params_tuneable_param_db_model['LOCKLIST'] = '\'AUTOMATIC\', \'range(4, 134217728)\''
         success_tuneable_params_tuneable_param_db_model['LOCKTIMEOUT'] = '\'-1\', \'range(0, 32767)\''
@@ -2978,10 +3114,16 @@ class TestModel_SuccessTuneableParamsTuneableParam:
         success_tuneable_params_tuneable_param_db_model['MAXLOCKS'] = '\'AUTOMATIC\', \'range(1, 100)\''
         success_tuneable_params_tuneable_param_db_model['MIN_DEC_DIV_3'] = '\'YES\', \'NO\''
         success_tuneable_params_tuneable_param_db_model['MON_ACT_METRICS'] = '\'NONE\', \'BASE\', \'EXTENDED\''
-        success_tuneable_params_tuneable_param_db_model['MON_DEADLOCK'] = '\'NONE\', \'WITHOUT_HIST\', \'HISTORY\', \'HIST_AND_VALUES\''
+        success_tuneable_params_tuneable_param_db_model['MON_DEADLOCK'] = (
+            '\'NONE\', \'WITHOUT_HIST\', \'HISTORY\', \'HIST_AND_VALUES\''
+        )
         success_tuneable_params_tuneable_param_db_model['MON_LCK_MSG_LVL'] = '\'range(0, 3)\''
-        success_tuneable_params_tuneable_param_db_model['MON_LOCKTIMEOUT'] = '\'NONE\', \'WITHOUT_HIST\', \'HISTORY\', \'HIST_AND_VALUES\''
-        success_tuneable_params_tuneable_param_db_model['MON_LOCKWAIT'] = '\'NONE\', \'WITHOUT_HIST\', \'HISTORY\', \'HIST_AND_VALUES\''
+        success_tuneable_params_tuneable_param_db_model['MON_LOCKTIMEOUT'] = (
+            '\'NONE\', \'WITHOUT_HIST\', \'HISTORY\', \'HIST_AND_VALUES\''
+        )
+        success_tuneable_params_tuneable_param_db_model['MON_LOCKWAIT'] = (
+            '\'NONE\', \'WITHOUT_HIST\', \'HISTORY\', \'HIST_AND_VALUES\''
+        )
         success_tuneable_params_tuneable_param_db_model['MON_LW_THRESH'] = '\'range(1000, 4294967295)\''
         success_tuneable_params_tuneable_param_db_model['MON_OBJ_METRICS'] = '\'NONE\', \'BASE\', \'EXTENDED\''
         success_tuneable_params_tuneable_param_db_model['MON_PKGLIST_SZ'] = '\'range(0, 1024)\''
@@ -2991,20 +3133,26 @@ class TestModel_SuccessTuneableParamsTuneableParam:
         success_tuneable_params_tuneable_param_db_model['MON_UOW_DATA'] = '\'NONE\', \'BASE\''
         success_tuneable_params_tuneable_param_db_model['MON_UOW_EXECLIST'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_db_model['MON_UOW_PKGLIST'] = '\'OFF\', \'ON\''
-        success_tuneable_params_tuneable_param_db_model['NCHAR_MAPPING'] = '\'CHAR_CU32\', \'GRAPHIC_CU32\', \'GRAPHIC_CU16\', \'NOT APPLICABLE\''
+        success_tuneable_params_tuneable_param_db_model['NCHAR_MAPPING'] = (
+            '\'CHAR_CU32\', \'GRAPHIC_CU32\', \'GRAPHIC_CU16\', \'NOT APPLICABLE\''
+        )
         success_tuneable_params_tuneable_param_db_model['NUM_FREQVALUES'] = '\'range(0, 32767)\''
         success_tuneable_params_tuneable_param_db_model['NUM_IOCLEANERS'] = '\'AUTOMATIC\', \'range(0, 255)\''
         success_tuneable_params_tuneable_param_db_model['NUM_IOSERVERS'] = '\'AUTOMATIC\', \'range(1, 255)\''
         success_tuneable_params_tuneable_param_db_model['NUM_LOG_SPAN'] = '\'range(0, 65535)\''
         success_tuneable_params_tuneable_param_db_model['NUM_QUANTILES'] = '\'range(0, 32767)\''
         success_tuneable_params_tuneable_param_db_model['OPT_BUFFPAGE'] = '\'-\''
-        success_tuneable_params_tuneable_param_db_model['OPT_DIRECT_WRKLD'] = '\'ON\', \'OFF\', \'YES\', \'NO\', \'AUTOMATIC\''
+        success_tuneable_params_tuneable_param_db_model['OPT_DIRECT_WRKLD'] = (
+            '\'ON\', \'OFF\', \'YES\', \'NO\', \'AUTOMATIC\''
+        )
         success_tuneable_params_tuneable_param_db_model['OPT_LOCKLIST'] = '\'-\''
         success_tuneable_params_tuneable_param_db_model['OPT_MAXLOCKS'] = '\'-\''
         success_tuneable_params_tuneable_param_db_model['OPT_SORTHEAP'] = '\'-\''
         success_tuneable_params_tuneable_param_db_model['PAGE_AGE_TRGT_GCR'] = '\'range(1, 65535)\''
         success_tuneable_params_tuneable_param_db_model['PAGE_AGE_TRGT_MCR'] = '\'range(1, 65535)\''
-        success_tuneable_params_tuneable_param_db_model['PCKCACHESZ'] = '\'AUTOMATIC\', \'-1\', \'range(32, 2147483646)\''
+        success_tuneable_params_tuneable_param_db_model['PCKCACHESZ'] = (
+            '\'AUTOMATIC\', \'-1\', \'range(32, 2147483646)\''
+        )
         success_tuneable_params_tuneable_param_db_model['PL_STACK_TRACE'] = '\'NONE\', \'ALL\', \'UNHANDLED\''
         success_tuneable_params_tuneable_param_db_model['SELF_TUNING_MEM'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_db_model['SEQDETECT'] = '\'YES\', \'NO\''
@@ -3014,7 +3162,9 @@ class TestModel_SuccessTuneableParamsTuneableParam:
         success_tuneable_params_tuneable_param_db_model['SQL_CCFLAGS'] = '\'-\''
         success_tuneable_params_tuneable_param_db_model['STAT_HEAP_SZ'] = '\'AUTOMATIC\', \'range(1096, 2147483647)\''
         success_tuneable_params_tuneable_param_db_model['STMTHEAP'] = '\'AUTOMATIC\', \'range(128, 2147483647)\''
-        success_tuneable_params_tuneable_param_db_model['STMT_CONC'] = '\'OFF\', \'LITERALS\', \'COMMENTS\', \'COMM_LIT\''
+        success_tuneable_params_tuneable_param_db_model['STMT_CONC'] = (
+            '\'OFF\', \'LITERALS\', \'COMMENTS\', \'COMM_LIT\''
+        )
         success_tuneable_params_tuneable_param_db_model['STRING_UNITS'] = '\'SYSTEM\', \'CODEUNITS32\''
         success_tuneable_params_tuneable_param_db_model['SYSTIME_PERIOD_ADJ'] = '\'NO\', \'YES\''
         success_tuneable_params_tuneable_param_db_model['TRACKMOD'] = '\'YES\', \'NO\''
@@ -3037,7 +3187,9 @@ class TestModel_SuccessTuneableParamsTuneableParam:
         success_tuneable_params_tuneable_param_dbm_model['DFT_MON_UOW'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_dbm_model['DIAGLEVEL'] = '\'range(0, 4)\''
         success_tuneable_params_tuneable_param_dbm_model['FEDERATED_ASYNC'] = '\'range(0, 32767)\', \'-1\', \'ANY\''
-        success_tuneable_params_tuneable_param_dbm_model['INDEXREC'] = '\'RESTART\', \'RESTART_NO_REDO\', \'ACCESS\', \'ACCESS_NO_REDO\''
+        success_tuneable_params_tuneable_param_dbm_model['INDEXREC'] = (
+            '\'RESTART\', \'RESTART_NO_REDO\', \'ACCESS\', \'ACCESS_NO_REDO\''
+        )
         success_tuneable_params_tuneable_param_dbm_model['INTRA_PARALLEL'] = '\'SYSTEM\', \'NO\', \'YES\''
         success_tuneable_params_tuneable_param_dbm_model['KEEPFENCED'] = '\'YES\', \'NO\''
         success_tuneable_params_tuneable_param_dbm_model['MAX_CONNRETRIES'] = '\'range(0, 100)\''
@@ -3062,7 +3214,9 @@ class TestModel_SuccessTuneableParamsTuneableParam:
         success_tuneable_params_tuneable_param_registry_model['DB2COMPOPT'] = '\'-\''
         success_tuneable_params_tuneable_param_registry_model['DB2LOCK_TO_RB'] = '\'STATEMENT\''
         success_tuneable_params_tuneable_param_registry_model['DB2STMM'] = '\'NO\', \'YES\''
-        success_tuneable_params_tuneable_param_registry_model['DB2_ALTERNATE_AUTHZ_BEHAVIOUR'] = '\'EXTERNAL_ROUTINE_DBADM\', \'EXTERNAL_ROUTINE_DBAUTH\''
+        success_tuneable_params_tuneable_param_registry_model['DB2_ALTERNATE_AUTHZ_BEHAVIOUR'] = (
+            '\'EXTERNAL_ROUTINE_DBADM\', \'EXTERNAL_ROUTINE_DBAUTH\''
+        )
         success_tuneable_params_tuneable_param_registry_model['DB2_ANTIJOIN'] = '\'YES\', \'NO\', \'EXTEND\''
         success_tuneable_params_tuneable_param_registry_model['DB2_ATS_ENABLE'] = '\'YES\', \'NO\''
         success_tuneable_params_tuneable_param_registry_model['DB2_DEFERRED_PREPARE_SEMANTICS'] = '\'NO\', \'YES\''
@@ -3081,25 +3235,37 @@ class TestModel_SuccessTuneableParamsTuneableParam:
         success_tuneable_params_tuneable_param_registry_model['DB2_SKIPDELETED'] = '\'NO\', \'YES\''
         success_tuneable_params_tuneable_param_registry_model['DB2_SKIPINSERTED'] = '\'NO\', \'YES\''
         success_tuneable_params_tuneable_param_registry_model['DB2_SYNC_RELEASE_LOCK_ATTRIBUTES'] = '\'NO\', \'YES\''
-        success_tuneable_params_tuneable_param_registry_model['DB2_TRUNCATE_REUSESTORAGE'] = '\'IMPORT\', \'LOAD\', \'TRUNCATE\''
+        success_tuneable_params_tuneable_param_registry_model['DB2_TRUNCATE_REUSESTORAGE'] = (
+            '\'IMPORT\', \'LOAD\', \'TRUNCATE\''
+        )
         success_tuneable_params_tuneable_param_registry_model['DB2_USE_ALTERNATE_PAGE_CLEANING'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_registry_model['DB2_VIEW_REOPT_VALUES'] = '\'NO\', \'YES\''
         success_tuneable_params_tuneable_param_registry_model['DB2_WLM_SETTINGS'] = '\'-\''
-        success_tuneable_params_tuneable_param_registry_model['DB2_WORKLOAD'] = '\'1C\', \'ANALYTICS\', \'CM\', \'COGNOS_CS\', \'FILENET_CM\', \'INFOR_ERP_LN\', \'MAXIMO\', \'MDM\', \'SAP\', \'TPM\', \'WAS\', \'WC\', \'WP\''
+        success_tuneable_params_tuneable_param_registry_model['DB2_WORKLOAD'] = (
+            '\'1C\', \'ANALYTICS\', \'CM\', \'COGNOS_CS\', \'FILENET_CM\', \'INFOR_ERP_LN\', \'MAXIMO\', \'MDM\', \'SAP\', \'TPM\', \'WAS\', \'WC\', \'WP\''
+        )
 
         # Construct a json representation of a SuccessTuneableParamsTuneableParam model
         success_tuneable_params_tuneable_param_model_json = {}
         success_tuneable_params_tuneable_param_model_json['db'] = success_tuneable_params_tuneable_param_db_model
         success_tuneable_params_tuneable_param_model_json['dbm'] = success_tuneable_params_tuneable_param_dbm_model
-        success_tuneable_params_tuneable_param_model_json['registry'] = success_tuneable_params_tuneable_param_registry_model
+        success_tuneable_params_tuneable_param_model_json['registry'] = (
+            success_tuneable_params_tuneable_param_registry_model
+        )
 
         # Construct a model instance of SuccessTuneableParamsTuneableParam by calling from_dict on the json representation
-        success_tuneable_params_tuneable_param_model = SuccessTuneableParamsTuneableParam.from_dict(success_tuneable_params_tuneable_param_model_json)
+        success_tuneable_params_tuneable_param_model = SuccessTuneableParamsTuneableParam.from_dict(
+            success_tuneable_params_tuneable_param_model_json
+        )
         assert success_tuneable_params_tuneable_param_model != False
 
         # Construct a model instance of SuccessTuneableParamsTuneableParam by calling from_dict on the json representation
-        success_tuneable_params_tuneable_param_model_dict = SuccessTuneableParamsTuneableParam.from_dict(success_tuneable_params_tuneable_param_model_json).__dict__
-        success_tuneable_params_tuneable_param_model2 = SuccessTuneableParamsTuneableParam(**success_tuneable_params_tuneable_param_model_dict)
+        success_tuneable_params_tuneable_param_model_dict = SuccessTuneableParamsTuneableParam.from_dict(
+            success_tuneable_params_tuneable_param_model_json
+        ).__dict__
+        success_tuneable_params_tuneable_param_model2 = SuccessTuneableParamsTuneableParam(
+            **success_tuneable_params_tuneable_param_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert success_tuneable_params_tuneable_param_model == success_tuneable_params_tuneable_param_model2
@@ -3125,7 +3291,9 @@ class TestModel_SuccessTuneableParamsTuneableParamDb:
         success_tuneable_params_tuneable_param_db_model_json['ALT_COLLATE'] = '\'NULL\', \'IDENTITY_16BIT\''
         success_tuneable_params_tuneable_param_db_model_json['APPGROUP_MEM_SZ'] = '\'range(1, 1000000)\''
         success_tuneable_params_tuneable_param_db_model_json['APPLHEAPSZ'] = '\'AUTOMATIC\', \'range(16, 2147483647)\''
-        success_tuneable_params_tuneable_param_db_model_json['APPL_MEMORY'] = '\'AUTOMATIC\', \'range(128, 4294967295)\''
+        success_tuneable_params_tuneable_param_db_model_json['APPL_MEMORY'] = (
+            '\'AUTOMATIC\', \'range(128, 4294967295)\''
+        )
         success_tuneable_params_tuneable_param_db_model_json['APP_CTL_HEAP_SZ'] = '\'range(1, 64000)\''
         success_tuneable_params_tuneable_param_db_model_json['ARCHRETRYDELAY'] = '\'range(0, 65535)\''
         success_tuneable_params_tuneable_param_db_model_json['AUTHN_CACHE_DURATION'] = '\'range(1,10000)\''
@@ -3133,7 +3301,9 @@ class TestModel_SuccessTuneableParamsTuneableParamDb:
         success_tuneable_params_tuneable_param_db_model_json['AUTO_CG_STATS'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_db_model_json['AUTO_MAINT'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_db_model_json['AUTO_REORG'] = '\'ON\', \'OFF\''
-        success_tuneable_params_tuneable_param_db_model_json['AUTO_REVAL'] = '\'IMMEDIATE\', \'DISABLED\', \'DEFERRED\', \'DEFERRED_FORCE\''
+        success_tuneable_params_tuneable_param_db_model_json['AUTO_REVAL'] = (
+            '\'IMMEDIATE\', \'DISABLED\', \'DEFERRED\', \'DEFERRED_FORCE\''
+        )
         success_tuneable_params_tuneable_param_db_model_json['AUTO_RUNSTATS'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_db_model_json['AUTO_SAMPLING'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_db_model_json['AUTO_STATS_VIEWS'] = '\'ON\', \'OFF\''
@@ -3143,13 +3313,17 @@ class TestModel_SuccessTuneableParamsTuneableParamDb:
         success_tuneable_params_tuneable_param_db_model_json['CATALOGCACHE_SZ'] = '\'-\''
         success_tuneable_params_tuneable_param_db_model_json['CHNGPGS_THRESH'] = '\'range(5,99)\''
         success_tuneable_params_tuneable_param_db_model_json['CUR_COMMIT'] = '\'ON, AVAILABLE, DISABLED\''
-        success_tuneable_params_tuneable_param_db_model_json['DATABASE_MEMORY'] = '\'AUTOMATIC\', \'COMPUTED\', \'range(0, 4294967295)\''
+        success_tuneable_params_tuneable_param_db_model_json['DATABASE_MEMORY'] = (
+            '\'AUTOMATIC\', \'COMPUTED\', \'range(0, 4294967295)\''
+        )
         success_tuneable_params_tuneable_param_db_model_json['DBHEAP'] = '\'AUTOMATIC\', \'range(32, 2147483647)\''
         success_tuneable_params_tuneable_param_db_model_json['DB_COLLNAME'] = '\'-\''
         success_tuneable_params_tuneable_param_db_model_json['DB_MEM_THRESH'] = '\'range(0, 100)\''
         success_tuneable_params_tuneable_param_db_model_json['DDL_COMPRESSION_DEF'] = '\'YES\', \'NO\''
         success_tuneable_params_tuneable_param_db_model_json['DDL_CONSTRAINT_DEF'] = '\'YES\', \'NO\''
-        success_tuneable_params_tuneable_param_db_model_json['DECFLT_ROUNDING'] = '\'ROUND_HALF_EVEN\', \'ROUND_CEILING\', \'ROUND_FLOOR\', \'ROUND_HALF_UP\', \'ROUND_DOWN\''
+        success_tuneable_params_tuneable_param_db_model_json['DECFLT_ROUNDING'] = (
+            '\'ROUND_HALF_EVEN\', \'ROUND_CEILING\', \'ROUND_FLOOR\', \'ROUND_HALF_UP\', \'ROUND_DOWN\''
+        )
         success_tuneable_params_tuneable_param_db_model_json['DEC_ARITHMETIC'] = '\'-\''
         success_tuneable_params_tuneable_param_db_model_json['DEC_TO_CHAR_FMT'] = '\'NEW\', \'V95\''
         success_tuneable_params_tuneable_param_db_model_json['DFT_DEGREE'] = '\'-1\', \'ANY\', \'range(1, 32767)\''
@@ -3166,7 +3340,9 @@ class TestModel_SuccessTuneableParamsTuneableParamDb:
         success_tuneable_params_tuneable_param_db_model_json['ENABLE_XMLCHAR'] = '\'YES\', \'NO\''
         success_tuneable_params_tuneable_param_db_model_json['EXTENDED_ROW_SZ'] = '\'ENABLE\', \'DISABLE\''
         success_tuneable_params_tuneable_param_db_model_json['GROUPHEAP_RATIO'] = '\'range(1, 99)\''
-        success_tuneable_params_tuneable_param_db_model_json['INDEXREC'] = '\'SYSTEM\', \'ACCESS\', \'ACCESS_NO_REDO\', \'RESTART\', \'RESTART_NO_REDO\''
+        success_tuneable_params_tuneable_param_db_model_json['INDEXREC'] = (
+            '\'SYSTEM\', \'ACCESS\', \'ACCESS_NO_REDO\', \'RESTART\', \'RESTART_NO_REDO\''
+        )
         success_tuneable_params_tuneable_param_db_model_json['LARGE_AGGREGATION'] = '\'YES\', \'NO\''
         success_tuneable_params_tuneable_param_db_model_json['LOCKLIST'] = '\'AUTOMATIC\', \'range(4, 134217728)\''
         success_tuneable_params_tuneable_param_db_model_json['LOCKTIMEOUT'] = '\'-1\', \'range(0, 32767)\''
@@ -3179,10 +3355,16 @@ class TestModel_SuccessTuneableParamsTuneableParamDb:
         success_tuneable_params_tuneable_param_db_model_json['MAXLOCKS'] = '\'AUTOMATIC\', \'range(1, 100)\''
         success_tuneable_params_tuneable_param_db_model_json['MIN_DEC_DIV_3'] = '\'YES\', \'NO\''
         success_tuneable_params_tuneable_param_db_model_json['MON_ACT_METRICS'] = '\'NONE\', \'BASE\', \'EXTENDED\''
-        success_tuneable_params_tuneable_param_db_model_json['MON_DEADLOCK'] = '\'NONE\', \'WITHOUT_HIST\', \'HISTORY\', \'HIST_AND_VALUES\''
+        success_tuneable_params_tuneable_param_db_model_json['MON_DEADLOCK'] = (
+            '\'NONE\', \'WITHOUT_HIST\', \'HISTORY\', \'HIST_AND_VALUES\''
+        )
         success_tuneable_params_tuneable_param_db_model_json['MON_LCK_MSG_LVL'] = '\'range(0, 3)\''
-        success_tuneable_params_tuneable_param_db_model_json['MON_LOCKTIMEOUT'] = '\'NONE\', \'WITHOUT_HIST\', \'HISTORY\', \'HIST_AND_VALUES\''
-        success_tuneable_params_tuneable_param_db_model_json['MON_LOCKWAIT'] = '\'NONE\', \'WITHOUT_HIST\', \'HISTORY\', \'HIST_AND_VALUES\''
+        success_tuneable_params_tuneable_param_db_model_json['MON_LOCKTIMEOUT'] = (
+            '\'NONE\', \'WITHOUT_HIST\', \'HISTORY\', \'HIST_AND_VALUES\''
+        )
+        success_tuneable_params_tuneable_param_db_model_json['MON_LOCKWAIT'] = (
+            '\'NONE\', \'WITHOUT_HIST\', \'HISTORY\', \'HIST_AND_VALUES\''
+        )
         success_tuneable_params_tuneable_param_db_model_json['MON_LW_THRESH'] = '\'range(1000, 4294967295)\''
         success_tuneable_params_tuneable_param_db_model_json['MON_OBJ_METRICS'] = '\'NONE\', \'BASE\', \'EXTENDED\''
         success_tuneable_params_tuneable_param_db_model_json['MON_PKGLIST_SZ'] = '\'range(0, 1024)\''
@@ -3192,54 +3374,81 @@ class TestModel_SuccessTuneableParamsTuneableParamDb:
         success_tuneable_params_tuneable_param_db_model_json['MON_UOW_DATA'] = '\'NONE\', \'BASE\''
         success_tuneable_params_tuneable_param_db_model_json['MON_UOW_EXECLIST'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_db_model_json['MON_UOW_PKGLIST'] = '\'OFF\', \'ON\''
-        success_tuneable_params_tuneable_param_db_model_json['NCHAR_MAPPING'] = '\'CHAR_CU32\', \'GRAPHIC_CU32\', \'GRAPHIC_CU16\', \'NOT APPLICABLE\''
+        success_tuneable_params_tuneable_param_db_model_json['NCHAR_MAPPING'] = (
+            '\'CHAR_CU32\', \'GRAPHIC_CU32\', \'GRAPHIC_CU16\', \'NOT APPLICABLE\''
+        )
         success_tuneable_params_tuneable_param_db_model_json['NUM_FREQVALUES'] = '\'range(0, 32767)\''
         success_tuneable_params_tuneable_param_db_model_json['NUM_IOCLEANERS'] = '\'AUTOMATIC\', \'range(0, 255)\''
         success_tuneable_params_tuneable_param_db_model_json['NUM_IOSERVERS'] = '\'AUTOMATIC\', \'range(1, 255)\''
         success_tuneable_params_tuneable_param_db_model_json['NUM_LOG_SPAN'] = '\'range(0, 65535)\''
         success_tuneable_params_tuneable_param_db_model_json['NUM_QUANTILES'] = '\'range(0, 32767)\''
         success_tuneable_params_tuneable_param_db_model_json['OPT_BUFFPAGE'] = '\'-\''
-        success_tuneable_params_tuneable_param_db_model_json['OPT_DIRECT_WRKLD'] = '\'ON\', \'OFF\', \'YES\', \'NO\', \'AUTOMATIC\''
+        success_tuneable_params_tuneable_param_db_model_json['OPT_DIRECT_WRKLD'] = (
+            '\'ON\', \'OFF\', \'YES\', \'NO\', \'AUTOMATIC\''
+        )
         success_tuneable_params_tuneable_param_db_model_json['OPT_LOCKLIST'] = '\'-\''
         success_tuneable_params_tuneable_param_db_model_json['OPT_MAXLOCKS'] = '\'-\''
         success_tuneable_params_tuneable_param_db_model_json['OPT_SORTHEAP'] = '\'-\''
         success_tuneable_params_tuneable_param_db_model_json['PAGE_AGE_TRGT_GCR'] = '\'range(1, 65535)\''
         success_tuneable_params_tuneable_param_db_model_json['PAGE_AGE_TRGT_MCR'] = '\'range(1, 65535)\''
-        success_tuneable_params_tuneable_param_db_model_json['PCKCACHESZ'] = '\'AUTOMATIC\', \'-1\', \'range(32, 2147483646)\''
+        success_tuneable_params_tuneable_param_db_model_json['PCKCACHESZ'] = (
+            '\'AUTOMATIC\', \'-1\', \'range(32, 2147483646)\''
+        )
         success_tuneable_params_tuneable_param_db_model_json['PL_STACK_TRACE'] = '\'NONE\', \'ALL\', \'UNHANDLED\''
         success_tuneable_params_tuneable_param_db_model_json['SELF_TUNING_MEM'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_db_model_json['SEQDETECT'] = '\'YES\', \'NO\''
-        success_tuneable_params_tuneable_param_db_model_json['SHEAPTHRES_SHR'] = '\'AUTOMATIC\', \'range(250, 2147483647)\''
+        success_tuneable_params_tuneable_param_db_model_json['SHEAPTHRES_SHR'] = (
+            '\'AUTOMATIC\', \'range(250, 2147483647)\''
+        )
         success_tuneable_params_tuneable_param_db_model_json['SOFTMAX'] = '\'-\''
         success_tuneable_params_tuneable_param_db_model_json['SORTHEAP'] = '\'AUTOMATIC\', \'range(16, 4294967295)\''
         success_tuneable_params_tuneable_param_db_model_json['SQL_CCFLAGS'] = '\'-\''
-        success_tuneable_params_tuneable_param_db_model_json['STAT_HEAP_SZ'] = '\'AUTOMATIC\', \'range(1096, 2147483647)\''
+        success_tuneable_params_tuneable_param_db_model_json['STAT_HEAP_SZ'] = (
+            '\'AUTOMATIC\', \'range(1096, 2147483647)\''
+        )
         success_tuneable_params_tuneable_param_db_model_json['STMTHEAP'] = '\'AUTOMATIC\', \'range(128, 2147483647)\''
-        success_tuneable_params_tuneable_param_db_model_json['STMT_CONC'] = '\'OFF\', \'LITERALS\', \'COMMENTS\', \'COMM_LIT\''
+        success_tuneable_params_tuneable_param_db_model_json['STMT_CONC'] = (
+            '\'OFF\', \'LITERALS\', \'COMMENTS\', \'COMM_LIT\''
+        )
         success_tuneable_params_tuneable_param_db_model_json['STRING_UNITS'] = '\'SYSTEM\', \'CODEUNITS32\''
         success_tuneable_params_tuneable_param_db_model_json['SYSTIME_PERIOD_ADJ'] = '\'NO\', \'YES\''
         success_tuneable_params_tuneable_param_db_model_json['TRACKMOD'] = '\'YES\', \'NO\''
-        success_tuneable_params_tuneable_param_db_model_json['UTIL_HEAP_SZ'] = '\'AUTOMATIC\', \'range(16, 2147483647)\''
+        success_tuneable_params_tuneable_param_db_model_json['UTIL_HEAP_SZ'] = (
+            '\'AUTOMATIC\', \'range(16, 2147483647)\''
+        )
         success_tuneable_params_tuneable_param_db_model_json['WLM_ADMISSION_CTRL'] = '\'YES\', \'NO\''
-        success_tuneable_params_tuneable_param_db_model_json['WLM_AGENT_LOAD_TRGT'] = '\'AUTOMATIC\', \'range(1, 65535)\''
+        success_tuneable_params_tuneable_param_db_model_json['WLM_AGENT_LOAD_TRGT'] = (
+            '\'AUTOMATIC\', \'range(1, 65535)\''
+        )
         success_tuneable_params_tuneable_param_db_model_json['WLM_CPU_LIMIT'] = '\'range(0, 100)\''
         success_tuneable_params_tuneable_param_db_model_json['WLM_CPU_SHARES'] = '\'range(1, 65535)\''
         success_tuneable_params_tuneable_param_db_model_json['WLM_CPU_SHARE_MODE'] = '\'HARD\', \'SOFT\''
 
         # Construct a model instance of SuccessTuneableParamsTuneableParamDb by calling from_dict on the json representation
-        success_tuneable_params_tuneable_param_db_model = SuccessTuneableParamsTuneableParamDb.from_dict(success_tuneable_params_tuneable_param_db_model_json)
+        success_tuneable_params_tuneable_param_db_model = SuccessTuneableParamsTuneableParamDb.from_dict(
+            success_tuneable_params_tuneable_param_db_model_json
+        )
         assert success_tuneable_params_tuneable_param_db_model != False
 
         # Construct a model instance of SuccessTuneableParamsTuneableParamDb by calling from_dict on the json representation
-        success_tuneable_params_tuneable_param_db_model_dict = SuccessTuneableParamsTuneableParamDb.from_dict(success_tuneable_params_tuneable_param_db_model_json).__dict__
-        success_tuneable_params_tuneable_param_db_model2 = SuccessTuneableParamsTuneableParamDb(**success_tuneable_params_tuneable_param_db_model_dict)
+        success_tuneable_params_tuneable_param_db_model_dict = SuccessTuneableParamsTuneableParamDb.from_dict(
+            success_tuneable_params_tuneable_param_db_model_json
+        ).__dict__
+        success_tuneable_params_tuneable_param_db_model2 = SuccessTuneableParamsTuneableParamDb(
+            **success_tuneable_params_tuneable_param_db_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert success_tuneable_params_tuneable_param_db_model == success_tuneable_params_tuneable_param_db_model2
 
         # Convert model instance back to dict and verify no loss of data
-        success_tuneable_params_tuneable_param_db_model_json2 = success_tuneable_params_tuneable_param_db_model.to_dict()
-        assert success_tuneable_params_tuneable_param_db_model_json2 == success_tuneable_params_tuneable_param_db_model_json
+        success_tuneable_params_tuneable_param_db_model_json2 = (
+            success_tuneable_params_tuneable_param_db_model.to_dict()
+        )
+        assert (
+            success_tuneable_params_tuneable_param_db_model_json2
+            == success_tuneable_params_tuneable_param_db_model_json
+        )
 
 
 class TestModel_SuccessTuneableParamsTuneableParamDbm:
@@ -3264,12 +3473,18 @@ class TestModel_SuccessTuneableParamsTuneableParamDbm:
         success_tuneable_params_tuneable_param_dbm_model_json['DFT_MON_TIMESTAMP'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_dbm_model_json['DFT_MON_UOW'] = '\'ON\', \'OFF\''
         success_tuneable_params_tuneable_param_dbm_model_json['DIAGLEVEL'] = '\'range(0, 4)\''
-        success_tuneable_params_tuneable_param_dbm_model_json['FEDERATED_ASYNC'] = '\'range(0, 32767)\', \'-1\', \'ANY\''
-        success_tuneable_params_tuneable_param_dbm_model_json['INDEXREC'] = '\'RESTART\', \'RESTART_NO_REDO\', \'ACCESS\', \'ACCESS_NO_REDO\''
+        success_tuneable_params_tuneable_param_dbm_model_json['FEDERATED_ASYNC'] = (
+            '\'range(0, 32767)\', \'-1\', \'ANY\''
+        )
+        success_tuneable_params_tuneable_param_dbm_model_json['INDEXREC'] = (
+            '\'RESTART\', \'RESTART_NO_REDO\', \'ACCESS\', \'ACCESS_NO_REDO\''
+        )
         success_tuneable_params_tuneable_param_dbm_model_json['INTRA_PARALLEL'] = '\'SYSTEM\', \'NO\', \'YES\''
         success_tuneable_params_tuneable_param_dbm_model_json['KEEPFENCED'] = '\'YES\', \'NO\''
         success_tuneable_params_tuneable_param_dbm_model_json['MAX_CONNRETRIES'] = '\'range(0, 100)\''
-        success_tuneable_params_tuneable_param_dbm_model_json['MAX_QUERYDEGREE'] = '\'range(1, 32767)\', \'-1\', \'ANY\''
+        success_tuneable_params_tuneable_param_dbm_model_json['MAX_QUERYDEGREE'] = (
+            '\'range(1, 32767)\', \'-1\', \'ANY\''
+        )
         success_tuneable_params_tuneable_param_dbm_model_json['MON_HEAP_SZ'] = '\'range(0, 2147483647)\', \'AUTOMATIC\''
         success_tuneable_params_tuneable_param_dbm_model_json['MULTIPARTSIZEMB'] = '\'range(5, 5120)\''
         success_tuneable_params_tuneable_param_dbm_model_json['NOTIFYLEVEL'] = '\'range(0, 4)\''
@@ -3286,19 +3501,30 @@ class TestModel_SuccessTuneableParamsTuneableParamDbm:
         success_tuneable_params_tuneable_param_dbm_model_json['WLM_DISP_MIN_UTIL'] = '\'range(0, 100)\''
 
         # Construct a model instance of SuccessTuneableParamsTuneableParamDbm by calling from_dict on the json representation
-        success_tuneable_params_tuneable_param_dbm_model = SuccessTuneableParamsTuneableParamDbm.from_dict(success_tuneable_params_tuneable_param_dbm_model_json)
+        success_tuneable_params_tuneable_param_dbm_model = SuccessTuneableParamsTuneableParamDbm.from_dict(
+            success_tuneable_params_tuneable_param_dbm_model_json
+        )
         assert success_tuneable_params_tuneable_param_dbm_model != False
 
         # Construct a model instance of SuccessTuneableParamsTuneableParamDbm by calling from_dict on the json representation
-        success_tuneable_params_tuneable_param_dbm_model_dict = SuccessTuneableParamsTuneableParamDbm.from_dict(success_tuneable_params_tuneable_param_dbm_model_json).__dict__
-        success_tuneable_params_tuneable_param_dbm_model2 = SuccessTuneableParamsTuneableParamDbm(**success_tuneable_params_tuneable_param_dbm_model_dict)
+        success_tuneable_params_tuneable_param_dbm_model_dict = SuccessTuneableParamsTuneableParamDbm.from_dict(
+            success_tuneable_params_tuneable_param_dbm_model_json
+        ).__dict__
+        success_tuneable_params_tuneable_param_dbm_model2 = SuccessTuneableParamsTuneableParamDbm(
+            **success_tuneable_params_tuneable_param_dbm_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert success_tuneable_params_tuneable_param_dbm_model == success_tuneable_params_tuneable_param_dbm_model2
 
         # Convert model instance back to dict and verify no loss of data
-        success_tuneable_params_tuneable_param_dbm_model_json2 = success_tuneable_params_tuneable_param_dbm_model.to_dict()
-        assert success_tuneable_params_tuneable_param_dbm_model_json2 == success_tuneable_params_tuneable_param_dbm_model_json
+        success_tuneable_params_tuneable_param_dbm_model_json2 = (
+            success_tuneable_params_tuneable_param_dbm_model.to_dict()
+        )
+        assert (
+            success_tuneable_params_tuneable_param_dbm_model_json2
+            == success_tuneable_params_tuneable_param_dbm_model_json
+        )
 
 
 class TestModel_SuccessTuneableParamsTuneableParamRegistry:
@@ -3317,7 +3543,9 @@ class TestModel_SuccessTuneableParamsTuneableParamRegistry:
         success_tuneable_params_tuneable_param_registry_model_json['DB2COMPOPT'] = '\'-\''
         success_tuneable_params_tuneable_param_registry_model_json['DB2LOCK_TO_RB'] = '\'STATEMENT\''
         success_tuneable_params_tuneable_param_registry_model_json['DB2STMM'] = '\'NO\', \'YES\''
-        success_tuneable_params_tuneable_param_registry_model_json['DB2_ALTERNATE_AUTHZ_BEHAVIOUR'] = '\'EXTERNAL_ROUTINE_DBADM\', \'EXTERNAL_ROUTINE_DBAUTH\''
+        success_tuneable_params_tuneable_param_registry_model_json['DB2_ALTERNATE_AUTHZ_BEHAVIOUR'] = (
+            '\'EXTERNAL_ROUTINE_DBADM\', \'EXTERNAL_ROUTINE_DBAUTH\''
+        )
         success_tuneable_params_tuneable_param_registry_model_json['DB2_ANTIJOIN'] = '\'YES\', \'NO\', \'EXTEND\''
         success_tuneable_params_tuneable_param_registry_model_json['DB2_ATS_ENABLE'] = '\'YES\', \'NO\''
         success_tuneable_params_tuneable_param_registry_model_json['DB2_DEFERRED_PREPARE_SEMANTICS'] = '\'NO\', \'YES\''
@@ -3335,27 +3563,51 @@ class TestModel_SuccessTuneableParamsTuneableParamRegistry:
         success_tuneable_params_tuneable_param_registry_model_json['DB2_SELECTIVITY'] = '\'YES\', \'NO\', \'ALL\''
         success_tuneable_params_tuneable_param_registry_model_json['DB2_SKIPDELETED'] = '\'NO\', \'YES\''
         success_tuneable_params_tuneable_param_registry_model_json['DB2_SKIPINSERTED'] = '\'NO\', \'YES\''
-        success_tuneable_params_tuneable_param_registry_model_json['DB2_SYNC_RELEASE_LOCK_ATTRIBUTES'] = '\'NO\', \'YES\''
-        success_tuneable_params_tuneable_param_registry_model_json['DB2_TRUNCATE_REUSESTORAGE'] = '\'IMPORT\', \'LOAD\', \'TRUNCATE\''
-        success_tuneable_params_tuneable_param_registry_model_json['DB2_USE_ALTERNATE_PAGE_CLEANING'] = '\'ON\', \'OFF\''
+        success_tuneable_params_tuneable_param_registry_model_json['DB2_SYNC_RELEASE_LOCK_ATTRIBUTES'] = (
+            '\'NO\', \'YES\''
+        )
+        success_tuneable_params_tuneable_param_registry_model_json['DB2_TRUNCATE_REUSESTORAGE'] = (
+            '\'IMPORT\', \'LOAD\', \'TRUNCATE\''
+        )
+        success_tuneable_params_tuneable_param_registry_model_json['DB2_USE_ALTERNATE_PAGE_CLEANING'] = (
+            '\'ON\', \'OFF\''
+        )
         success_tuneable_params_tuneable_param_registry_model_json['DB2_VIEW_REOPT_VALUES'] = '\'NO\', \'YES\''
         success_tuneable_params_tuneable_param_registry_model_json['DB2_WLM_SETTINGS'] = '\'-\''
-        success_tuneable_params_tuneable_param_registry_model_json['DB2_WORKLOAD'] = '\'1C\', \'ANALYTICS\', \'CM\', \'COGNOS_CS\', \'FILENET_CM\', \'INFOR_ERP_LN\', \'MAXIMO\', \'MDM\', \'SAP\', \'TPM\', \'WAS\', \'WC\', \'WP\''
+        success_tuneable_params_tuneable_param_registry_model_json['DB2_WORKLOAD'] = (
+            '\'1C\', \'ANALYTICS\', \'CM\', \'COGNOS_CS\', \'FILENET_CM\', \'INFOR_ERP_LN\', \'MAXIMO\', \'MDM\', \'SAP\', \'TPM\', \'WAS\', \'WC\', \'WP\''
+        )
 
         # Construct a model instance of SuccessTuneableParamsTuneableParamRegistry by calling from_dict on the json representation
-        success_tuneable_params_tuneable_param_registry_model = SuccessTuneableParamsTuneableParamRegistry.from_dict(success_tuneable_params_tuneable_param_registry_model_json)
+        success_tuneable_params_tuneable_param_registry_model = SuccessTuneableParamsTuneableParamRegistry.from_dict(
+            success_tuneable_params_tuneable_param_registry_model_json
+        )
         assert success_tuneable_params_tuneable_param_registry_model != False
 
         # Construct a model instance of SuccessTuneableParamsTuneableParamRegistry by calling from_dict on the json representation
-        success_tuneable_params_tuneable_param_registry_model_dict = SuccessTuneableParamsTuneableParamRegistry.from_dict(success_tuneable_params_tuneable_param_registry_model_json).__dict__
-        success_tuneable_params_tuneable_param_registry_model2 = SuccessTuneableParamsTuneableParamRegistry(**success_tuneable_params_tuneable_param_registry_model_dict)
+        success_tuneable_params_tuneable_param_registry_model_dict = (
+            SuccessTuneableParamsTuneableParamRegistry.from_dict(
+                success_tuneable_params_tuneable_param_registry_model_json
+            ).__dict__
+        )
+        success_tuneable_params_tuneable_param_registry_model2 = SuccessTuneableParamsTuneableParamRegistry(
+            **success_tuneable_params_tuneable_param_registry_model_dict
+        )
 
         # Verify the model instances are equivalent
-        assert success_tuneable_params_tuneable_param_registry_model == success_tuneable_params_tuneable_param_registry_model2
+        assert (
+            success_tuneable_params_tuneable_param_registry_model
+            == success_tuneable_params_tuneable_param_registry_model2
+        )
 
         # Convert model instance back to dict and verify no loss of data
-        success_tuneable_params_tuneable_param_registry_model_json2 = success_tuneable_params_tuneable_param_registry_model.to_dict()
-        assert success_tuneable_params_tuneable_param_registry_model_json2 == success_tuneable_params_tuneable_param_registry_model_json
+        success_tuneable_params_tuneable_param_registry_model_json2 = (
+            success_tuneable_params_tuneable_param_registry_model.to_dict()
+        )
+        assert (
+            success_tuneable_params_tuneable_param_registry_model_json2
+            == success_tuneable_params_tuneable_param_registry_model_json
+        )
 
 
 class TestModel_SuccessUpdateAutoScale:
@@ -3377,7 +3629,9 @@ class TestModel_SuccessUpdateAutoScale:
         assert success_update_auto_scale_model != False
 
         # Construct a model instance of SuccessUpdateAutoScale by calling from_dict on the json representation
-        success_update_auto_scale_model_dict = SuccessUpdateAutoScale.from_dict(success_update_auto_scale_model_json).__dict__
+        success_update_auto_scale_model_dict = SuccessUpdateAutoScale.from_dict(
+            success_update_auto_scale_model_json
+        ).__dict__
         success_update_auto_scale_model2 = SuccessUpdateAutoScale(**success_update_auto_scale_model_dict)
 
         # Verify the model instances are equivalent
@@ -3455,12 +3709,18 @@ class TestModel_SuccessUserResponseAuthentication:
         success_user_response_authentication_model_json['policy_id'] = 'testString'
 
         # Construct a model instance of SuccessUserResponseAuthentication by calling from_dict on the json representation
-        success_user_response_authentication_model = SuccessUserResponseAuthentication.from_dict(success_user_response_authentication_model_json)
+        success_user_response_authentication_model = SuccessUserResponseAuthentication.from_dict(
+            success_user_response_authentication_model_json
+        )
         assert success_user_response_authentication_model != False
 
         # Construct a model instance of SuccessUserResponseAuthentication by calling from_dict on the json representation
-        success_user_response_authentication_model_dict = SuccessUserResponseAuthentication.from_dict(success_user_response_authentication_model_json).__dict__
-        success_user_response_authentication_model2 = SuccessUserResponseAuthentication(**success_user_response_authentication_model_dict)
+        success_user_response_authentication_model_dict = SuccessUserResponseAuthentication.from_dict(
+            success_user_response_authentication_model_json
+        ).__dict__
+        success_user_response_authentication_model2 = SuccessUserResponseAuthentication(
+            **success_user_response_authentication_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert success_user_response_authentication_model == success_user_response_authentication_model2

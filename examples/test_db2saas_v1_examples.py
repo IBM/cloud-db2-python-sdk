@@ -59,8 +59,7 @@ class TestDb2saasV1Examples:
 
             # begin-common
 
-            db2saas_service = Db2saasV1.new_instance(
-            )
+            db2saas_service = Db2saasV1.new_instance()
 
             # end-common
             assert db2saas_service is not None
