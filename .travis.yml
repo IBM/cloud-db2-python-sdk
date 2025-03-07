@@ -5,6 +5,7 @@ dist: jammy
 stages:
   - name: Build-Test
     if: tag IS blank
+# Uncomment these stages when you're ready to use them.
   - name: Semantic-Release
     if: (branch = main) AND (type IN (push, api)) AND (fork = false)
   - name: Publish-Release
@@ -26,20 +27,20 @@ jobs:
     - python: '3.13'
 
 # Uncomment this stage to use semantic-release to automatically create new releases.
-   - stage: Semantic-Release
-     language: node_js
-     node_js: 22
-     install:
-       - npm install
-       - pip install --user bump-my-version
-     script:
-       - npm run semantic-release
+    - stage: Semantic-Release
+      language: node_js
+      node_js: 22
+      install:
+        - npm install
+        - pip install --user bump-my-version
+      script:
+        - npm run semantic-release
 
 # Uncomment this stage to automatically publish your package to pypi.org.
-   - stage: Publish-Release
-     python: "3.9"
-     name: Publish-To-PyPi
-     script:
-       - make ci
-       - make publish-deps
-       - make publish-release
+    - stage: Publish-Release
+      python: "3.9"
+      name: Publish-To-PyPi
+      script:
+        - make ci
+        - make publish-deps
+        - make publish-release
