@@ -1,6 +1,9 @@
 language: python
 
-dist: jammy
+dist: xenial
+
+python:
+  - "3.9"
 
 stages:
   - name: Build-Test
