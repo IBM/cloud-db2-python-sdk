@@ -1,6 +1,6 @@
 language: python
 
-dist: bionic
+dist: focal
 
 python:
   - "3.13"
@@ -35,7 +35,7 @@ jobs:
 # Uncomment this stage to use semantic-release to automatically create new releases.
     - stage: Semantic-Release
       language: node_js
-      node_js: 22
+      node_js: 16
       install:
         - npm install
         - pip install --user bump-my-version
