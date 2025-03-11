@@ -19,7 +19,7 @@
 """
 Manage lifecycle of your Db2 on Cloud resources using the  APIs.
 
-API Version: 1.0.0
+API Version: 0.1.0
 """
 
 from enum import Enum
