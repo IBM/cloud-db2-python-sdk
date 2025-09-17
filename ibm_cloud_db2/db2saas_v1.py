@@ -14,12 +14,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# IBM OpenAPI SDK Code Generator Version: 3.96.0-d6dec9d7-20241008-212902
+# IBM OpenAPI SDK Code Generator Version: 3.106.0-09823488-20250707-071701
 
 """
 Manage lifecycle of your Db2 on Cloud resources using the  APIs.
 
-API Version: 0.1.0
+API Version: 1.0.0
 """
 
 from enum import Enum
@@ -56,7 +56,9 @@ class Db2saasV1(BaseService):
                and external configuration.
         """
         authenticator = get_authenticator_from_environment(service_name)
-        service = cls(authenticator)
+        service = cls(
+            authenticator
+            )
         service.configure_service(service_name)
         return service
 
@@ -383,6 +385,107 @@ class Db2saasV1(BaseService):
         response = self.send(request, **kwargs)
         return response
 
+    def put_db2_saas_user(
+        self,
+        x_deployment_id: str,
+        id: str,
+        new_id: str,
+        new_iam: bool,
+        new_ibmid: str,
+        new_name: str,
+        new_password: str,
+        new_role: str,
+        new_email: str,
+        new_locked: str,
+        new_authentication: 'UpdateUserAuthentication',
+        **kwargs,
+    ) -> DetailedResponse:
+        """
+        Update existing user (available only for platform users).
+
+        :param str x_deployment_id: CRN deployment id.
+        :param str id: id of the user.
+        :param str new_id: The id of the User.
+        :param bool new_iam: Indicates if IAM is enabled.
+        :param str new_ibmid: IBM ID of the User.
+        :param str new_name: The name of the User.
+        :param str new_password: Password of the User.
+        :param str new_role: Role of the User.
+        :param str new_email: Email of the User.
+        :param str new_locked: Indicates if the account is locked.
+        :param UpdateUserAuthentication new_authentication:
+        :param dict headers: A `dict` containing the request headers
+        :return: A `DetailedResponse` containing the result, headers and HTTP status code.
+        :rtype: DetailedResponse with `dict` result representing a `SuccessUserResponse` object
+        """
+
+        if not x_deployment_id:
+            raise ValueError('x_deployment_id must be provided')
+        if not id:
+            raise ValueError('id must be provided')
+        if new_id is None:
+            raise ValueError('new_id must be provided')
+        if new_iam is None:
+            raise ValueError('new_iam must be provided')
+        if new_ibmid is None:
+            raise ValueError('new_ibmid must be provided')
+        if new_name is None:
+            raise ValueError('new_name must be provided')
+        if new_password is None:
+            raise ValueError('new_password must be provided')
+        if new_role is None:
+            raise ValueError('new_role must be provided')
+        if new_email is None:
+            raise ValueError('new_email must be provided')
+        if new_locked is None:
+            raise ValueError('new_locked must be provided')
+        if new_authentication is None:
+            raise ValueError('new_authentication must be provided')
+        new_authentication = convert_model(new_authentication)
+        headers = {
+            'x-deployment-id': x_deployment_id,
+        }
+        sdk_headers = get_sdk_headers(
+            service_name=self.DEFAULT_SERVICE_NAME,
+            service_version='V1',
+            operation_id='put_db2_saas_user',
+        )
+        headers.update(sdk_headers)
+
+        data = {
+            'id': new_id,
+            'iam': new_iam,
+            'ibmid': new_ibmid,
+            'name': new_name,
+            'password': new_password,
+            'role': new_role,
+            'email': new_email,
+            'locked': new_locked,
+            'authentication': new_authentication,
+        }
+        data = {k: v for (k, v) in data.items() if v is not None}
+        data = json.dumps(data)
+        headers['content-type'] = 'application/json'
+
+        if 'headers' in kwargs:
+            headers.update(kwargs.get('headers'))
+            del kwargs['headers']
+        headers['Accept'] = 'application/json'
+
+        path_param_keys = ['id']
+        path_param_values = self.encode_path_vars(id)
+        path_param_dict = dict(zip(path_param_keys, path_param_values))
+        url = '/users/{id}'.format(**path_param_dict)
+        request = self.prepare_request(
+            method='PUT',
+            url=url,
+            headers=headers,
+            data=data,
+        )
+
+        response = self.send(request, **kwargs)
+        return response
+
     def delete_db2_saas_user(
         self,
         x_deployment_id: str,
@@ -396,7 +499,7 @@ class Db2saasV1(BaseService):
         :param str id: id of the user.
         :param dict headers: A `dict` containing the request headers
         :return: A `DetailedResponse` containing the result, headers and HTTP status code.
-        :rtype: DetailedResponse with `dict` result
+        :rtype: DetailedResponse
         """
 
         if not x_deployment_id:
@@ -416,7 +519,6 @@ class Db2saasV1(BaseService):
         if 'headers' in kwargs:
             headers.update(kwargs.get('headers'))
             del kwargs['headers']
-        headers['Accept'] = 'application/json'
 
         path_param_keys = ['id']
         path_param_values = self.encode_path_vars(id)
@@ -434,12 +536,14 @@ class Db2saasV1(BaseService):
     def getbyid_db2_saas_user(
         self,
         x_deployment_id: str,
+        id: str,
         **kwargs,
     ) -> DetailedResponse:
         """
         Get specific user by Id.
 
         :param str x_deployment_id: CRN deployment id.
+        :param str id: id of the user.
         :param dict headers: A `dict` containing the request headers
         :return: A `DetailedResponse` containing the result, headers and HTTP status code.
         :rtype: DetailedResponse with `dict` result representing a `SuccessGetUserByID` object
@@ -447,6 +551,8 @@ class Db2saasV1(BaseService):
 
         if not x_deployment_id:
             raise ValueError('x_deployment_id must be provided')
+        if not id:
+            raise ValueError('id must be provided')
         headers = {
             'x-deployment-id': x_deployment_id,
         }
@@ -462,7 +568,10 @@ class Db2saasV1(BaseService):
             del kwargs['headers']
         headers['Accept'] = 'application/json'
 
-        url = '/users/bluadmin'
+        path_param_keys = ['id']
+        path_param_values = self.encode_path_vars(id)
+        path_param_dict = dict(zip(path_param_keys, path_param_values))
+        url = '/users/{id}'.format(**path_param_dict)
         request = self.prepare_request(
             method='GET',
             url=url,
@@ -1974,12 +2083,14 @@ class CreateCustomSettingsDb:
 
         RANGE_0_65535 = 'range(0, 65535)'
 
+
     class AuthnCacheDurationEnum(str, Enum):
         """
         Configures the authentication cache duration.
         """
 
         RANGE_1_10000 = 'range(1,10000)'
+
 
     class AutorestartEnum(str, Enum):
         """
@@ -1989,6 +2100,7 @@ class CreateCustomSettingsDb:
         ON = 'ON'
         OFF = 'OFF'
 
+
     class AutoCgStatsEnum(str, Enum):
         """
         Configures whether auto collection of CG statistics is enabled.
@@ -1996,6 +2108,7 @@ class CreateCustomSettingsDb:
 
         ON = 'ON'
         OFF = 'OFF'
+
 
     class AutoMaintEnum(str, Enum):
         """
@@ -2005,6 +2118,7 @@ class CreateCustomSettingsDb:
         ON = 'ON'
         OFF = 'OFF'
 
+
     class AutoReorgEnum(str, Enum):
         """
         Configures automatic reorganization for the database.
@@ -2012,6 +2126,7 @@ class CreateCustomSettingsDb:
 
         ON = 'ON'
         OFF = 'OFF'
+
 
     class AutoRevalEnum(str, Enum):
         """
@@ -2023,6 +2138,7 @@ class CreateCustomSettingsDb:
         DEFERRED = 'DEFERRED'
         DEFERRED_FORCE = 'DEFERRED_FORCE'
 
+
     class AutoRunstatsEnum(str, Enum):
         """
         Configures automatic collection of run-time statistics.
@@ -2030,6 +2146,7 @@ class CreateCustomSettingsDb:
 
         ON = 'ON'
         OFF = 'OFF'
+
 
     class AutoSamplingEnum(str, Enum):
         """
@@ -2039,6 +2156,7 @@ class CreateCustomSettingsDb:
         ON = 'ON'
         OFF = 'OFF'
 
+
     class AutoStatsViewsEnum(str, Enum):
         """
         Configures automatic collection of statistics on views.
@@ -2046,6 +2164,7 @@ class CreateCustomSettingsDb:
 
         ON = 'ON'
         OFF = 'OFF'
+
 
     class AutoStmtStatsEnum(str, Enum):
         """
@@ -2055,6 +2174,7 @@ class CreateCustomSettingsDb:
         ON = 'ON'
         OFF = 'OFF'
 
+
     class AutoTblMaintEnum(str, Enum):
         """
         Configures automatic table maintenance.
@@ -2063,12 +2183,14 @@ class CreateCustomSettingsDb:
         ON = 'ON'
         OFF = 'OFF'
 
+
     class ChngpgsThreshEnum(str, Enum):
         """
         Configures the change pages threshold percentage.
         """
 
         RANGE_5_99 = 'range(5,99)'
+
 
     class CurCommitEnum(str, Enum):
         """
@@ -2079,6 +2201,7 @@ class CreateCustomSettingsDb:
         AVAILABLE = 'AVAILABLE'
         DISABLED = 'DISABLED'
 
+
     class DatabaseMemoryEnum(str, Enum):
         """
         Configures the database memory management.
@@ -2088,6 +2211,7 @@ class CreateCustomSettingsDb:
         COMPUTED = 'COMPUTED'
         RANGE_0_4294967295 = 'range(0, 4294967295)'
 
+
     class DbheapEnum(str, Enum):
         """
         Configures the database heap size.
@@ -2096,12 +2220,14 @@ class CreateCustomSettingsDb:
         AUTOMATIC = 'AUTOMATIC'
         RANGE_32_2147483647 = 'range(32, 2147483647)'
 
+
     class DbMemThreshEnum(str, Enum):
         """
         Configures the memory threshold percentage for database.
         """
 
         RANGE_0_100 = 'range(0, 100)'
+
 
     class DdlCompressionDefEnum(str, Enum):
         """
@@ -2111,6 +2237,7 @@ class CreateCustomSettingsDb:
         YES = 'YES'
         NO = 'NO'
 
+
     class DdlConstraintDefEnum(str, Enum):
         """
         Defines the default constraint behavior in DDL.
@@ -2118,6 +2245,7 @@ class CreateCustomSettingsDb:
 
         YES = 'YES'
         NO = 'NO'
+
 
     class DecfltRoundingEnum(str, Enum):
         """
@@ -2130,6 +2258,7 @@ class CreateCustomSettingsDb:
         ROUND_HALF_UP = 'ROUND_HALF_UP'
         ROUND_DOWN = 'ROUND_DOWN'
 
+
     class DecToCharFmtEnum(str, Enum):
         """
         Configures the decimal-to-character conversion format.
@@ -2137,6 +2266,7 @@ class CreateCustomSettingsDb:
 
         NEW = 'NEW'
         V95 = 'V95'
+
 
     class DftDegreeEnum(str, Enum):
         """
@@ -2146,6 +2276,7 @@ class CreateCustomSettingsDb:
         ANY = 'ANY'
         RANGE_1_32767 = 'range(1, 32767)'
 
+
     class DftExtentSzEnum(str, Enum):
         """
         Configures the default extent size for tables.
@@ -2153,12 +2284,14 @@ class CreateCustomSettingsDb:
 
         RANGE_2_256 = 'range(2, 256)'
 
+
     class DftLoadrecSesEnum(str, Enum):
         """
         Configures the default load record session count.
         """
 
         RANGE_1_30000 = 'range(1, 30000)'
+
 
     class DftPrefetchSzEnum(str, Enum):
         """
@@ -2168,12 +2301,14 @@ class CreateCustomSettingsDb:
         RANGE_0_32767 = 'range(0, 32767)'
         AUTOMATIC = 'AUTOMATIC'
 
+
     class DftQueryoptEnum(str, Enum):
         """
         Configures the default query optimization level.
         """
 
         RANGE_0_9 = 'range(0, 9)'
+
 
     class DftSchemasDccEnum(str, Enum):
         """
@@ -2183,6 +2318,7 @@ class CreateCustomSettingsDb:
         YES = 'YES'
         NO = 'NO'
 
+
     class DftSqlmathwarnEnum(str, Enum):
         """
         Configures whether SQL math warnings are enabled.
@@ -2190,6 +2326,7 @@ class CreateCustomSettingsDb:
 
         YES = 'YES'
         NO = 'NO'
+
 
     class DftTableOrgEnum(str, Enum):
         """
@@ -2199,12 +2336,14 @@ class CreateCustomSettingsDb:
         COLUMN = 'COLUMN'
         ROW = 'ROW'
 
+
     class DlchktimeEnum(str, Enum):
         """
         Configures the deadlock check time in milliseconds.
         """
 
         RANGE_1000_600000 = 'range(1000, 600000)'
+
 
     class EnableXmlcharEnum(str, Enum):
         """
@@ -2214,6 +2353,7 @@ class CreateCustomSettingsDb:
         YES = 'YES'
         NO = 'NO'
 
+
     class ExtendedRowSzEnum(str, Enum):
         """
         Configures whether extended row size is enabled.
@@ -2222,12 +2362,14 @@ class CreateCustomSettingsDb:
         ENABLE = 'ENABLE'
         DISABLE = 'DISABLE'
 
+
     class GroupheapRatioEnum(str, Enum):
         """
         Configures the heap ratio for group heap memory.
         """
 
         RANGE_1_99 = 'range(1, 99)'
+
 
     class IndexrecEnum(str, Enum):
         """
@@ -2240,6 +2382,7 @@ class CreateCustomSettingsDb:
         RESTART = 'RESTART'
         RESTART_NO_REDO = 'RESTART_NO_REDO'
 
+
     class LargeAggregationEnum(str, Enum):
         """
         Configures whether large aggregation is enabled.
@@ -2247,6 +2390,7 @@ class CreateCustomSettingsDb:
 
         YES = 'YES'
         NO = 'NO'
+
 
     class LocklistEnum(str, Enum):
         """
@@ -2256,12 +2400,14 @@ class CreateCustomSettingsDb:
         AUTOMATIC = 'AUTOMATIC'
         RANGE_4_134217728 = 'range(4, 134217728)'
 
+
     class LocktimeoutEnum(str, Enum):
         """
         Configures the lock timeout duration.
         """
 
         RANGE_0_32767 = 'range(0, 32767)'
+
 
     class LogindexbuildEnum(str, Enum):
         """
@@ -2271,6 +2417,7 @@ class CreateCustomSettingsDb:
         ON = 'ON'
         OFF = 'OFF'
 
+
     class LogApplInfoEnum(str, Enum):
         """
         Configures whether application information is logged.
@@ -2278,6 +2425,7 @@ class CreateCustomSettingsDb:
 
         YES = 'YES'
         NO = 'NO'
+
 
     class LogDdlStmtsEnum(str, Enum):
         """
@@ -2287,12 +2435,14 @@ class CreateCustomSettingsDb:
         YES = 'YES'
         NO = 'NO'
 
+
     class LogDiskCapEnum(str, Enum):
         """
         Configures the disk capacity log setting.
         """
 
         RANGE_1_2147483647 = 'range(1, 2147483647)'
+
 
     class MaxapplsEnum(str, Enum):
         """
@@ -2301,12 +2451,14 @@ class CreateCustomSettingsDb:
 
         RANGE_1_60000 = 'range(1, 60000)'
 
+
     class MaxfilopEnum(str, Enum):
         """
         Configures the maximum number of file operations.
         """
 
         RANGE_64_61440 = 'range(64, 61440)'
+
 
     class MaxlocksEnum(str, Enum):
         """
@@ -2316,6 +2468,7 @@ class CreateCustomSettingsDb:
         AUTOMATIC = 'AUTOMATIC'
         RANGE_1_100 = 'range(1, 100)'
 
+
     class MinDecDiv3Enum(str, Enum):
         """
         Configures whether decimal division by 3 should be handled.
@@ -2323,6 +2476,7 @@ class CreateCustomSettingsDb:
 
         YES = 'YES'
         NO = 'NO'
+
 
     class MonActMetricsEnum(str, Enum):
         """
@@ -2332,6 +2486,7 @@ class CreateCustomSettingsDb:
         NONE = 'NONE'
         BASE = 'BASE'
         EXTENDED = 'EXTENDED'
+
 
     class MonDeadlockEnum(str, Enum):
         """
@@ -2343,12 +2498,14 @@ class CreateCustomSettingsDb:
         HISTORY = 'HISTORY'
         HIST_AND_VALUES = 'HIST_AND_VALUES'
 
+
     class MonLckMsgLvlEnum(str, Enum):
         """
         Configures the lock message level for monitoring.
         """
 
         RANGE_0_3 = 'range(0, 3)'
+
 
     class MonLocktimeoutEnum(str, Enum):
         """
@@ -2360,6 +2517,7 @@ class CreateCustomSettingsDb:
         HISTORY = 'HISTORY'
         HIST_AND_VALUES = 'HIST_AND_VALUES'
 
+
     class MonLockwaitEnum(str, Enum):
         """
         Configures lock wait monitoring settings.
@@ -2370,12 +2528,14 @@ class CreateCustomSettingsDb:
         HISTORY = 'HISTORY'
         HIST_AND_VALUES = 'HIST_AND_VALUES'
 
+
     class MonLwThreshEnum(str, Enum):
         """
         Configures the lightweight threshold for monitoring.
         """
 
         RANGE_1000_4294967295 = 'range(1000, 4294967295)'
+
 
     class MonObjMetricsEnum(str, Enum):
         """
@@ -2386,12 +2546,14 @@ class CreateCustomSettingsDb:
         BASE = 'BASE'
         EXTENDED = 'EXTENDED'
 
+
     class MonPkglistSzEnum(str, Enum):
         """
         Configures the package list size for monitoring.
         """
 
         RANGE_0_1024 = 'range(0, 1024)'
+
 
     class MonReqMetricsEnum(str, Enum):
         """
@@ -2402,6 +2564,7 @@ class CreateCustomSettingsDb:
         BASE = 'BASE'
         EXTENDED = 'EXTENDED'
 
+
     class MonRtnDataEnum(str, Enum):
         """
         Configures the level of return data for monitoring.
@@ -2409,6 +2572,7 @@ class CreateCustomSettingsDb:
 
         NONE = 'NONE'
         BASE = 'BASE'
+
 
     class MonRtnExeclistEnum(str, Enum):
         """
@@ -2418,6 +2582,7 @@ class CreateCustomSettingsDb:
         OFF = 'OFF'
         ON = 'ON'
 
+
     class MonUowDataEnum(str, Enum):
         """
         Configures the level of unit of work (UOW) data for monitoring.
@@ -2425,6 +2590,7 @@ class CreateCustomSettingsDb:
 
         NONE = 'NONE'
         BASE = 'BASE'
+
 
     class MonUowExeclistEnum(str, Enum):
         """
@@ -2434,6 +2600,7 @@ class CreateCustomSettingsDb:
         ON = 'ON'
         OFF = 'OFF'
 
+
     class MonUowPkglistEnum(str, Enum):
         """
         Configures whether UOW package list is monitored.
@@ -2441,6 +2608,7 @@ class CreateCustomSettingsDb:
 
         OFF = 'OFF'
         ON = 'ON'
+
 
     class NcharMappingEnum(str, Enum):
         """
@@ -2452,12 +2620,14 @@ class CreateCustomSettingsDb:
         GRAPHIC_CU16 = 'GRAPHIC_CU16'
         NOT_APPLICABLE = 'NOT APPLICABLE'
 
+
     class NumFreqvaluesEnum(str, Enum):
         """
         Configures the number of frequent values for optimization.
         """
 
         RANGE_0_32767 = 'range(0, 32767)'
+
 
     class NumIocleanersEnum(str, Enum):
         """
@@ -2467,6 +2637,7 @@ class CreateCustomSettingsDb:
         AUTOMATIC = 'AUTOMATIC'
         RANGE_0_255 = 'range(0, 255)'
 
+
     class NumIoserversEnum(str, Enum):
         """
         Configures the number of IO servers.
@@ -2475,6 +2646,7 @@ class CreateCustomSettingsDb:
         AUTOMATIC = 'AUTOMATIC'
         RANGE_1_255 = 'range(1, 255)'
 
+
     class NumLogSpanEnum(str, Enum):
         """
         Configures the number of log spans.
@@ -2482,12 +2654,14 @@ class CreateCustomSettingsDb:
 
         RANGE_0_65535 = 'range(0, 65535)'
 
+
     class NumQuantilesEnum(str, Enum):
         """
         Configures the number of quantiles for optimizations.
         """
 
         RANGE_0_32767 = 'range(0, 32767)'
+
 
     class OptDirectWrkldEnum(str, Enum):
         """
@@ -2500,12 +2674,14 @@ class CreateCustomSettingsDb:
         NO = 'NO'
         AUTOMATIC = 'AUTOMATIC'
 
+
     class PageAgeTrgtGcrEnum(str, Enum):
         """
         Configures the page age target for garbage collection.
         """
 
         RANGE_1_65535 = 'range(1, 65535)'
+
 
     class PageAgeTrgtMcrEnum(str, Enum):
         """
@@ -2514,6 +2690,7 @@ class CreateCustomSettingsDb:
 
         RANGE_1_65535 = 'range(1, 65535)'
 
+
     class PckcacheszEnum(str, Enum):
         """
         Configures the package cache size.
@@ -2521,6 +2698,7 @@ class CreateCustomSettingsDb:
 
         AUTOMATIC = 'AUTOMATIC'
         RANGE_32_2147483646 = 'range(32, 2147483646)'
+
 
     class PlStackTraceEnum(str, Enum):
         """
@@ -2531,6 +2709,7 @@ class CreateCustomSettingsDb:
         ALL = 'ALL'
         UNHANDLED = 'UNHANDLED'
 
+
     class SelfTuningMemEnum(str, Enum):
         """
         Configures whether self-tuning memory is enabled.
@@ -2538,6 +2717,7 @@ class CreateCustomSettingsDb:
 
         ON = 'ON'
         OFF = 'OFF'
+
 
     class SeqdetectEnum(str, Enum):
         """
@@ -2547,6 +2727,7 @@ class CreateCustomSettingsDb:
         YES = 'YES'
         NO = 'NO'
 
+
     class SheapthresShrEnum(str, Enum):
         """
         Configures the shared heap threshold size.
@@ -2554,6 +2735,7 @@ class CreateCustomSettingsDb:
 
         AUTOMATIC = 'AUTOMATIC'
         RANGE_250_2147483647 = 'range(250, 2147483647)'
+
 
     class SortheapEnum(str, Enum):
         """
@@ -2563,6 +2745,7 @@ class CreateCustomSettingsDb:
         AUTOMATIC = 'AUTOMATIC'
         RANGE_16_4294967295 = 'range(16, 4294967295)'
 
+
     class StatHeapSzEnum(str, Enum):
         """
         Configures the statistics heap size.
@@ -2571,6 +2754,7 @@ class CreateCustomSettingsDb:
         AUTOMATIC = 'AUTOMATIC'
         RANGE_1096_2147483647 = 'range(1096, 2147483647)'
 
+
     class StmtheapEnum(str, Enum):
         """
         Configures the statement heap size.
@@ -2578,6 +2762,7 @@ class CreateCustomSettingsDb:
 
         AUTOMATIC = 'AUTOMATIC'
         RANGE_128_2147483647 = 'range(128, 2147483647)'
+
 
     class StmtConcEnum(str, Enum):
         """
@@ -2589,6 +2774,7 @@ class CreateCustomSettingsDb:
         COMMENTS = 'COMMENTS'
         COMM_LIT = 'COMM_LIT'
 
+
     class StringUnitsEnum(str, Enum):
         """
         Configures the string unit settings.
@@ -2596,6 +2782,7 @@ class CreateCustomSettingsDb:
 
         SYSTEM = 'SYSTEM'
         CODEUNITS32 = 'CODEUNITS32'
+
 
     class SystimePeriodAdjEnum(str, Enum):
         """
@@ -2605,6 +2792,7 @@ class CreateCustomSettingsDb:
         NO = 'NO'
         YES = 'YES'
 
+
     class TrackmodEnum(str, Enum):
         """
         Configures whether modifications to tracked objects are logged.
@@ -2612,6 +2800,7 @@ class CreateCustomSettingsDb:
 
         YES = 'YES'
         NO = 'NO'
+
 
     class UtilHeapSzEnum(str, Enum):
         """
@@ -2621,6 +2810,7 @@ class CreateCustomSettingsDb:
         AUTOMATIC = 'AUTOMATIC'
         RANGE_16_2147483647 = 'range(16, 2147483647)'
 
+
     class WlmAdmissionCtrlEnum(str, Enum):
         """
         Configures whether WLM (Workload Management) admission control is enabled.
@@ -2628,6 +2818,7 @@ class CreateCustomSettingsDb:
 
         YES = 'YES'
         NO = 'NO'
+
 
     class WlmAgentLoadTrgtEnum(str, Enum):
         """
@@ -2637,12 +2828,14 @@ class CreateCustomSettingsDb:
         AUTOMATIC = 'AUTOMATIC'
         RANGE_1_65535 = 'range(1, 65535)'
 
+
     class WlmCpuLimitEnum(str, Enum):
         """
         Configures the CPU limit for WLM workloads.
         """
 
         RANGE_0_100 = 'range(0, 100)'
+
 
     class WlmCpuSharesEnum(str, Enum):
         """
@@ -2651,6 +2844,7 @@ class CreateCustomSettingsDb:
 
         RANGE_1_65535 = 'range(1, 65535)'
 
+
     class WlmCpuShareModeEnum(str, Enum):
         """
         Configures the mode of CPU shares for WLM workloads.
@@ -2658,6 +2852,7 @@ class CreateCustomSettingsDb:
 
         HARD = 'HARD'
         SOFT = 'SOFT'
+
 
 
 class CreateCustomSettingsDbm:
@@ -3010,12 +3205,14 @@ class CreateCustomSettingsDbm:
 
         RANGE_0_1_100000 = 'range(0.1, 100000)'
 
+
     class CpuspeedEnum(str, Enum):
         """
         Configures the CPU speed for the database manager.
         """
 
         RANGE_0_0000000001_1 = 'range(0.0000000001, 1)'
+
 
     class DftMonBufpoolEnum(str, Enum):
         """
@@ -3025,6 +3222,7 @@ class CreateCustomSettingsDbm:
         ON = 'ON'
         OFF = 'OFF'
 
+
     class DftMonLockEnum(str, Enum):
         """
         Configures whether lock monitoring is enabled by default.
@@ -3032,6 +3230,7 @@ class CreateCustomSettingsDbm:
 
         ON = 'ON'
         OFF = 'OFF'
+
 
     class DftMonSortEnum(str, Enum):
         """
@@ -3041,6 +3240,7 @@ class CreateCustomSettingsDbm:
         ON = 'ON'
         OFF = 'OFF'
 
+
     class DftMonStmtEnum(str, Enum):
         """
         Configures whether statement execution is monitored by default.
@@ -3048,6 +3248,7 @@ class CreateCustomSettingsDbm:
 
         ON = 'ON'
         OFF = 'OFF'
+
 
     class DftMonTableEnum(str, Enum):
         """
@@ -3057,6 +3258,7 @@ class CreateCustomSettingsDbm:
         ON = 'ON'
         OFF = 'OFF'
 
+
     class DftMonTimestampEnum(str, Enum):
         """
         Configures whether timestamp monitoring is enabled by default.
@@ -3064,6 +3266,7 @@ class CreateCustomSettingsDbm:
 
         ON = 'ON'
         OFF = 'OFF'
+
 
     class DftMonUowEnum(str, Enum):
         """
@@ -3073,12 +3276,14 @@ class CreateCustomSettingsDbm:
         ON = 'ON'
         OFF = 'OFF'
 
+
     class DiaglevelEnum(str, Enum):
         """
         Configures the diagnostic level for the database manager.
         """
 
         RANGE_0_4 = 'range(0, 4)'
+
 
     class FederatedAsyncEnum(str, Enum):
         """
@@ -3087,6 +3292,7 @@ class CreateCustomSettingsDbm:
 
         RANGE_0_32767 = 'range(0, 32767)'
         ANY = 'ANY'
+
 
     class IndexrecEnum(str, Enum):
         """
@@ -3098,6 +3304,7 @@ class CreateCustomSettingsDbm:
         ACCESS = 'ACCESS'
         ACCESS_NO_REDO = 'ACCESS_NO_REDO'
 
+
     class IntraParallelEnum(str, Enum):
         """
         Configures the parallelism settings for intra-query parallelism.
@@ -3107,6 +3314,7 @@ class CreateCustomSettingsDbm:
         NO = 'NO'
         YES = 'YES'
 
+
     class KeepfencedEnum(str, Enum):
         """
         Configures whether fenced routines are kept in memory.
@@ -3115,12 +3323,14 @@ class CreateCustomSettingsDbm:
         YES = 'YES'
         NO = 'NO'
 
+
     class MaxConnretriesEnum(str, Enum):
         """
         Configures the maximum number of connection retries.
         """
 
         RANGE_0_100 = 'range(0, 100)'
+
 
     class MaxQuerydegreeEnum(str, Enum):
         """
@@ -3130,6 +3340,7 @@ class CreateCustomSettingsDbm:
         RANGE_1_32767 = 'range(1, 32767)'
         ANY = 'ANY'
 
+
     class MonHeapSzEnum(str, Enum):
         """
         Configures the size of the monitoring heap.
@@ -3138,12 +3349,14 @@ class CreateCustomSettingsDbm:
         RANGE_0_2147483647 = 'range(0, 2147483647)'
         AUTOMATIC = 'AUTOMATIC'
 
+
     class MultipartsizembEnum(str, Enum):
         """
         Configures the size of multipart queries in MB.
         """
 
         RANGE_5_5120 = 'range(5, 5120)'
+
 
     class NotifylevelEnum(str, Enum):
         """
@@ -3152,12 +3365,14 @@ class CreateCustomSettingsDbm:
 
         RANGE_0_4 = 'range(0, 4)'
 
+
     class NumInitagentsEnum(str, Enum):
         """
         Configures the number of initial agents in the database manager.
         """
 
         RANGE_0_64000 = 'range(0, 64000)'
+
 
     class NumInitfencedEnum(str, Enum):
         """
@@ -3166,12 +3381,14 @@ class CreateCustomSettingsDbm:
 
         RANGE_0_64000 = 'range(0, 64000)'
 
+
     class NumPoolagentsEnum(str, Enum):
         """
         Configures the number of pool agents.
         """
 
         RANGE_0_64000 = 'range(0, 64000)'
+
 
     class ResyncIntervalEnum(str, Enum):
         """
@@ -3180,12 +3397,14 @@ class CreateCustomSettingsDbm:
 
         RANGE_1_60000 = 'range(1, 60000)'
 
+
     class RqrioblkEnum(str, Enum):
         """
         Configures the request/response I/O block size.
         """
 
         RANGE_4096_65535 = 'range(4096, 65535)'
+
 
     class StartStopTimeEnum(str, Enum):
         """
@@ -3194,12 +3413,14 @@ class CreateCustomSettingsDbm:
 
         RANGE_1_1440 = 'range(1, 1440)'
 
+
     class UtilImpactLimEnum(str, Enum):
         """
         Configures the utility impact limit.
         """
 
         RANGE_1_100 = 'range(1, 100)'
+
 
     class WlmDispatcherEnum(str, Enum):
         """
@@ -3209,6 +3430,7 @@ class CreateCustomSettingsDbm:
         YES = 'YES'
         NO = 'NO'
 
+
     class WlmDispConcurEnum(str, Enum):
         """
         Configures the concurrency level for the WLM dispatcher.
@@ -3216,6 +3438,7 @@ class CreateCustomSettingsDbm:
 
         RANGE_1_32767 = 'range(1, 32767)'
         COMPUTED = 'COMPUTED'
+
 
     class WlmDispCpuSharesEnum(str, Enum):
         """
@@ -3225,12 +3448,14 @@ class CreateCustomSettingsDbm:
         NO = 'NO'
         YES = 'YES'
 
+
     class WlmDispMinUtilEnum(str, Enum):
         """
         Configures the minimum utility threshold for WLM dispatcher.
         """
 
         RANGE_0_100 = 'range(0, 100)'
+
 
 
 class CreateCustomSettingsRegistry:
@@ -3565,12 +3790,14 @@ class CreateCustomSettingsRegistry:
         YES = 'YES'
         NO = 'NO'
 
+
     class DB2LockToRbEnum(str, Enum):
         """
         Configures the DB2 lock timeout behavior.
         """
 
         STATEMENT = 'STATEMENT'
+
 
     class DB2StmmEnum(str, Enum):
         """
@@ -3580,6 +3807,7 @@ class CreateCustomSettingsRegistry:
         NO = 'NO'
         YES = 'YES'
 
+
     class DB2AlternateAuthzBehaviourEnum(str, Enum):
         """
         Configures the alternate authorization behavior for DB2.
@@ -3587,6 +3815,7 @@ class CreateCustomSettingsRegistry:
 
         EXTERNAL_ROUTINE_DBADM = 'EXTERNAL_ROUTINE_DBADM'
         EXTERNAL_ROUTINE_DBAUTH = 'EXTERNAL_ROUTINE_DBAUTH'
+
 
     class DB2AntijoinEnum(str, Enum):
         """
@@ -3597,6 +3826,7 @@ class CreateCustomSettingsRegistry:
         NO = 'NO'
         EXTEND = 'EXTEND'
 
+
     class DB2AtsEnableEnum(str, Enum):
         """
         Configures whether DB2 asynchronous table scanning (ATS) is enabled.
@@ -3604,6 +3834,7 @@ class CreateCustomSettingsRegistry:
 
         YES = 'YES'
         NO = 'NO'
+
 
     class DB2DeferredPrepareSemanticsEnum(str, Enum):
         """
@@ -3613,6 +3844,7 @@ class CreateCustomSettingsRegistry:
         NO = 'NO'
         YES = 'YES'
 
+
     class DB2EvaluncommittedEnum(str, Enum):
         """
         Configures whether uncommitted data is evaluated by DB2.
@@ -3621,12 +3853,14 @@ class CreateCustomSettingsRegistry:
         NO = 'NO'
         YES = 'YES'
 
+
     class DB2IndexPctfreeDefaultEnum(str, Enum):
         """
         Configures the default percentage of free space for DB2 indexes.
         """
 
         RANGE_0_99 = 'range(0, 99)'
+
 
     class DB2InlistToNljnEnum(str, Enum):
         """
@@ -3636,6 +3870,7 @@ class CreateCustomSettingsRegistry:
         NO = 'NO'
         YES = 'YES'
 
+
     class DB2MinimizeListprefetchEnum(str, Enum):
         """
         Configures whether DB2 minimizes list prefetching for queries.
@@ -3644,12 +3879,14 @@ class CreateCustomSettingsRegistry:
         NO = 'NO'
         YES = 'YES'
 
+
     class DB2ObjectTableEntriesEnum(str, Enum):
         """
         Configures the number of entries for DB2 object tables.
         """
 
         RANGE_0_65532 = 'range(0, 65532)'
+
 
     class DB2OptprofileEnum(str, Enum):
         """
@@ -3658,6 +3895,7 @@ class CreateCustomSettingsRegistry:
 
         NO = 'NO'
         YES = 'YES'
+
 
     class DB2SelectivityEnum(str, Enum):
         """
@@ -3668,6 +3906,7 @@ class CreateCustomSettingsRegistry:
         NO = 'NO'
         ALL = 'ALL'
 
+
     class DB2SkipdeletedEnum(str, Enum):
         """
         Configures whether DB2 skips deleted rows during query processing.
@@ -3675,6 +3914,7 @@ class CreateCustomSettingsRegistry:
 
         NO = 'NO'
         YES = 'YES'
+
 
     class DB2SkipinsertedEnum(str, Enum):
         """
@@ -3684,6 +3924,7 @@ class CreateCustomSettingsRegistry:
         NO = 'NO'
         YES = 'YES'
 
+
     class DB2SyncReleaseLockAttributesEnum(str, Enum):
         """
         Configures whether DB2 synchronizes lock release attributes.
@@ -3691,6 +3932,7 @@ class CreateCustomSettingsRegistry:
 
         NO = 'NO'
         YES = 'YES'
+
 
     class DB2TruncateReusestorageEnum(str, Enum):
         """
@@ -3701,6 +3943,7 @@ class CreateCustomSettingsRegistry:
         LOAD = 'LOAD'
         TRUNCATE = 'TRUNCATE'
 
+
     class DB2UseAlternatePageCleaningEnum(str, Enum):
         """
         Configures whether DB2 uses alternate page cleaning methods.
@@ -3709,6 +3952,7 @@ class CreateCustomSettingsRegistry:
         ON = 'ON'
         OFF = 'OFF'
 
+
     class DB2ViewReoptValuesEnum(str, Enum):
         """
         Configures whether DB2 view reoptimization values are used.
@@ -3716,6 +3960,7 @@ class CreateCustomSettingsRegistry:
 
         NO = 'NO'
         YES = 'YES'
+
 
     class DB2WorkloadEnum(str, Enum):
         """
@@ -3734,6 +3979,7 @@ class CreateCustomSettingsRegistry:
         WAS = 'WAS'
         WC = 'WC'
         WP = 'WP'
+
 
 
 class CreateUserAuthentication:
@@ -3948,9 +4194,7 @@ class SuccessAutoScaling:
         if (auto_scaling_allow_plan_limit := _dict.get('auto_scaling_allow_plan_limit')) is not None:
             args['auto_scaling_allow_plan_limit'] = auto_scaling_allow_plan_limit
         else:
-            raise ValueError(
-                'Required property \'auto_scaling_allow_plan_limit\' not present in SuccessAutoScaling JSON'
-            )
+            raise ValueError('Required property \'auto_scaling_allow_plan_limit\' not present in SuccessAutoScaling JSON')
         if (auto_scaling_enabled := _dict.get('auto_scaling_enabled')) is not None:
             args['auto_scaling_enabled'] = auto_scaling_enabled
         else:
@@ -3962,9 +4206,7 @@ class SuccessAutoScaling:
         if (auto_scaling_over_time_period := _dict.get('auto_scaling_over_time_period')) is not None:
             args['auto_scaling_over_time_period'] = auto_scaling_over_time_period
         else:
-            raise ValueError(
-                'Required property \'auto_scaling_over_time_period\' not present in SuccessAutoScaling JSON'
-            )
+            raise ValueError('Required property \'auto_scaling_over_time_period\' not present in SuccessAutoScaling JSON')
         if (auto_scaling_pause_limit := _dict.get('auto_scaling_pause_limit')) is not None:
             args['auto_scaling_pause_limit'] = auto_scaling_pause_limit
         else:
@@ -3980,9 +4222,7 @@ class SuccessAutoScaling:
         if (storage_utilization_percentage := _dict.get('storage_utilization_percentage')) is not None:
             args['storage_utilization_percentage'] = storage_utilization_percentage
         else:
-            raise ValueError(
-                'Required property \'storage_utilization_percentage\' not present in SuccessAutoScaling JSON'
-            )
+            raise ValueError('Required property \'storage_utilization_percentage\' not present in SuccessAutoScaling JSON')
         if (support_auto_scaling := _dict.get('support_auto_scaling')) is not None:
             args['support_auto_scaling'] = support_auto_scaling
         else:
@@ -4791,6 +5031,7 @@ class SuccessGetUserByID:
         BLUADMIN = 'bluadmin'
         BLUUSER = 'bluuser'
 
+
     class LockedEnum(str, Enum):
         """
         Account lock status for the user.
@@ -4798,6 +5039,7 @@ class SuccessGetUserByID:
 
         YES = 'yes'
         NO = 'no'
+
 
 
 class SuccessGetUserByIDAuthentication:
@@ -5138,6 +5380,7 @@ class SuccessGetUserInfoResourcesItem:
         BLUADMIN = 'bluadmin'
         BLUUSER = 'bluuser'
 
+
     class LockedEnum(str, Enum):
         """
         Account lock status for the user.
@@ -5145,6 +5388,7 @@ class SuccessGetUserInfoResourcesItem:
 
         YES = 'yes'
         NO = 'no'
+
 
 
 class SuccessGetUserInfoResourcesItemAuthentication:
@@ -5176,15 +5420,11 @@ class SuccessGetUserInfoResourcesItemAuthentication:
         if (method := _dict.get('method')) is not None:
             args['method'] = method
         else:
-            raise ValueError(
-                'Required property \'method\' not present in SuccessGetUserInfoResourcesItemAuthentication JSON'
-            )
+            raise ValueError('Required property \'method\' not present in SuccessGetUserInfoResourcesItemAuthentication JSON')
         if (policy_id := _dict.get('policy_id')) is not None:
             args['policy_id'] = policy_id
         else:
-            raise ValueError(
-                'Required property \'policy_id\' not present in SuccessGetUserInfoResourcesItemAuthentication JSON'
-            )
+            raise ValueError('Required property \'policy_id\' not present in SuccessGetUserInfoResourcesItemAuthentication JSON')
         return cls(**args)
 
     @classmethod
@@ -7234,6 +7474,7 @@ class SuccessUserResponse:
         BLUADMIN = 'bluadmin'
         BLUUSER = 'bluuser'
 
+
     class LockedEnum(str, Enum):
         """
         Account lock status for the user.
@@ -7241,6 +7482,7 @@ class SuccessUserResponse:
 
         YES = 'yes'
         NO = 'no'
+
 
 
 class SuccessUserResponseAuthentication:
@@ -7308,5 +7550,74 @@ class SuccessUserResponseAuthentication:
         return self.__dict__ == other.__dict__
 
     def __ne__(self, other: 'SuccessUserResponseAuthentication') -> bool:
+        """Return `true` when self and other are not equal, false otherwise."""
+        return not self == other
+
+
+class UpdateUserAuthentication:
+    """
+    UpdateUserAuthentication.
+
+    :param str method: Authentication method.
+    :param str policy_id: Authentication policy ID.
+    """
+
+    def __init__(
+        self,
+        method: str,
+        policy_id: str,
+    ) -> None:
+        """
+        Initialize a UpdateUserAuthentication object.
+
+        :param str method: Authentication method.
+        :param str policy_id: Authentication policy ID.
+        """
+        self.method = method
+        self.policy_id = policy_id
+
+    @classmethod
+    def from_dict(cls, _dict: Dict) -> 'UpdateUserAuthentication':
+        """Initialize a UpdateUserAuthentication object from a json dictionary."""
+        args = {}
+        if (method := _dict.get('method')) is not None:
+            args['method'] = method
+        else:
+            raise ValueError('Required property \'method\' not present in UpdateUserAuthentication JSON')
+        if (policy_id := _dict.get('policy_id')) is not None:
+            args['policy_id'] = policy_id
+        else:
+            raise ValueError('Required property \'policy_id\' not present in UpdateUserAuthentication JSON')
+        return cls(**args)
+
+    @classmethod
+    def _from_dict(cls, _dict):
+        """Initialize a UpdateUserAuthentication object from a json dictionary."""
+        return cls.from_dict(_dict)
+
+    def to_dict(self) -> Dict:
+        """Return a json dictionary representing this model."""
+        _dict = {}
+        if hasattr(self, 'method') and self.method is not None:
+            _dict['method'] = self.method
+        if hasattr(self, 'policy_id') and self.policy_id is not None:
+            _dict['policy_id'] = self.policy_id
+        return _dict
+
+    def _to_dict(self):
+        """Return a json dictionary representing this model."""
+        return self.to_dict()
+
+    def __str__(self) -> str:
+        """Return a `str` version of this UpdateUserAuthentication object."""
+        return json.dumps(self.to_dict(), indent=2)
+
+    def __eq__(self, other: 'UpdateUserAuthentication') -> bool:
+        """Return `true` when self and other are equal, false otherwise."""
+        if not isinstance(other, self.__class__):
+            return False
+        return self.__dict__ == other.__dict__
+
+    def __ne__(self, other: 'UpdateUserAuthentication') -> bool:
         """Return `true` when self and other are not equal, false otherwise."""
         return not self == other
