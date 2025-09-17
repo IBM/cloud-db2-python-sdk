@@ -36,7 +36,8 @@ class TestDb2saasV1:
         if os.path.exists(config_file):
             os.environ['IBM_CREDENTIALS_FILE'] = config_file
 
-            cls.db2saas_service = Db2saasV1.new_instance()
+            cls.db2saas_service = Db2saasV1.new_instance(
+            )
             assert cls.db2saas_service is not None
 
             cls.config = read_external_sources(Db2saasV1.DEFAULT_SERVICE_NAME)
@@ -124,9 +125,36 @@ class TestDb2saasV1:
         assert success_get_user_info is not None
 
     @needscredentials
+    def test_put_db2_saas_user(self):
+        # Construct a dict representation of a UpdateUserAuthentication model
+        update_user_authentication_model = {
+            'method': 'internal',
+            'policy_id': 'Default',
+        }
+
+        response = self.db2saas_service.put_db2_saas_user(
+            x_deployment_id='crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
+            id='test-user',
+            new_id='test-user',
+            new_iam=False,
+            new_ibmid='test-ibm-id',
+            new_name='test_user',
+            new_password='dEkMc43@gfAPl!867^dSbu',
+            new_role='bluuser',
+            new_email='test_user@mycompany.com',
+            new_locked='no',
+            new_authentication=update_user_authentication_model,
+        )
+
+        assert response.get_status_code() == 200
+        success_user_response = response.get_result()
+        assert success_user_response is not None
+
+    @needscredentials
     def test_getbyid_db2_saas_user(self):
         response = self.db2saas_service.getbyid_db2_saas_user(
             x_deployment_id='crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
+            id='test-user',
         )
 
         assert response.get_status_code() == 200
@@ -372,6 +400,4 @@ class TestDb2saasV1:
             id='test-user',
         )
 
-        assert response.get_status_code() == 200
-        result = response.get_result()
-        assert result is not None
+        assert response.get_status_code() == 204

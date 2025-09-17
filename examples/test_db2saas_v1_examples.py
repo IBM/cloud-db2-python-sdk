@@ -59,7 +59,8 @@ class TestDb2saasV1Examples:
 
             # begin-common
 
-            db2saas_service = Db2saasV1.new_instance()
+            db2saas_service = Db2saasV1.new_instance(
+            )
 
             # end-common
             assert db2saas_service is not None
@@ -206,6 +207,43 @@ class TestDb2saasV1Examples:
             pytest.fail(str(e))
 
     @needscredentials
+    def test_put_db2_saas_user_example(self):
+        """
+        put_db2_saas_user request example
+        """
+        try:
+            print('\nput_db2_saas_user() result:')
+
+            # begin-put_db2_saas_user
+
+            update_user_authentication_model = {
+                'method': 'internal',
+                'policy_id': 'Default',
+            }
+
+            response = db2saas_service.put_db2_saas_user(
+                x_deployment_id='crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
+                id='test-user',
+                new_id='test-user',
+                new_iam=False,
+                new_ibmid='test-ibm-id',
+                new_name='test_user',
+                new_password='dEkMc43@gfAPl!867^dSbu',
+                new_role='bluuser',
+                new_email='test_user@mycompany.com',
+                new_locked='no',
+                new_authentication=update_user_authentication_model,
+            )
+            success_user_response = response.get_result()
+
+            print(json.dumps(success_user_response, indent=2))
+
+            # end-put_db2_saas_user
+
+        except ApiException as e:
+            pytest.fail(str(e))
+
+    @needscredentials
     def test_getbyid_db2_saas_user_example(self):
         """
         getbyid_db2_saas_user request example
@@ -217,6 +255,7 @@ class TestDb2saasV1Examples:
 
             response = db2saas_service.getbyid_db2_saas_user(
                 x_deployment_id='crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
+                id='test-user',
             )
             success_get_user_by_id = response.get_result()
 
@@ -363,19 +402,15 @@ class TestDb2saasV1Examples:
         delete_db2_saas_user request example
         """
         try:
-            print('\ndelete_db2_saas_user() result:')
-
             # begin-delete_db2_saas_user
 
             response = db2saas_service.delete_db2_saas_user(
                 x_deployment_id='crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
                 id='test-user',
             )
-            result = response.get_result()
-
-            print(json.dumps(result, indent=2))
 
             # end-delete_db2_saas_user
+            print('\ndelete_db2_saas_user() response status code: ', response.get_status_code())
 
         except ApiException as e:
             pytest.fail(str(e))
